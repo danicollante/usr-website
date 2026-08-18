@@ -912,6 +912,17 @@ table { border-collapse: collapse; }
   font-size: 10px;
 }
 
+/* Real headshot — same 150px circle .placeholder--portrait reserves, so
+   swapping the markup never shifts the .person layout around it. */
+.portrait {
+  display: block;
+  width: 150px;
+  height: 150px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 
 /* 08  COMPONENTS
    ========================================================================== */
