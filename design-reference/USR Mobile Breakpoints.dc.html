@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #EDE9E0; }
+  a { color: #02352F; }
+  a:hover { color: #BE993F; }
+</style>
+</helmet>
+
+<div style="padding:56px 56px 96px; font-family:'IBM Plex Mono',monospace; display:flex; flex-direction:column; gap:56px">
+
+  <div style="display:flex; flex-direction:column; gap:10px; max-width:70ch">
+    <div style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#BE993F">Mobile pass — review</div>
+    <h1 style="margin:0; font-family:'Spectral',Georgia,serif; font-weight:400; font-size:40px; line-height:1.1; letter-spacing:-0.02em; color:#02352F">Home and Cestos Project at 375 and 768</h1>
+    <p style="margin:0; font-family:'Spectral',Georgia,serif; font-size:17px; line-height:1.6; color:#3E3E38">Live frames of <code style="font-size:14px">build/index.html</code> and <code style="font-size:14px">build/cestos-project.html</code>. Scroll inside each frame. Desktop above 1440px is unchanged. Menu, FAQ, tables and the figure lightbox are all interactive here — tap any map to enlarge it.</p>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:20px">
+    <div style="display:flex; align-items:baseline; gap:16px; border-top:1px solid #02352F; padding-top:12px">
+      <span style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#BE993F">01</span>
+      <span style="font-family:'Spectral',Georgia,serif; font-size:26px; color:#02352F">Home</span>
+    </div>
+    <div style="display:flex; gap:40px; align-items:flex-start">
+      <div style="display:flex; flex-direction:column; gap:10px">
+        <div style="font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:#6B6B64">Mobile · 375</div>
+        <iframe src="build/index.html" title="Home at 375px" style="width:375px; height:1500px; border:1px solid rgba(32,32,32,0.24); background:#F7F4ED; display:block"></iframe>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px">
+        <div style="font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:#6B6B64">Tablet · 768</div>
+        <iframe src="build/index.html" title="Home at 768px" style="width:768px; height:1500px; border:1px solid rgba(32,32,32,0.24); background:#F7F4ED; display:block"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:20px">
+    <div style="display:flex; align-items:baseline; gap:16px; border-top:1px solid #02352F; padding-top:12px">
+      <span style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#BE993F">02</span>
+      <span style="font-family:'Spectral',Georgia,serif; font-size:26px; color:#02352F">Cestos Project</span>
+    </div>
+    <div style="display:flex; gap:40px; align-items:flex-start">
+      <div style="display:flex; flex-direction:column; gap:10px">
+        <div style="font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:#6B6B64">Mobile · 375</div>
+        <iframe src="build/cestos-project.html" title="Cestos Project at 375px" style="width:375px; height:1500px; border:1px solid rgba(32,32,32,0.24); background:#F7F4ED; display:block"></iframe>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px">
+        <div style="font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:#6B6B64">Tablet · 768</div>
+        <iframe src="build/cestos-project.html" title="Cestos Project at 768px" style="width:768px; height:1500px; border:1px solid rgba(32,32,32,0.24); background:#F7F4ED; display:block"></iframe>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

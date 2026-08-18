@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Libre+Franklin:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #F7F4ED; }
+  a { color: #02352F; text-decoration: none; }
+  a:hover { color: #BE993F; }
+  table { border-collapse: collapse; }
+</style>
+</helmet>
+
+<div style="width:1440px; margin:0 auto; background:#F7F4ED; color:#202020; font-family:'Libre Franklin', sans-serif">
+
+  <header style="display:flex; align-items:center; justify-content:space-between; gap:40px; padding:26px 72px; border-bottom:1px solid rgba(32,32,32,0.14)">
+    <img src="assets/usr-logo-black.png" alt="U.S. Strategic Resources" style="height:30px; width:auto; display:block; align-self:flex-start">
+    <nav style="display:flex; gap:28px; font-size:13px; font-weight:500; letter-spacing:0.02em">
+      <span style="color:#02352F; border-bottom:2px solid #BE993F; padding-bottom:3px">Home</span>
+      <span style="color:#3E3E38">Company</span>
+      <span style="color:#3E3E38">Cestos Project</span>
+      <span style="color:#3E3E38">Why Liberia</span>
+      <span style="color:#3E3E38">Critical Minerals &amp; Strategy</span>
+      <span style="color:#3E3E38">News</span>
+      <span style="color:#3E3E38">Contact</span>
+    </nav>
+    <div style="font-size:13px; font-weight:600; color:#F7F4ED; background:#02352F; padding:12px 18px; white-space:nowrap; cursor:pointer" style-hover="background:#035D53">Request the investor presentation</div>
+  </header>
+
+  <!-- hero -->
+  <div style="padding:96px 72px 72px; border-bottom:1px solid rgba(32,32,32,0.14)">
+    <div style="display:grid; grid-template-columns:1.35fr 1fr; gap:72px; align-items:end">
+      <div style="display:flex; flex-direction:column; gap:28px">
+        <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#BE993F">American exploration &amp; development</div>
+        <h1 style="margin:0; font-family:'Spectral', Georgia, serif; font-weight:400; font-size:88px; line-height:1.02; letter-spacing:-0.02em; color:#02352F; max-width:20ch">Securing America's critical mineral supply</h1>
+        <p style="margin:0; font-family:'Spectral', Georgia, serif; font-weight:300; font-style:italic; font-size:26px; line-height:1.4; color:#3E3E38; max-width:46ch">Critical minerals and rare earths exploration on Liberia's Cestos shear zone.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:0; border-top:2px solid #02352F">
+        <div style="display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-bottom:1px solid rgba(32,32,32,0.14); font-size:14px">
+          <span style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6B6B64">Jurisdiction</span><span style="font-weight:500">Nimba County, Liberia</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-bottom:1px solid rgba(32,32,32,0.14); font-size:14px">
+          <span style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6B6B64">Licences</span><span style="font-weight:500">Two, contiguous</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-bottom:1px solid rgba(32,32,32,0.14); font-size:14px">
+          <span style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6B6B64">Structure</span><span style="font-weight:500">Cestos shear zone</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-bottom:1px solid rgba(32,32,32,0.14); font-size:14px">
+          <span style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6B6B64">Survey</span><span style="font-weight:500">69 elements · 20 strategic</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-bottom:1px solid rgba(32,32,32,0.14); font-size:14px">
+          <span style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6B6B64">Operating base</span><span style="font-weight:500">Monrovia</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- terrain band -->
+  <div style="height:300px; background:repeating-linear-gradient(135deg,#EFEBE1 0 10px,#E7E2D6 10px 20px); border-bottom:1px solid rgba(32,32,32,0.14); display:flex; align-items:flex-end; padding:20px 72px">
+    <div style="font-family:'IBM Plex Mono', monospace; font-size:12px; line-height:1.7; color:#6B6B64">usr-hero-liberia-terrain.webp — [ full-bleed field photography, Nimba County terrain ]</div>
+  </div>
+
+  <!-- intro, two column -->
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; padding:80px 72px 24px">
+    <p style="margin:0; font-family:'Spectral', Georgia, serif; font-size:23px; line-height:1.5; color:#202020; text-wrap:pretty">U.S. Strategic Resources is an American exploration and development company formed with a single mandate: prove critical mineral and rare-earth supply on secured ground in West Africa and deliver it into U.S. supply chains.</p>
+    <div style="display:flex; flex-direction:column; gap:26px">
+      <p style="margin:0; font-size:17px; line-height:1.65; color:#3E3E38; text-wrap:pretty">The company holds two contiguous licence areas in Nimba County, Liberia, with government-surveyed anomalies across rare earths, battery, base, technology and strategic metals — plus gold.</p>
+      <div style="align-self:flex-start; font-size:15px; font-weight:600; color:#F7F4ED; background:#BE993F; padding:14px 22px; cursor:pointer" style-hover="background:#A8862F">Request the investor presentation →</div>
+    </div>
+  </div>
+
+  <!-- key takeaways -->
+  <div style="padding:56px 72px 80px">
+    <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#BE993F; padding-bottom:20px">Key takeaways</div>
+    <div style="display:flex; flex-direction:column">
+      <div style="display:grid; grid-template-columns:60px 1fr; gap:32px; padding:22px 0; border-top:1px solid #02352F">
+        <span style="font-family:'IBM Plex Mono', monospace; font-size:13px; color:#BE993F">01</span>
+        <p style="margin:0; font-family:'Spectral', Georgia, serif; font-size:22px; line-height:1.45; color:#202020">Two contiguous licence areas on Liberia's Cestos shear zone, west of the Ity gold mine.</p>
+      </div>
+      <div style="display:grid; grid-template-columns:60px 1fr; gap:32px; padding:22px 0; border-top:1px solid rgba(32,32,32,0.18)">
+        <span style="font-family:'IBM Plex Mono', monospace; font-size:13px; color:#BE993F">02</span>
+        <p style="margin:0; font-family:'Spectral', Georgia, serif; font-size:22px; line-height:1.45; color:#202020">National survey data covering 69 elements; 20 flagged as strategic.</p>
+      </div>
+      <div style="display:grid; grid-template-columns:60px 1fr; gap:32px; padding:22px 0; border-top:1px solid rgba(32,32,32,0.18)">
+        <span style="font-family:'IBM Plex Mono', monospace; font-size:13px; color:#BE993F">03</span>
+        <p style="margin:0; font-family:'Spectral', Georgia, serif; font-size:22px; line-height:1.45; color:#202020">Positioned for the widest U.S. federal funding window for critical minerals in decades — $30B+ deployed to date.</p>
+      </div>
+      <div style="display:grid; grid-template-columns:60px 1fr; gap:32px; padding:22px 0; border-top:1px solid rgba(32,32,32,0.18); border-bottom:1px solid rgba(32,32,32,0.18)">
+        <span style="font-family:'IBM Plex Mono', monospace; font-size:13px; color:#BE993F">04</span>
+        <p style="margin:0; font-family:'Spectral', Georgia, serif; font-size:22px; line-height:1.45; color:#202020">Experienced in-country operating platform in Monrovia. Zero mobilization lead time.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- why now -->
+  <div style="background:#02352F; color:#F7F4ED; padding:88px 72px">
+    <div style="display:grid; grid-template-columns:1fr 1.1fr; gap:80px">
+      <div style="display:flex; flex-direction:column; gap:22px">
+        <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#BE993F">Why now</div>
+        <h2 style="margin:0; font-family:'Spectral', Georgia, serif; font-weight:400; font-size:56px; line-height:1.08; letter-spacing:-0.015em; color:#FFFFFF">One nation controls the inputs of modern power.</h2>
+        <div style="align-self:flex-start; font-size:14px; font-weight:600; letter-spacing:0.02em; color:#BE993F; border-bottom:1px solid #BE993F; padding-bottom:3px; cursor:pointer" style-hover="color:#FFFFFF">The market case →</div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:28px">
+        <p style="margin:0; font-family:'Spectral', Georgia, serif; font-size:20px; line-height:1.55; color:rgba(247,244,237,0.9); text-wrap:pretty">Roughly 90% of global rare-earth refining capacity runs through China, along with 98% of refined gallium and germanium. Since April 2025, seven rare earths — including samarium — sit under Chinese export controls.</p>
+        <p style="margin:0; font-family:'Spectral', Georgia, serif; font-size:20px; line-height:1.55; color:rgba(247,244,237,0.9); text-wrap:pretty">Washington is deploying capital to change that: five executive orders on minerals security, a $12B national stockpile, and six federal funding channels open to companies operating on allied ground.</p>
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px; padding-top:12px; border-top:1px solid rgba(247,244,237,0.28)">
+          <div><div style="font-family:'Spectral', Georgia, serif; font-size:52px; line-height:1; color:#BE993F">90%</div><div style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.6; color:rgba(247,244,237,0.75); padding-top:10px">rare-earth refining, China</div></div>
+          <div><div style="font-family:'Spectral', Georgia, serif; font-size:52px; line-height:1; color:#BE993F">98%</div><div style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.6; color:rgba(247,244,237,0.75); padding-top:10px">refined Ga and Ge</div></div>
+          <div><div style="font-family:'Spectral', Georgia, serif; font-size:52px; line-height:1; color:#BE993F">7</div><div style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.6; color:rgba(247,244,237,0.75); padding-top:10px">REEs export-controlled</div></div>
+          <div><div style="font-family:'Spectral', Georgia, serif; font-size:52px; line-height:1; color:#BE993F">$12B</div><div style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.6; color:rgba(247,244,237,0.75); padding-top:10px">national stockpile</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- the asset -->
+  <div style="padding:88px 72px">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start">
+      <figure style="margin:0; display:flex; flex-direction:column; gap:12px; background:#FFFFFF; padding:20px; border:1px solid rgba(32,32,32,0.14)">
+        <img src="assets/06-nimba-79-adj-licence-map-regional-geology.webp" alt="Map of the Nimba 79 Resources and ADJ Exploration licence areas on the Cestos shear zone, Nimba County, Liberia" style="width:100%; display:block">
+        <figcaption style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.6; color:#6B6B64">Fig. 1 — Nimba 79 Resources and ADJ Exploration licences over regional geology, Nimba County, Liberia</figcaption>
+      </figure>
+      <div style="display:flex; flex-direction:column; gap:24px; padding-top:8px">
+        <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#BE993F">The asset</div>
+        <h2 style="margin:0; font-family:'Spectral', Georgia, serif; font-weight:400; font-size:56px; line-height:1.08; letter-spacing:-0.015em; color:#02352F">Two licence areas on a gold-prospective shear zone</h2>
+        <p style="margin:0; font-size:18px; line-height:1.65; color:#3E3E38; text-wrap:pretty">Two licence areas — Nimba 79 Resources and ADJ Exploration — sit on the gold-prospective Cestos shear zone. Government survey data outlines coincident multi-element anomalies inside both licence boundaries: gold, cobalt, copper, gallium, titanium, tin and zirconium on Nimba 79; six metals anomalous on ADJ.</p>
+        <div style="display:flex; flex-direction:column; border-top:1px solid rgba(32,32,32,0.18)">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; padding:16px 0; border-bottom:1px solid rgba(32,32,32,0.12)">
+            <div style="font-weight:600; font-size:15px; color:#02352F">Nimba 79 Resources</div>
+            <div style="font-family:'IBM Plex Mono', monospace; font-size:13px; color:#3E3E38">Au · Co · Cu · Ga · Ti · Sn · Zr</div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; padding:16px 0; border-bottom:1px solid rgba(32,32,32,0.12)">
+            <div style="font-weight:600; font-size:15px; color:#02352F">ADJ Exploration</div>
+            <div style="font-family:'IBM Plex Mono', monospace; font-size:13px; color:#3E3E38">Co · Cu · Mn · Nb · Sn · Ti</div>
+          </div>
+        </div>
+        <div style="align-self:flex-start; font-size:14px; font-weight:600; color:#02352F; border-bottom:1px solid #BE993F; padding-bottom:3px; cursor:pointer" style-hover="color:#BE993F">See the project →</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- commodity exposure -->
+  <div style="padding:0 72px 88px">
+    <div style="display:flex; align-items:baseline; gap:24px; padding-bottom:24px">
+      <h2 style="margin:0; font-family:'Spectral', Georgia, serif; font-weight:400; font-size:48px; line-height:1.1; color:#02352F">Commodity exposure</h2>
+      <span style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6B6B64">69 elements analysed · 20 flagged strategic</span>
+    </div>
+    <table style="width:100%">
+      <thead>
+        <tr>
+          <th style="text-align:left; font-family:'IBM Plex Mono', monospace; font-size:10px; font-weight:400; letter-spacing:0.18em; text-transform:uppercase; color:#6B6B64; padding:12px 24px 12px 0; border-top:1px solid #02352F; border-bottom:1px solid #02352F; width:24%">Class</th>
+          <th style="text-align:left; font-family:'IBM Plex Mono', monospace; font-size:10px; font-weight:400; letter-spacing:0.18em; text-transform:uppercase; color:#6B6B64; padding:12px 24px; border-top:1px solid #02352F; border-bottom:1px solid #02352F; width:28%">Examples</th>
+          <th style="text-align:left; font-family:'IBM Plex Mono', monospace; font-size:10px; font-weight:400; letter-spacing:0.18em; text-transform:uppercase; color:#6B6B64; padding:12px 0 12px 24px; border-top:1px solid #02352F; border-bottom:1px solid #02352F">Demand driver</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-family:'Spectral', Georgia, serif; font-size:22px; color:#02352F; padding:18px 24px 18px 0; border-bottom:1px solid rgba(32,32,32,0.12)">Rare earths</td>
+          <td style="font-family:'IBM Plex Mono', monospace; font-size:14px; color:#BE993F; padding:18px 24px; border-bottom:1px solid rgba(32,32,32,0.12)">Nd · Sm · La · Pr · Eu</td>
+          <td style="font-size:16px; color:#3E3E38; padding:18px 0 18px 24px; border-bottom:1px solid rgba(32,32,32,0.12)">Permanent magnets — EVs, wind, defence</td>
+        </tr>
+        <tr>
+          <td style="font-family:'Spectral', Georgia, serif; font-size:22px; color:#02352F; padding:18px 24px 18px 0; border-bottom:1px solid rgba(32,32,32,0.12)">Battery metals</td>
+          <td style="font-family:'IBM Plex Mono', monospace; font-size:14px; color:#BE993F; padding:18px 24px; border-bottom:1px solid rgba(32,32,32,0.12)">Li · Co · Ni · Mn</td>
+          <td style="font-size:16px; color:#3E3E38; padding:18px 0 18px 24px; border-bottom:1px solid rgba(32,32,32,0.12)">EV batteries and storage</td>
+        </tr>
+        <tr>
+          <td style="font-family:'Spectral', Georgia, serif; font-size:22px; color:#02352F; padding:18px 24px 18px 0; border-bottom:1px solid rgba(32,32,32,0.12)">Base metals</td>
+          <td style="font-family:'IBM Plex Mono', monospace; font-size:14px; color:#BE993F; padding:18px 24px; border-bottom:1px solid rgba(32,32,32,0.12)">Cu · Zn · Sn</td>
+          <td style="font-size:16px; color:#3E3E38; padding:18px 0 18px 24px; border-bottom:1px solid rgba(32,32,32,0.12)">Electrification backbone</td>
+        </tr>
+        <tr>
+          <td style="font-family:'Spectral', Georgia, serif; font-size:22px; color:#02352F; padding:18px 24px 18px 0; border-bottom:1px solid rgba(32,32,32,0.12)">Technology metals</td>
+          <td style="font-family:'IBM Plex Mono', monospace; font-size:14px; color:#BE993F; padding:18px 24px; border-bottom:1px solid rgba(32,32,32,0.12)">Ga · Ge · Zr</td>
+          <td style="font-size:16px; color:#3E3E38; padding:18px 0 18px 24px; border-bottom:1px solid rgba(32,32,32,0.12)">Semiconductors, solar, displays</td>
+        </tr>
+        <tr>
+          <td style="font-family:'Spectral', Georgia, serif; font-size:22px; color:#02352F; padding:18px 24px 18px 0; border-bottom:1px solid rgba(32,32,32,0.12)">Strategic metals</td>
+          <td style="font-family:'IBM Plex Mono', monospace; font-size:14px; color:#BE993F; padding:18px 24px; border-bottom:1px solid rgba(32,32,32,0.12)">Nb · Ta · Ti · V</td>
+          <td style="font-size:16px; color:#3E3E38; padding:18px 0 18px 24px; border-bottom:1px solid rgba(32,32,32,0.12)">Aerospace and defence alloys</td>
+        </tr>
+        <tr>
+          <td style="font-family:'Spectral', Georgia, serif; font-style:italic; font-size:22px; color:#BE993F; padding:18px 24px 18px 0; border-bottom:1px solid #02352F">+ Gold</td>
+          <td style="font-family:'IBM Plex Mono', monospace; font-size:14px; color:#BE993F; padding:18px 24px; border-bottom:1px solid #02352F">Au</td>
+          <td style="font-size:16px; color:#3E3E38; padding:18px 0 18px 24px; border-bottom:1px solid #02352F">Cestos-shear discovery upside</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- leadership -->
+  <div style="padding:0 72px 88px">
+    <div style="display:flex; align-items:baseline; justify-content:space-between; gap:40px; padding-bottom:36px">
+      <h2 style="margin:0; font-family:'Spectral', Georgia, serif; font-weight:400; font-size:48px; line-height:1.1; color:#02352F">Leadership</h2>
+      <span style="font-size:14px; font-weight:600; color:#02352F; border-bottom:1px solid #BE993F; padding-bottom:3px; cursor:pointer" style-hover="color:#BE993F">The company →</span>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:48px">
+      <div style="display:flex; flex-direction:column; gap:16px">
+        <div style="aspect-ratio:1/1; border-radius:50%; width:150px; background:repeating-linear-gradient(135deg,#EFEBE1 0 8px,#E4DFD3 8px 16px); display:flex; align-items:center; justify-content:center"><span style="font-family:'IBM Plex Mono', monospace; font-size:10px; color:#6B6B64">[ headshot ]</span></div>
+        <div>
+          <div style="font-family:'Spectral', Georgia, serif; font-size:26px; color:#02352F">David Kol</div>
+          <div style="font-size:13px; font-weight:600; letter-spacing:0.04em; color:#BE993F; padding-top:4px">Chief Executive Officer &amp; Board Member</div>
+          <p style="margin:12px 0 0; font-size:15px; line-height:1.6; color:#3E3E38">20+ years in capital markets and M&amp;A, including 17+ years operating in West Africa. Founder and CEO of Zodiac Gold (TSXV: ZAU).</p>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:16px">
+        <div style="aspect-ratio:1/1; border-radius:50%; width:150px; background:repeating-linear-gradient(135deg,#EFEBE1 0 8px,#E4DFD3 8px 16px); display:flex; align-items:center; justify-content:center"><span style="font-family:'IBM Plex Mono', monospace; font-size:10px; color:#6B6B64">[ headshot ]</span></div>
+        <div>
+          <div style="font-family:'Spectral', Georgia, serif; font-size:26px; color:#02352F">Peter Granata, CA</div>
+          <div style="font-size:13px; font-weight:600; letter-spacing:0.04em; color:#BE993F; padding-top:4px">Chief Financial Officer</div>
+          <p style="margin:12px 0 0; font-size:15px; line-height:1.6; color:#3E3E38">18+ years in African natural resources. Former audit manager in PwC's Global Mining &amp; Metals practice; CFO across multiple TSXV-listed issuers.</p>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:16px">
+        <div style="aspect-ratio:1/1; border-radius:50%; width:150px; background:repeating-linear-gradient(135deg,#EFEBE1 0 8px,#E4DFD3 8px 16px); display:flex; align-items:center; justify-content:center"><span style="font-family:'IBM Plex Mono', monospace; font-size:10px; color:#6B6B64">[ headshot ]</span></div>
+        <div>
+          <div style="font-family:'Spectral', Georgia, serif; font-size:26px; color:#02352F">Brett Richards</div>
+          <div style="font-size:13px; font-weight:600; letter-spacing:0.04em; color:#BE993F; padding-top:4px">Board Member</div>
+          <p style="margin:12px 0 0; font-size:15px; line-height:1.6; color:#3E3E38">A 40-year mining executive who has built three mines in Africa. Former CEO of Katanga Mining and Avocet plc.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- news -->
+  <div style="padding:0 72px 88px">
+    <div style="display:grid; grid-template-columns:1fr 2fr; gap:64px; padding-top:40px; border-top:1px solid #02352F">
+      <div style="display:flex; flex-direction:column; gap:14px">
+        <h2 style="margin:0; font-family:'Spectral', Georgia, serif; font-weight:400; font-size:48px; line-height:1.1; color:#02352F">Latest news</h2>
+        <span style="font-size:14px; font-weight:600; color:#02352F; border-bottom:1px solid #BE993F; align-self:flex-start; padding-bottom:3px; cursor:pointer" style-hover="color:#BE993F">All announcements →</span>
+      </div>
+      <div style="display:flex; flex-direction:column">
+        <div style="display:grid; grid-template-columns:150px 1fr; gap:32px; padding:20px 0; border-bottom:1px solid rgba(32,32,32,0.14)">
+          <span style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#BE993F">Announcement</span>
+          <div>
+            <div style="font-family:'Spectral', Georgia, serif; font-size:24px; color:#202020">Company formation announcement</div>
+            <p style="margin:8px 0 0; font-size:15px; line-height:1.6; color:#3E3E38">U.S. Strategic Resources formed to prove critical mineral supply on secured ground in Liberia.</p>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:150px 1fr; gap:32px; padding:20px 0; border-bottom:1px solid rgba(32,32,32,0.14)">
+          <span style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6B6B64">Empty state</span>
+          <p style="margin:0; font-size:15px; line-height:1.6; color:#3E3E38">Announcements will be published here. Subscribe for updates.</p>
+        </div>
+        <div style="display:flex; gap:0; padding-top:22px; max-width:460px">
+          <div style="flex:1; border:1px solid rgba(32,32,32,0.3); padding:13px 16px; font-family:'IBM Plex Mono', monospace; font-size:13px; color:#6B6B64">email address</div>
+          <div style="background:#02352F; color:#F7F4ED; font-size:14px; font-weight:600; padding:13px 22px; cursor:pointer" style-hover="background:#035D53">Subscribe</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- closing CTA -->
+  <div style="background:#BE993F; padding:72px; display:flex; align-items:center; justify-content:space-between; gap:56px">
+    <h2 style="margin:0; font-family:'Spectral', Georgia, serif; font-weight:400; font-size:56px; line-height:1.08; color:#202020; max-width:24ch">Speak with the team</h2>
+    <div style="display:flex; gap:14px">
+      <div style="font-size:15px; font-weight:600; color:#F7F4ED; background:#02352F; padding:16px 24px; cursor:pointer" style-hover="background:#035D53">Request the investor presentation →</div>
+      <div style="font-size:15px; font-weight:600; color:#202020; border:1px solid #202020; padding:16px 24px; cursor:pointer" style-hover="background:rgba(32,32,32,0.06)">Contact →</div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer style="background:#202020; color:#F7F4ED; display:grid; grid-template-columns:2fr 1fr 1fr 1.4fr; gap:48px; padding:56px 72px 64px">
+    <div style="display:flex; flex-direction:column; gap:18px">
+      <img src="assets/usr-logo-white.png" alt="U.S. Strategic Resources" style="height:28px; width:auto; display:block; align-self:flex-start">
+      <p style="margin:0; font-family:'IBM Plex Mono', monospace; font-size:12px; line-height:1.8; color:rgba(247,244,237,0.6); max-width:34ch">Operations: Monrovia, Liberia<br>Headquarters: [pending]<br>Email: [pending]</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:rgba(247,244,237,0.85)">
+      <span style="font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:#BE993F">Site</span>
+      <span>Company</span><span>Cestos Project</span><span>Why Liberia</span>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:rgba(247,244,237,0.85)">
+      <span style="font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:#BE993F">More</span>
+      <span>Critical Minerals &amp; Strategy</span><span>News</span><span>Contact</span><span>Legal &amp; Disclaimer</span>
+    </div>
+    <p style="margin:0; font-size:12px; line-height:1.7; color:rgba(247,244,237,0.5)">No offer of securities. Forward-looking statements involve risks and uncertainties. Exploration results are preliminary and subject to verification. © 2026 U.S. Strategic Resources.</p>
+  </footer>
+</div>
+
+</x-dc>
+</body>
+</html>

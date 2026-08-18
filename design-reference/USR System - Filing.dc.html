@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Libre+Franklin:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #F7F4ED; }
+  a { color: #02352F; text-decoration: none; }
+  a:hover { color: #BE993F; }
+  table { border-collapse: collapse; }
+</style>
+</helmet>
+
+<div style="width:1440px; margin:0 auto; background:#F7F4ED; color:#202020; font-family:'Libre Franklin', sans-serif">
+
+  <div style="padding:72px 72px 56px; border-bottom:1px solid #02352F">
+    <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#BE993F">Design system · direction “Filing”</div>
+    <h1 style="margin:18px 0 0; font-family:'Spectral', Georgia, serif; font-weight:400; font-size:64px; line-height:1.05; letter-spacing:-0.02em; color:#02352F; max-width:24ch">The reusable system</h1>
+    <p style="margin:20px 0 0; font-size:17px; line-height:1.65; color:#3E3E38; max-width:70ch; text-wrap:pretty">Everything below is the vocabulary the rest of the site is built from: one paper surface, one serif for statements, one sans for reading, one mono for labels and data. Rules and hairlines do the work that cards and shadows usually do.</p>
+  </div>
+
+  <!-- 01 foundations -->
+  <div style="display:grid; grid-template-columns:120px 1fr; border-bottom:1px solid rgba(32,32,32,0.18)">
+    <div style="padding:64px 0 0 72px; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#BE993F">01</div>
+    <div style="padding:64px 72px 64px 0">
+      <h2 style="margin:0 0 32px; font-family:'Spectral', Georgia, serif; font-weight:400; font-size:48px; line-height:1.1; letter-spacing:-0.015em; color:#02352F">Colour</h2>
+      <div style="display:grid; grid-template-columns:repeat(6,1fr); gap:20px">
+        <div style="display:flex; flex-direction:column; gap:10px">
+          <div style="height:120px; background:#F7F4ED; border:1px solid rgba(32,32,32,0.18)"></div>
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.7; color:#3E3E38">#F7F4ED<br>paper — page surface</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:10px">
+          <div style="height:120px; background:#FFFFFF; border:1px solid rgba(32,32,32,0.18)"></div>
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.7; color:#3E3E38">#FFFFFF<br>figure mount only</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:10px">
+          <div style="height:120px; background:#02352F"></div>
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.7; color:#3E3E38">#02352F<br>headings · dark bands · primary button</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:10px">
+          <div style="height:120px; background:#035D53"></div>
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.7; color:#3E3E38">#035D53<br>hover on dark · links</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:10px">
+          <div style="height:120px; background:#BE993F"></div>
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.7; color:#3E3E38">#BE993F<br>accent — labels, rules, one CTA per page</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:10px">
+          <div style="height:120px; background:#202020"></div>
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.7; color:#3E3E38">#202020<br>body ink · footer</div>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:32px; padding-top:32px">
+        <div style="font-family:'IBM Plex Mono', monospace; font-size:12px; line-height:1.8; color:#3E3E38; border-top:1px solid rgba(32,32,32,0.18); padding-top:14px">body text #3E3E38<br>muted / mono #6B6B64</div>
+        <div style="font-family:'IBM Plex Mono', monospace; font-size:12px; line-height:1.8; color:#3E3E38; border-top:1px solid rgba(32,32,32,0.18); padding-top:14px">hairline rgba(32,32,32,0.14)<br>section rule rgba(32,32,32,0.18)</div>
+        <div style="font-family:'IBM Plex Mono', monospace; font-size:12px; line-height:1.8; color:#3E3E38; border-top:1px solid rgba(32,32,32,0.18); padding-top:14px">structural rule 1px #02352F<br>accent rule 1px #BE993F</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 type -->
+  <div style="display:grid; grid-template-columns:120px 1fr; border-bottom:1px solid rgba(32,32,32,0.18)">
+    <div style="padding:64px 0 0 72px; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#BE993F">02</div>
+    <div style="padding:64px 72px 64px 0">
+      <h2 style="margin:0 0 8px; font-family:'Spectral', Georgia, serif; font-weight:400; font-size:48px; line-height:1.1; letter-spacing:-0.015em; color:#02352F">Type scale</h2>
+      <p style="margin:0 0 36px; font-family:'IBM Plex Mono', monospace; font-size:12px; line-height:1.8; color:#6B6B64">Spectral 400 for statements · Libre Franklin 400/500/600 for reading and UI · IBM Plex Mono 400 for labels, data and captions</p>
+      <div style="display:flex; flex-direction:column">
+        <div style="display:grid; grid-template-columns:240px 1fr; gap:40px; align-items:baseline; padding:26px 0; border-top:1px solid #02352F">
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.8; color:#6B6B64">H1<br>Spectral 400 · 88/1.02<br>tracking −0.02em · #02352F</div>
+          <div style="font-family:'Spectral', Georgia, serif; font-weight:400; font-size:88px; line-height:1.02; letter-spacing:-0.02em; color:#02352F">District-scale ground</div>
+        </div>
+        <div style="display:grid; grid-template-columns:240px 1fr; gap:40px; align-items:baseline; padding:26px 0; border-top:1px solid rgba(32,32,32,0.18)">
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.8; color:#6B6B64">H2<br>Spectral 400 · 48/1.10<br>tracking −0.015em</div>
+          <div style="font-family:'Spectral', Georgia, serif; font-weight:400; font-size:48px; line-height:1.1; letter-spacing:-0.015em; color:#02352F">Exploration targets</div>
+        </div>
+        <div style="display:grid; grid-template-columns:240px 1fr; gap:40px; align-items:baseline; padding:26px 0; border-top:1px solid rgba(32,32,32,0.18)">
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.8; color:#6B6B64">H3<br>Spectral 400 · 26/1.25</div>
+          <div style="font-family:'Spectral', Georgia, serif; font-weight:400; font-size:26px; line-height:1.25; color:#02352F">Nimba 79 — coincident multi-element anomalies</div>
+        </div>
+        <div style="display:grid; grid-template-columns:240px 1fr; gap:40px; align-items:baseline; padding:26px 0; border-top:1px solid rgba(32,32,32,0.18)">
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.8; color:#6B6B64">Lead<br>Spectral 400 · 23/1.50<br>intro paragraph, max 46ch</div>
+          <div style="font-family:'Spectral', Georgia, serif; font-size:23px; line-height:1.5; color:#202020; max-width:46ch">The Cestos Project comprises two contiguous licence areas in Nimba County, Liberia.</div>
+        </div>
+        <div style="display:grid; grid-template-columns:240px 1fr; gap:40px; align-items:baseline; padding:26px 0; border-top:1px solid rgba(32,32,32,0.18)">
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.8; color:#6B6B64">Body<br>Libre Franklin 400 · 17/1.65<br>#3E3E38 · max 72ch</div>
+          <div style="font-size:17px; line-height:1.65; color:#3E3E38; max-width:72ch">Melanocratic and leucocratic gneiss intruded by diorite and deformed by the Cestos shear zone — host geology for both orogenic gold and critical mineral systems.</div>
+        </div>
+        <div style="display:grid; grid-template-columns:240px 1fr; gap:40px; align-items:baseline; padding:26px 0; border-top:1px solid rgba(32,32,32,0.18)">
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.8; color:#6B6B64">Small<br>Libre Franklin 400 · 15/1.60<br>bios, list items, cards</div>
+          <div style="font-size:15px; line-height:1.6; color:#3E3E38; max-width:72ch">Field teams — geologists and crews with seasons of terrane-specific fieldwork.</div>
+        </div>
+        <div style="display:grid; grid-template-columns:240px 1fr; gap:40px; align-items:baseline; padding:26px 0; border-top:1px solid rgba(32,32,32,0.18)">
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.8; color:#6B6B64">Mono label<br>IBM Plex Mono 400 · 11px<br>tracking 0.20em · uppercase · #BE993F</div>
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#BE993F">Key takeaways</div>
+        </div>
+        <div style="display:grid; grid-template-columns:240px 1fr; gap:40px; align-items:baseline; padding:26px 0; border-top:1px solid rgba(32,32,32,0.18); border-bottom:1px solid rgba(32,32,32,0.18)">
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.8; color:#6B6B64">Caption / data<br>IBM Plex Mono 400 · 11–14px<br>#6B6B64 · gold for element lists</div>
+          <div style="display:flex; flex-direction:column; gap:8px">
+            <span style="font-family:'IBM Plex Mono', monospace; font-size:11px; color:#6B6B64">Fig. 1 — Nimba 79 and ADJ licences over regional geology</span>
+            <span style="font-family:'IBM Plex Mono', monospace; font-size:14px; color:#BE993F">Au · Co · Cu · Ga · Ti · Sn · Zr</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 spacing -->
+  <div style="display:grid; grid-template-columns:120px 1fr; border-bottom:1px solid rgba(32,32,32,0.18)">
+    <div style="padding:64px 0 0 72px; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#BE993F">03</div>
+    <div style="padding:64px 72px 64px 0">
+      <h2 style="margin:0 0 32px; font-family:'Spectral', Georgia, serif; font-weight:400; font-size:48px; line-height:1.1; letter-spacing:-0.015em; color:#02352F">Spacing &amp; grid</h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px">
+        <div style="display:flex; flex-direction:column">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; padding:14px 0; border-top:1px solid #02352F; font-size:15px"><span style="font-family:'IBM Plex Mono', monospace; font-size:12px; color:#6B6B64">page inset</span><span>72px left / right</span></div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; padding:14px 0; border-top:1px solid rgba(32,32,32,0.14); font-size:15px"><span style="font-family:'IBM Plex Mono', monospace; font-size:12px; color:#6B6B64">section</span><span>88px top / bottom</span></div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; padding:14px 0; border-top:1px solid rgba(32,32,32,0.14); font-size:15px"><span style="font-family:'IBM Plex Mono', monospace; font-size:12px; color:#6B6B64">column gap</span><span>64px (2-up) · 48px (3-up)</span></div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; padding:14px 0; border-top:1px solid rgba(32,32,32,0.14); font-size:15px"><span style="font-family:'IBM Plex Mono', monospace; font-size:12px; color:#6B6B64">stack</span><span>8 · 12 · 16 · 24 · 32px</span></div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; padding:14px 0; border-top:1px solid rgba(32,32,32,0.14); border-bottom:1px solid rgba(32,32,32,0.14); font-size:15px"><span style="font-family:'IBM Plex Mono', monospace; font-size:12px; color:#6B6B64">index rail</span><span>120px, mono number, right rule</span></div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:16px">
+          <p style="margin:0; font-size:15px; line-height:1.6; color:#3E3E38; text-wrap:pretty">Every section is a 120px index rail plus content. Content splits 1:1 for prose-and-figure, 1.35:1 for hero-and-facts, 1:2 for label-and-list. Nothing is centred except the page itself.</p>
+          <div style="display:grid; grid-template-columns:120px 1fr; gap:0; border:1px solid rgba(32,32,32,0.18); height:120px">
+            <div style="border-right:1px solid rgba(32,32,32,0.18); background:repeating-linear-gradient(135deg,#EFEBE1 0 8px,#E7E2D6 8px 16px)"></div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; padding:16px">
+              <div style="background:repeating-linear-gradient(135deg,#EFEBE1 0 8px,#E7E2D6 8px 16px)"></div>
+              <div style="background:repeating-linear-gradient(135deg,#EFEBE1 0 8px,#E7E2D6 8px 16px)"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 buttons -->
+  <div style="display:grid; grid-template-columns:120px 1fr; border-bottom:1px solid rgba(32,32,32,0.18)">
+    <div style="padding:64px 0 0 72px; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#BE993F">04</div>
+    <div style="padding:64px 72px 64px 0">
+      <h2 style="margin:0 0 8px; font-family:'Spectral', Georgia, serif; font-weight:400; font-size:48px; line-height:1.1; letter-spacing:-0.015em; color:#02352F">Buttons &amp; links</h2>
+      <p style="margin:0 0 32px; font-family:'IBM Plex Mono', monospace; font-size:12px; line-height:1.8; color:#6B6B64">No rounded corners, no shadows. 15px / 600 · padding 14px 22px. Hover shown live — hover each one.</p>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:32px">
+        <div style="display:flex; flex-direction:column; gap:14px; align-items:flex-start">
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#6B6B64">Primary</div>
+          <div style="font-size:15px; font-weight:600; color:#F7F4ED; background:#02352F; padding:14px 22px; cursor:pointer" style-hover="background:#035D53">Request the investor presentation →</div>
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.7; color:#6B6B64">hover #035D53 · header &amp; page CTA</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:14px; align-items:flex-start">
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#6B6B64">Accent</div>
+          <div style="font-size:15px; font-weight:600; color:#F7F4ED; background:#BE993F; padding:14px 22px; cursor:pointer" style-hover="background:#A8862F">Request the technical overview →</div>
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.7; color:#6B6B64">hover #A8862F · one per page, after the intro</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:14px; align-items:flex-start">
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#6B6B64">Ghost</div>
+          <div style="font-size:15px; font-weight:600; color:#202020; border:1px solid #202020; padding:14px 22px; cursor:pointer" style-hover="background:#202020; color:#F7F4ED">Contact →</div>
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.7; color:#6B6B64">inverts on hover · secondary action</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:14px; align-items:flex-start">
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#6B6B64">Text link</div>
+          <div style="font-size:14px; font-weight:600; color:#02352F; border-bottom:1px solid #BE993F; padding-bottom:3px; cursor:pointer" style-hover="color:#BE993F">See the project →</div>
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.7; color:#6B6B64">gold underline always · in-body navigation</div>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:32px; padding-top:40px; border-top:1px solid rgba(32,32,32,0.18); margin-top:40px">
+        <div style="display:flex; flex-direction:column; gap:12px; align-items:flex-start">
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#6B6B64">Focus</div>
+          <div style="font-size:15px; font-weight:600; color:#F7F4ED; background:#02352F; padding:14px 22px; outline:2px solid #BE993F; outline-offset:2px">Request the investor presentation →</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:12px; align-items:flex-start">
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#6B6B64">Disabled</div>
+          <div style="font-size:15px; font-weight:600; color:rgba(32,32,32,0.4); background:rgba(32,32,32,0.08); padding:14px 22px">Download the technical report</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:12px; align-items:flex-start">
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#6B6B64">On dark</div>
+          <div style="background:#02352F; padding:20px"><div style="font-size:15px; font-weight:600; color:#02352F; background:#BE993F; padding:14px 22px; cursor:pointer" style-hover="background:#F7F4ED">The market case →</div></div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:12px; align-items:flex-start">
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#6B6B64">Input</div>
+          <div style="display:flex; width:100%">
+            <div style="flex:1; border:1px solid rgba(32,32,32,0.3); padding:13px 16px; font-family:'IBM Plex Mono', monospace; font-size:13px; color:#6B6B64">email address</div>
+            <div style="background:#02352F; color:#F7F4ED; font-size:14px; font-weight:600; padding:13px 22px">Subscribe</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 tables -->
+  <div style="display:grid; grid-template-columns:120px 1fr; border-bottom:1px solid rgba(32,32,32,0.18)">
+    <div style="padding:64px 0 0 72px; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#BE993F">05</div>
+    <div style="padding:64px 72px 64px 0">
+      <h2 style="margin:0 0 8px; font-family:'Spectral', Georgia, serif; font-weight:400; font-size:48px; line-height:1.1; letter-spacing:-0.015em; color:#02352F">Tables</h2>
+      <p style="margin:0 0 32px; font-family:'IBM Plex Mono', monospace; font-size:12px; line-height:1.8; color:#6B6B64">Rules only — no fills, no zebra. Mono uppercase header between two #02352F rules · first cell Spectral 22 · data cells mono · body cells 16px · last row closes on #02352F</p>
+      <table style="width:100%">
+        <thead>
+          <tr>
+            <th style="text-align:left; font-family:'IBM Plex Mono', monospace; font-size:10px; font-weight:400; letter-spacing:0.18em; text-transform:uppercase; color:#6B6B64; padding:12px 24px 12px 0; border-top:1px solid #02352F; border-bottom:1px solid #02352F; width:24%">Class</th>
+            <th style="text-align:left; font-family:'IBM Plex Mono', monospace; font-size:10px; font-weight:400; letter-spacing:0.18em; text-transform:uppercase; color:#6B6B64; padding:12px 24px; border-top:1px solid #02352F; border-bottom:1px solid #02352F; width:28%">Examples</th>
+            <th style="text-align:left; font-family:'IBM Plex Mono', monospace; font-size:10px; font-weight:400; letter-spacing:0.18em; text-transform:uppercase; color:#6B6B64; padding:12px 0 12px 24px; border-top:1px solid #02352F; border-bottom:1px solid #02352F">Demand driver</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-family:'Spectral', Georgia, serif; font-size:22px; color:#02352F; padding:18px 24px 18px 0; border-bottom:1px solid rgba(32,32,32,0.12)">Rare earths</td>
+            <td style="font-family:'IBM Plex Mono', monospace; font-size:14px; color:#BE993F; padding:18px 24px; border-bottom:1px solid rgba(32,32,32,0.12)">Nd · Sm · La · Pr · Eu</td>
+            <td style="font-size:16px; color:#3E3E38; padding:18px 0 18px 24px; border-bottom:1px solid rgba(32,32,32,0.12)">Permanent magnets — EVs, wind, defence</td>
+          </tr>
+          <tr>
+            <td style="font-family:'Spectral', Georgia, serif; font-size:22px; color:#02352F; padding:18px 24px 18px 0; border-bottom:1px solid rgba(32,32,32,0.12)">Battery metals</td>
+            <td style="font-family:'IBM Plex Mono', monospace; font-size:14px; color:#BE993F; padding:18px 24px; border-bottom:1px solid rgba(32,32,32,0.12)">Li · Co · Ni · Mn</td>
+            <td style="font-size:16px; color:#3E3E38; padding:18px 0 18px 24px; border-bottom:1px solid rgba(32,32,32,0.12)">EV batteries and storage</td>
+          </tr>
+          <tr>
+            <td style="font-family:'Spectral', Georgia, serif; font-style:italic; font-size:22px; color:#BE993F; padding:18px 24px 18px 0; border-bottom:1px solid #02352F">+ Gold</td>
+            <td style="font-family:'IBM Plex Mono', monospace; font-size:14px; color:#BE993F; padding:18px 24px; border-bottom:1px solid #02352F">Au</td>
+            <td style="font-size:16px; color:#3E3E38; padding:18px 0 18px 24px; border-bottom:1px solid #02352F">Cestos-shear discovery upside</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin:32px 0 12px; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#BE993F">Comparison variant — row labels in the stub column</p>
+      <table style="width:100%">
+        <thead>
+          <tr>
+            <th style="text-align:left; font-family:'IBM Plex Mono', monospace; font-size:10px; font-weight:400; letter-spacing:0.18em; text-transform:uppercase; color:#6B6B64; padding:12px 24px 12px 0; border-top:1px solid #02352F; border-bottom:1px solid #02352F; width:28%"></th>
+            <th style="text-align:left; font-family:'Spectral', Georgia, serif; font-size:20px; font-weight:400; color:#02352F; padding:10px 24px; border-top:1px solid #02352F; border-bottom:1px solid #02352F; width:36%">Nimba 79 Resources</th>
+            <th style="text-align:left; font-family:'Spectral', Georgia, serif; font-size:20px; font-weight:400; color:#02352F; padding:10px 0 10px 24px; border-top:1px solid #02352F; border-bottom:1px solid #02352F">ADJ Exploration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:#6B6B64; padding:16px 24px 16px 0; border-bottom:1px solid rgba(32,32,32,0.12)">Headline anomalies</td>
+            <td style="font-family:'IBM Plex Mono', monospace; font-size:14px; color:#BE993F; padding:16px 24px; border-bottom:1px solid rgba(32,32,32,0.12)">Au · Co · Cu · Ga · Ti · Sn · Zr</td>
+            <td style="font-family:'IBM Plex Mono', monospace; font-size:14px; color:#BE993F; padding:16px 0 16px 24px; border-bottom:1px solid rgba(32,32,32,0.12)">Co · Cu · Mn · Nb · Sn · Ti</td>
+          </tr>
+          <tr>
+            <td style="font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:#6B6B64; padding:16px 24px 16px 0; border-bottom:1px solid #02352F">Licence no. / grant / expiry</td>
+            <td style="font-size:16px; color:#6B6B64; padding:16px 24px; border-bottom:1px solid #02352F">[pending]</td>
+            <td style="font-size:16px; color:#6B6B64; padding:16px 0 16px 24px; border-bottom:1px solid #02352F">[pending]</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin:20px 0 0; font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.8; color:#6B6B64">Pending values render as <span style="color:#6B6B64">[pending]</span> in muted body type — never as an empty cell.</p>
+    </div>
+  </div>
+
+  <!-- 06 faq -->
+  <div style="display:grid; grid-template-columns:120px 1fr; border-bottom:1px solid rgba(32,32,32,0.18)">
+    <div style="padding:64px 0 0 72px; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#BE993F">06</div>
+    <div style="padding:64px 72px 64px 0">
+      <h2 style="margin:0 0 8px; font-family:'Spectral', Georgia, serif; font-weight:400; font-size:48px; line-height:1.1; letter-spacing:-0.015em; color:#02352F">FAQ</h2>
+      <p style="margin:0 0 32px; font-family:'IBM Plex Mono', monospace; font-size:12px; line-height:1.8; color:#6B6B64">Hairline-separated rows, mono index, question Spectral 24, answer 16/1.65 in a 64ch measure. First row open by default; the indicator is a gold rule, rotated — no chevron icons.</p>
+      <div style="display:flex; flex-direction:column; max-width:960px">
+        <div style="display:grid; grid-template-columns:56px 1fr 40px; gap:24px; align-items:start; padding:24px 0; border-top:1px solid #02352F">
+          <span style="font-family:'IBM Plex Mono', monospace; font-size:12px; color:#BE993F; padding-top:6px">Q1</span>
+          <div>
+            <div style="font-family:'Spectral', Georgia, serif; font-size:24px; line-height:1.3; color:#02352F">Where is the Cestos Project located?</div>
+            <p style="margin:12px 0 0; font-size:16px; line-height:1.65; color:#3E3E38; max-width:64ch">In Nimba County, Liberia, on the Cestos shear zone, west of the Ity gold mine.</p>
+          </div>
+          <div style="display:flex; align-items:center; justify-content:flex-end; padding-top:14px"><span style="display:block; width:18px; height:1px; background:#BE993F"></span></div>
+        </div>
+        <div style="display:grid; grid-template-columns:56px 1fr 40px; gap:24px; align-items:start; padding:24px 0; border-top:1px solid rgba(32,32,32,0.14); border-bottom:1px solid rgba(32,32,32,0.14)">
+          <span style="font-family:'IBM Plex Mono', monospace; font-size:12px; color:#BE993F; padding-top:6px">Q2</span>
+          <div style="font-family:'Spectral', Georgia, serif; font-size:24px; line-height:1.3; color:#02352F">Is the project drill-ready?</div>
+          <div style="display:flex; align-items:flex-start; justify-content:flex-end; padding-top:14px; position:relative">
+            <span style="display:block; width:18px; height:1px; background:#BE993F"></span>
+            <span style="display:block; width:1px; height:18px; background:#BE993F; position:absolute; right:8px; top:5px"></span>
+          </div>
+        </div>
+      </div>
+      <p style="margin:20px 0 0; font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.8; color:#6B6B64">Closed row: plus. Open row: minus. Row hover tints the question to #035D53.</p>
+    </div>
+  </div>
+
+  <!-- 07 figures -->
+  <div style="display:grid; grid-template-columns:120px 1fr; border-bottom:1px solid rgba(32,32,32,0.18)">
+    <div style="padding:64px 0 0 72px; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#BE993F">07</div>
+    <div style="padding:64px 72px 64px 0">
+      <h2 style="margin:0 0 8px; font-family:'Spectral', Georgia, serif; font-weight:400; font-size:48px; line-height:1.1; letter-spacing:-0.015em; color:#02352F">Figures &amp; maps</h2>
+      <p style="margin:0 0 32px; font-family:'IBM Plex Mono', monospace; font-size:12px; line-height:1.8; color:#6B6B64">Maps and survey surfaces are documents, not decoration: white mount, 20px padding, 1px hairline frame, mono caption numbered “Fig. n —”. Never full-bleed, never cropped past the legend.</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start">
+        <figure style="margin:0; display:flex; flex-direction:column; gap:12px; background:#FFFFFF; padding:20px; border:1px solid rgba(32,32,32,0.14)">
+          <img src="assets/licence-map-regional-geology.webp" alt="Nimba 79 Resources and ADJ Exploration licences over regional geology, Nimba County, Liberia" style="width:100%; display:block">
+          <figcaption style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.6; color:#6B6B64">Fig. 1 — Nimba 79 Resources and ADJ Exploration licences over regional geology, Nimba County, Liberia</figcaption>
+        </figure>
+        <div style="display:flex; flex-direction:column; gap:24px">
+          <div style="display:flex; flex-direction:column; gap:12px">
+            <div style="height:220px; background:repeating-linear-gradient(135deg,#EFEBE1 0 10px,#E7E2D6 10px 20px); border:1px solid rgba(32,32,32,0.14); display:flex; align-items:flex-end; padding:16px">
+              <span style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.7; color:#6B6B64">liberia-field-team-sampling.webp<br>[ drop photography — no white mount, no frame, full column width ]</span>
+            </div>
+            <span style="font-family:'IBM Plex Mono', monospace; font-size:11px; color:#6B6B64">Photography: bleeds to the column edge, caption optional.</span>
+          </div>
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.9; color:#3E3E38; border-top:1px solid rgba(32,32,32,0.18); padding-top:14px">
+            survey data / prospectivity surfaces → white mount + frame + numbered caption<br>photography → unframed, edge to edge, no mount<br>portraits → 150px circle, striped placeholder until supplied
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 08 header & footer -->
+  <div style="display:grid; grid-template-columns:120px 1fr">
+    <div style="padding:64px 0 0 72px; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#BE993F">08</div>
+    <div style="padding:64px 0 0 0">
+      <h2 style="margin:0 0 8px 0; padding-right:72px; font-family:'Spectral', Georgia, serif; font-weight:400; font-size:48px; line-height:1.1; letter-spacing:-0.015em; color:#02352F">Header &amp; footer</h2>
+      <p style="margin:0 0 32px; padding-right:72px; font-family:'IBM Plex Mono', monospace; font-size:12px; line-height:1.8; color:#6B6B64">One flat level of navigation, no dropdowns. Current page carries a 2px gold underline. Primary CTA pinned right on every page. Footer is the only inverted surface besides dark bands.</p>
+
+      <header style="display:flex; align-items:center; justify-content:space-between; gap:40px; padding:26px 72px; border-top:1px solid rgba(32,32,32,0.14); border-bottom:1px solid rgba(32,32,32,0.14)">
+        <img src="assets/usr-logo-black.png" alt="U.S. Strategic Resources" style="height:30px; width:auto; display:block; align-self:flex-start">
+        <nav style="display:flex; gap:28px; font-size:13px; font-weight:500; letter-spacing:0.02em">
+          <span style="color:#3E3E38">Home</span>
+          <span style="color:#02352F; border-bottom:2px solid #BE993F; padding-bottom:3px">Cestos Project</span>
+          <span style="color:#3E3E38">Company</span>
+          <span style="color:#3E3E38">Why Liberia</span>
+          <span style="color:#3E3E38">Critical Minerals &amp; Strategy</span>
+          <span style="color:#3E3E38">News</span>
+          <span style="color:#3E3E38">Contact</span>
+        </nav>
+        <div style="font-size:13px; font-weight:600; color:#F7F4ED; background:#02352F; padding:12px 18px; white-space:nowrap; cursor:pointer" style-hover="background:#035D53">Request the investor presentation</div>
+      </header>
+
+      <footer style="background:#202020; color:#F7F4ED; display:grid; grid-template-columns:2fr 1fr 1fr 1.4fr; gap:48px; padding:56px 72px 64px">
+        <div style="display:flex; flex-direction:column; gap:18px">
+          <img src="assets/usr-logo-white.png" alt="U.S. Strategic Resources" style="height:28px; width:auto; display:block; align-self:flex-start">
+          <p style="margin:0; font-family:'IBM Plex Mono', monospace; font-size:12px; line-height:1.8; color:rgba(247,244,237,0.6); max-width:34ch">Operations: Monrovia, Liberia<br>Headquarters: [pending]<br>Email: [pending]</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:rgba(247,244,237,0.85)">
+          <span style="font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:#BE993F">Site</span>
+          <span>Company</span><span>Cestos Project</span><span>Why Liberia</span>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:rgba(247,244,237,0.85)">
+          <span style="font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:#BE993F">More</span>
+          <span>Critical Minerals &amp; Strategy</span><span>News</span><span>Contact</span><span>Legal &amp; Disclaimer</span>
+        </div>
+        <p style="margin:0; font-size:12px; line-height:1.7; color:rgba(247,244,237,0.5)">No offer of securities. Forward-looking statements involve risks and uncertainties. Exploration results are preliminary and subject to verification. © 2026 U.S. Strategic Resources.</p>
+      </footer>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+</body>
+</html>
