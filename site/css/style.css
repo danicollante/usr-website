@@ -1863,3 +1863,108 @@ a.pagination__page:hover { color: var(--gold); }
   .site-footer { grid-template-columns: 1fr; gap: 32px; padding: 40px var(--page-inset) 48px; }
   .tabs { gap: 18px; overflow-x: auto; }
 }
+
+
+/* 12  MOTION
+   Scroll reveals, count-up figures, hover intent and the hero band's
+   parallax drift. Everything here is progressive enhancement — driven by
+   js/interactions.js — and collapses to an instant, static state under
+   prefers-reduced-motion or if JS never runs.
+   ========================================================================== */
+
+/* --- Scroll reveal ---------------------------------------------------------
+   .reveal starts hidden/offset; js/interactions.js adds .reveal--visible
+   once the element crosses the viewport threshold. .reveal-group staggers
+   its direct children (leadership grid, commodity teaser cards).           */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal--visible { opacity: 1; transform: translateY(0); }
+
+.reveal-group > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-group.reveal--visible > * { opacity: 1; transform: translateY(0); }
+.reveal-group.reveal--visible > *:nth-child(1) { transition-delay: 0s; }
+.reveal-group.reveal--visible > *:nth-child(2) { transition-delay: 0.08s; }
+.reveal-group.reveal--visible > *:nth-child(3) { transition-delay: 0.16s; }
+.reveal-group.reveal--visible > *:nth-child(4) { transition-delay: 0.24s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-group > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* --- Count-up figures -------------------------------------------------------
+   The HTML value is always the true, final figure — js/interactions.js only
+   animates the approach to it once the stat scrolls into view. Tabular nums
+   keep the digit width steady while counting so nothing jitters sideways.  */
+.stats__figure { font-variant-numeric: tabular-nums; }
+
+/* --- Hover intent: leadership, takeaways, chips, table rows ---------------
+   Every hover reads through the existing rule/accent language (hairlines,
+   gold accent, forest-hover) — no shadows, no unrelated colour.            */
+.person {
+  position: relative;
+  transition: transform 0.15s ease;
+}
+.person::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -20px;
+  width: 2px;
+  background: var(--gold);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.2s ease;
+}
+.person:hover { transform: translateX(2px); }
+.person:hover::before { transform: scaleY(1); }
+.person:hover .person__name { color: var(--forest-hover); }
+
+.takeaways__item { transition: background-color 0.15s ease; }
+.takeaways__item:hover { background-color: rgba(190, 153, 63, 0.06); }
+.takeaways__item:hover .takeaways__n { color: var(--forest-hover); }
+
+.chip { transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease; }
+.chip:hover {
+  border-color: var(--gold);
+  color: var(--forest-hover);
+  transform: translateY(-2px);
+}
+
+.table tbody tr { transition: background-color 0.15s ease; }
+.table tbody tr:hover td,
+.table tbody tr:hover th { border-bottom-color: var(--gold); }
+.table tbody tr:hover .table__lead { color: var(--forest-hover); }
+.table tbody tr:hover .table__stub { color: var(--ink); }
+
+/* --- Hero parallax -----------------------------------------------------------
+   js/interactions.js translates .placeholder--band's inner layer on scroll,
+   a few pixels either way — clipped here so the drift never shows a seam at
+   the band's edge. Works today against the hatched placeholder and carries
+   over unchanged once the real terrain photography replaces it.            */
+.placeholder--band {
+  overflow: hidden;
+  position: relative;
+}
+.placeholder--band__inner {
+  position: absolute;
+  inset: -40px 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px var(--page-inset);
+  will-change: transform;
+}

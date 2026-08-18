@@ -106,8 +106,10 @@
     </section>
 
     <!-- terrain band — awaiting real field photography from USR -->
-    <div class="placeholder placeholder--band">
-      usr-hero-liberia-terrain.webp<br>[ full-bleed field photography, Nimba County terrain — pending from USR ]
+    <div class="placeholder placeholder--band" data-parallax>
+      <div class="placeholder--band__inner">
+        usr-hero-liberia-terrain.webp<br>[ full-bleed field photography, Nimba County terrain — pending from USR ]
+      </div>
     </div>
 
     <!-- intro + key takeaways -->
@@ -144,7 +146,7 @@
     </section>
 
     <!-- why now -->
-    <section class="section band-dark">
+    <section class="section band-dark reveal">
       <div class="grid-2-wide">
         <div class="stack-24">
           <p class="label">Why now</p>
@@ -154,7 +156,7 @@
         <div class="stack-28">
           <p class="lead lead--dark">Roughly 90% of global rare-earth refining capacity runs through China, along with 98% of refined gallium and germanium. Since April 2025, seven rare earths &mdash; including samarium &mdash; sit under Chinese export controls.</p>
           <p class="lead lead--dark">Washington is deploying capital to change that: five executive orders on minerals security, a $12B national stockpile, and six federal funding channels open to companies operating on allied ground.</p>
-          <div class="stats">
+          <div class="stats reveal-group">
             <div><div class="stats__figure">90%</div><div class="stats__label">rare-earth refining, China</div></div>
             <div><div class="stats__figure">98%</div><div class="stats__label">refined <span class="element"><input class="element__state visually-hidden" id="es-index-1" type="checkbox"><a class="element-symbol" data-element="Gallium" href="https://pubchem.ncbi.nlm.nih.gov/element/Gallium" target="_blank" rel="noopener">Ga<span class="visually-hidden">Gallium</span></a><label class="element__tap" for="es-index-1" aria-label="Toggle element name"></label><a class="element__link" data-element="Gallium" href="https://pubchem.ncbi.nlm.nih.gov/element/Gallium" target="_blank" rel="noopener">View on PubChem &rarr;</a></span> and <span class="element"><input class="element__state visually-hidden" id="es-index-2" type="checkbox"><a class="element-symbol" data-element="Germanium" href="https://pubchem.ncbi.nlm.nih.gov/element/Germanium" target="_blank" rel="noopener">Ge<span class="visually-hidden">Germanium</span></a><label class="element__tap" for="es-index-2" aria-label="Toggle element name"></label><a class="element__link" data-element="Germanium" href="https://pubchem.ncbi.nlm.nih.gov/element/Germanium" target="_blank" rel="noopener">View on PubChem &rarr;</a></span></div></div>
             <div><div class="stats__figure">7</div><div class="stats__label">REEs export-controlled</div></div>
@@ -165,7 +167,7 @@
     </section>
 
     <!-- the asset -->
-    <section class="section">
+    <section class="section reveal">
       <div class="grid-2 grid-2--media">
         <figure class="figure">
           <input class="lightbox__state visually-hidden" id="lb-home-fig1" type="checkbox">
@@ -200,7 +202,7 @@
     </section>
 
     <!-- commodity exposure -->
-    <section class="section section--tight-top">
+    <section class="section section--tight-top reveal">
       <div class="heading-row">
         <h2>Commodity exposure</h2>
         <span class="qualifier">69 elements analysed &middot; 20 flagged strategic</span>
@@ -249,12 +251,12 @@
     </section>
 
     <!-- leadership -->
-    <section class="section section--tight-top">
+    <section class="section section--tight-top reveal">
       <div class="heading-row heading-row--spread">
         <h2>Leadership</h2>
         <a class="link" href="company.html">The company &rarr;</a>
       </div>
-      <div class="grid-3">
+      <div class="grid-3 reveal-group">
         <div class="person">
           <div class="placeholder placeholder--portrait">david-kol-ceo-us-strategic-resources.webp<br>[ headshot pending ]</div>
           <div>
@@ -283,7 +285,7 @@
     </section>
 
     <!-- news -->
-    <section class="section section--tight-top">
+    <section class="section section--tight-top reveal">
       <div class="grid-aside block-ruled">
         <div class="stack-16">
           <h2>Latest news</h2>
@@ -348,5 +350,6 @@
   </footer>
 
 </div>
+<script src="js/interactions.js" defer></script>
 </body>
 </html>
