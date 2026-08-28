@@ -82,6 +82,22 @@ pages.sort()
 for name in pages:
     path = os.path.join(ROOT, name)
     src = open(path, encoding='utf-8').read()
+
+    # Redirect stubs at retired URLs carry a meta-refresh and nothing else, so
+    # the full-page checks below (nav, schema, CTA, description) do not apply.
+    # The one thing that matters is that the target actually exists.
+    if 'http-equiv="refresh"' in src:
+        m = re.search(r'url=([^"\'>\s]+)', src)
+        dest = m.group(1) if m else ''
+        target = dest.split('#')[0]
+        if target and not os.path.exists(os.path.normpath(os.path.join(os.path.dirname(path), target))):
+            fails += 1
+            print(f'FAIL {name}  (redirect stub)')
+            print(f'       - redirect target does not exist: {dest}')
+        else:
+            print(f'OK   {name}  (redirect stub -> {dest})')
+        continue
+
     p = Check(); p.feed(src); p.close()
     problems = list(p.errors)
 

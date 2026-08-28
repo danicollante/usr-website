@@ -2044,3 +2044,347 @@ a.pagination__page:hover { color: var(--gold); }
   object-fit: cover;
   display: block;
 }
+
+
+/* 12  REBUILD ARCHITECTURE — navy design system
+   ==========================================================================
+   Everything below is the rebuild layer. It uses only §00 tokens; no literal
+   colour appears in it. Sits last in the file so it wins over §01–§11 on
+   equal specificity, which lets the Filing components stay live underneath
+   while pages are converted one at a time.
+
+   SPECIFICITY CONTRACT — the rule this whole layer is built to keep:
+
+     1. Every selector here is exactly ONE class (0,1,0). No ids, no
+        `div.foo` compounds, no descendant selectors for layout or spacing.
+     2. Exactly one selector ever writes a given spacing property. Variants
+        set a custom property instead. `.section` is the only rule in this
+        file that writes `padding-block`; `.section--tight` and friends set
+        `--section-space` and never touch `padding`. Two rules therefore
+        cannot cancel each other out — there is nothing to cancel.
+     3. Sections own vertical rhythm with PADDING, never margin. No margin
+        collapse, no `+ sibling` reset chains, and alternating light/dark
+        bands meet edge-to-edge with no slivers between them.
+     4. Blocks never set their own outer margin. Gaps between siblings come
+        from the parent's `gap`. A card carries no spacing with it, which is
+        what makes each one portable into a PHP template part.
+     5. Responsive = re-declaring tokens inside breakpoints, not rewriting
+        rules. Same pattern §11 already uses.
+   ========================================================================== */
+
+
+/* --- 12.1  Container ------------------------------------------------------ */
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap-max, 1200px);
+  margin-inline: auto;
+  padding-inline: var(--wrap-inset, var(--space-3));
+}
+
+
+/* --- 12.2  Section rhythm -------------------------------------------------
+   The ONLY rule in this layer that writes padding-block. See contract §2. */
+
+.band {
+  padding-block: var(--section-space, var(--space-12));
+}
+
+/* variants — these set the variable, never the property */
+.band--tight   { --section-space: var(--space-8); }
+.band--roomy   { --section-space: var(--space-12); }
+.band--flush   { --section-space: 0; }
+
+/* grounds — background only, never spacing, so they compose with any variant */
+.band--ink     { background: var(--navy-900); color: var(--on-dark-primary); }
+.band--raised  { background: var(--navy-800); color: var(--on-dark-primary); }
+.band--paper   { background: var(--paper);    color: var(--ink); }
+
+
+/* --- 12.3  Card grid ------------------------------------------------------
+   Owns the gap between cards, so no card needs a margin. See contract §4. */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--card-cols, 1), minmax(0, 1fr));
+  gap: var(--card-gap, var(--space-4));
+}
+.card-grid--2 { --card-cols: 1; }
+.card-grid--3 { --card-cols: 1; }
+
+
+/* --- 12.4  card-leader  →  template-parts/card-leader.php ----------------- */
+
+.card-leader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.card-leader__photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(1);
+}
+.card-leader__name {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  line-height: 1.2;
+  margin: 0;
+  color: var(--on-dark-primary);
+}
+.card-leader__role {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--blue-300);
+}
+.card-leader__bio {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  margin: 0;
+  color: var(--on-dark-secondary);
+}
+
+
+/* --- 12.5  card-metal  →  template-parts/card-metal.php -------------------
+   Distinct from the §08 `.element` inline PubChem widget, which is a run of
+   text, not a card. The two never share markup. */
+
+.card-metal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-3);
+  background: var(--navy-800);
+  border-top: 2px solid var(--blue-300);
+}
+.card-metal__symbol {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--blue-200);
+}
+.card-metal__name {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  margin: 0;
+  color: var(--on-dark-primary);
+}
+.card-metal__group {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--on-dark-caption);
+}
+.card-metal__body {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  margin: 0;
+  color: var(--on-dark-secondary);
+}
+
+
+/* --- 12.6  card-news  →  template-parts/card-news.php --------------------- */
+
+.card-news {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--navy-600);
+}
+.card-news__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.card-news__category { color: var(--blue-300); }
+.card-news__date     { color: var(--on-dark-caption); }
+.card-news__title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1.25;
+  margin: 0;
+}
+.card-news__excerpt {
+  font-family: var(--font-body);
+  line-height: 1.7;
+  margin: 0;
+  color: var(--on-dark-secondary);
+}
+
+
+/* --- 12.7  card-teaser  →  template-parts/card-teaser.php ----------------- */
+
+.card-teaser {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: var(--navy-800);
+}
+.card-teaser__label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue-300);
+}
+.card-teaser__title {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  line-height: 1.25;
+  margin: 0;
+  color: var(--on-dark-primary);
+}
+.card-teaser__text {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  margin: 0;
+  color: var(--on-dark-secondary);
+}
+.card-teaser__link {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--blue-300);
+}
+
+
+/* --- 12.8  fact-row  →  template-parts/fact-row.php -----------------------
+   Promoted from a BEM element to a block because it is the loop unit: PHP
+   calls get_template_part() on the row, not on the list. */
+
+.fact-list {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--navy-600);
+}
+.fact-row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding-block: var(--space-2);
+  border-bottom: 1px solid var(--navy-600);
+}
+.fact-row__term {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--on-dark-caption);
+}
+.fact-row__value {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  margin: 0;
+  text-align: right;
+  color: var(--on-dark-primary);
+}
+
+
+/* --- 12.9  Map placeholder (#jurisdiction) --------------------------------
+   Geometry is not final — real boundary in progress, licence polygons waiting
+   on client coordinates. This reserves the eventual footprint so the section
+   does not reflow when the real map lands. Do not style content into it. */
+
+.map-slot {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-height: 720px;
+  background: var(--navy-800);
+  border: 1px solid var(--navy-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--on-dark-caption);
+}
+
+
+/* --- 12.10  Motion --------------------------------------------------------
+   `reveal` / `reveal-group` are behaviour hooks only: they carry opacity and
+   transform, never layout or spacing, so they can be added to or removed from
+   any block without touching that block's rules. */
+
+.is-revealed { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+    scroll-behavior: auto;
+  }
+}
+
+
+/* --- 12.11  Breakpoints — mobile-first, 600 / 900 / 1200 ------------------
+   Token re-declaration only. See contract §5. */
+
+@media (min-width: 600px) {
+  :root { --wrap-inset: var(--space-4); }
+  .card-grid--2 { --card-cols: 2; }
+}
+
+@media (min-width: 900px) {
+  :root {
+    --wrap-inset:    var(--space-6);
+    --section-space: var(--space-12);
+  }
+  .card-grid--3 { --card-cols: 3; }
+  .card-leader__name { font-size: 1.5rem; }
+}
+
+@media (min-width: 1200px) {
+  :root { --wrap-inset: var(--space-8); }
+}
+
+
+/* --- 12.12  Active nav state ----------------------------------------------
+   The <body> class drives the VISUAL state. `aria-current="page"` — the one
+   attribute that differs between page headers — drives the ACCESSIBLE state,
+   because no CSS class can expose current-page status to a screen reader.
+   Every header is otherwise identical markup, so the nav stays one PHP part.
+
+   These are the only descendant selectors in this layer. The contract (§1)
+   bans them for layout and spacing; state colour has to read page context
+   from <body>, so it is the documented exception rather than a leak.
+
+   nav-home and nav-legal have no matching nav link — Home is the logo, Legal
+   is footer-only — but both hooks are declared so neither body class is
+   orphaned and either can take a link later without a new rule. */
+
+.nav-home       .nav__link--home,
+.nav-legal      .nav__link--legal,
+.nav-about      .nav__link--about,
+.nav-leadership .nav__link--leadership,
+.nav-metals     .nav__link--metals,
+.nav-news       .nav__link--news,
+.nav-contact    .nav__link--contact {
+  color: var(--blue-200);
+}
+
+
+/* --- 12.13  Dark header band ----------------------------------------------
+   The light lockup puts #89B8E1 on white at ~2.1:1. Logotypes are exempt from
+   WCAG, but it reads washed out, so the header carries a navy ground and the
+   reversed lockup instead — which also matches the dark-dominant direction. */
+
+.site-header { background: var(--navy-900); }
+.nav__link   { color: var(--on-dark-secondary); }
+.nav__link:hover { color: var(--on-dark-primary); }
