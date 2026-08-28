@@ -28,18 +28,75 @@
    ========================================================================== */
 
 
+/* 00  REBUILD TOKENS — approved Design pass (4 screens, reviewed and confirmed)
+   ==========================================================================
+   This block is the single source for --paper and --ink. The Filing-era
+   declarations of both were removed from §01 below, so these values now reach
+   the existing §02–§11 rules: the light ground shifts warm cream -> cool
+   near-white, and body text shifts near-black -> navy. Every other Filing
+   token (--forest, --gold, --text-body, --text-muted, ...) is still live and
+   still declared in §01 — all 32 are load-bearing, so §01 stays until the
+   page-by-page conversion retires them.
+
+   The remaining tokens here are not consumed by anything yet; they land now
+   so the conversion can draw on them page by page. */
+
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ---- brand blues — dark grounds only for type; never as small text on light ---- */
+  --blue-300: #5B9BD5;   /* primary accent */
+  --blue-200: #89B8E1;   /* "RESOURCES" line, large/decorative, rail corridor line */
+  --navy-400: #3A5A8C;
+  --navy-600: #2D4A73;   /* also the photo colour-blend value */
+  --navy-700: #22304F;
+  --navy-800: #16233F;
+  --navy-900: #101B33;   /* page ground, "ink" */
+
+  /* ---- neutrals — approved in the Design pass ---- */
+  --paper: #F2F5F8;      /* light section ground; ink desaturated + lifted, ~4% chroma */
+  --ink:   #101B33;      /* = --navy-900, reused as the light-ground text colour */
+  --grey:  #626E82;      /* 4.71:1 on --paper — darkest value that still reads grey */
+
+  /* dark-ground text opacities (Paper at alpha, over --navy-900 family) */
+  --on-dark-primary:   rgba(242, 245, 248, 1);
+  --on-dark-secondary: rgba(242, 245, 248, .62);  /* ~6.67:1 */
+  --on-dark-tertiary:  rgba(242, 245, 248, .5);   /* ~4.85:1 — floor for body-weight text */
+  --on-dark-caption:   rgba(242, 245, 248, .42);  /* ~3.8:1 — approved exception, captions/eyebrows only */
+
+  /* ---- type ---- */
+  --font-display: 'Newsreader', serif;
+  --font-body:    'Public Sans', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* ---- spacing — 8px base ---- */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-6: 48px;
+  --space-8: 64px;
+  --space-12: 96px;
+}
+
+
 /* 01  TOKENS
    ========================================================================== */
 
 :root {
-  /* surfaces */
-  --paper:            #F7F4ED;   /* page surface */
+  /* surfaces
+     --paper and --ink are NOT declared here any more — they now come from the
+     §00 rebuild block above, which is the single definition for both. The
+     Filing values (--paper #F7F4ED, --ink #202020) were removed rather than
+     renamed: every use of them in §02–§11 is role-correct under the new
+     palette (--paper is only ever a light ground or text-on-dark, --ink only
+     ever dark text or a dark ground), so the rules below inherit the new
+     values without inverting anything. */
   --mount:            #FFFFFF;   /* figure mount only */
   --forest:           #02352F;   /* headings · dark bands · primary button */
   --forest-hover:     #035D53;   /* hover on dark · links */
   --gold:             #BE993F;   /* accent — labels, rules, one CTA per page */
   --gold-hover:       #A8862F;
-  --ink:              #202020;   /* body ink · footer */
 
   /* text */
   --text-body:        #3E3E38;
