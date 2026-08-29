@@ -47,6 +47,12 @@ thin redirect stubs (meta-refresh + canonical link) pointing at the new page/anc
 - LinkedIn link: linkedin.com/company/usstrategicresources (unconfirmed whether live — don't remove
   this caveat when you use the link).
 
+## Content authority
+- The most recent deck/pptx is the source of truth for any naming or content conflict with older
+  site copy (e.g. the deck's "Nimba 1"/"Nimba 2" superseding the older "Nimba 79"/"ADJ" license
+  names — same underlying areas, same element profiles, just renamed). When older site content
+  conflicts with the current deck, follow the deck without asking first.
+
 ## Content decisions already made — do not relitigate
 - Metals pages keep the deck's content as-is (Ni/V/Ta are profiled even though they're not in the
   Assets slide's anomaly list; Mn is in the anomaly list but not profiled). This is intentional
@@ -117,3 +123,12 @@ exception shape for future posts — they follow this same pattern.
 Header/footer are byte-identical except the current page's nav link carries
 `aria-current="page"`. Body class drives visual active state; `aria-current` is the accessibility
 signal and is never dropped or JS-generated. Second sanctioned exception to "byte-identical."
+
+## Verification backlog — for RUN 9 (dedicated verification run)
+- `about.html` at 375px has not been visually confirmed for horizontal overflow. An attempt during
+  the content run hit a headless-Chrome viewport/DPR quirk in that environment — confirmed it was
+  tooling, not a real bug, by reproducing the identical artifact on `index.html` (already shipped,
+  already audited at 375px) under the same invocation. Since it was a tooling failure rather than
+  a suspected CSS issue, it didn't block that run's push, but it must not be treated as verified.
+  RUN 9 should re-test `about.html` at 375px with different tooling (a real browser, a working
+  headless setup, or a device preview) before launch.
