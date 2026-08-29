@@ -132,3 +132,13 @@ signal and is never dropped or JS-generated. Second sanctioned exception to "byt
   a suspected CSS issue, it didn't block that run's push, but it must not be treated as verified.
   RUN 9 should re-test `about.html` at 375px with different tooling (a real browser, a working
   headless setup, or a device preview) before launch.
+
+- `--gold` (the `.label` eyebrow color) measures 2.45:1 on the `--paper` background — fails the
+  4.5:1 floor. Pre-existing sitewide, predates this rebrand, used in dozens of locations. Not
+  fixed opportunistically per-run because it needs one coordinated pass across every `.label`
+  usage, not silent one-off patches that could leave the color inconsistent across pages.
+  Dedicated run before launch: audit every `.label` usage, decide on a corrected gold value (or
+  a different mechanism — weight/size instead of a marginal color) that clears 4.5:1 on both
+  --paper and any dark grounds it's used on, apply sitewide in one commit.
+  **Not RUN 9's job** — this needs to be resolved as its own dedicated run *before* RUN 9, so RUN 9
+  is confirming a fix already applied rather than discovering the scope of one for the first time.
