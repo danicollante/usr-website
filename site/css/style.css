@@ -2301,7 +2301,7 @@ a.pagination__page:hover { color: var(--gold); }
 
 .map-slot {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 440 / 450;   /* matches the built SVG's viewBox exactly */
   max-height: 720px;
   background: var(--navy-800);
   border: 1px solid var(--navy-600);
@@ -2388,3 +2388,89 @@ a.pagination__page:hover { color: var(--gold); }
 .site-header { background: var(--navy-900); }
 .nav__link   { color: var(--on-dark-secondary); }
 .nav__link:hover { color: var(--on-dark-primary); }
+
+
+/* --- 12.14  Unit — bordered content card (light ground) -------------------
+   Wraps a group of related blocks (e.g. the two Nimba license columns, the
+   fact row and the disclosure bar) in one visually contiguous card, matching
+   the approved Design pass's "Assets block" unit. Border only — no padding,
+   no background — so children control their own spacing per contract §4. */
+
+.unit {
+  border: 1px solid var(--hairline);
+  background: var(--mount);
+}
+.unit__row  { display: grid; grid-template-columns: 1fr 1fr; }
+.unit__pane { padding: var(--space-4); }
+.unit__pane + .unit__pane { border-left: 1px solid var(--hairline); }
+
+@media (max-width: 767px) {
+  .unit__row { grid-template-columns: 1fr; }
+  .unit__pane + .unit__pane { border-left: 0; border-top: 1px solid var(--hairline); }
+}
+
+
+/* --- 12.15  fact-row grid variant ------------------------------------------
+   Default .fact-row (§12.8) is a flex term/value pair, for a vertical list of
+   short facts. This variant reflows the same block into a stacked card for a
+   4-across grid — same template part, different container context. Applied
+   to the row itself (not via a descendant selector), so the specificity
+   contract (§1) holds with no new exception. */
+
+.fact-list--grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--hairline);
+  border-top: none;
+}
+.fact-row--grid {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+  padding: var(--space-4);
+  background: var(--mount);
+  border-bottom: none;
+}
+.fact-row--grid .fact-row__term { color: var(--navy-400); }
+.fact-row--grid .fact-row__value { text-align: left; color: var(--ink); font-size: 0.9375rem; line-height: 1.65; }
+
+@media (max-width: 767px) {
+  .fact-list--grid { grid-template-columns: 1fr 1fr; }
+}
+
+
+/* --- 12.16  Disclosure bar --------------------------------------------------
+   A short interpretive/legal caveat sitting inside a light card (e.g. the
+   assets unit's "prospectivity models are interpretive" line) — dark ground,
+   deliberately, so it reads as a distinct notice rather than body copy.
+   Body text uses --on-dark-secondary (.62, ~6.67:1): the --on-dark-caption
+   tier (.42, ~3.8:1) is approved for captions/eyebrows only, not for text
+   carrying a real disclaimer. */
+
+.disclosure {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background: var(--navy-900);
+}
+.disclosure__label {
+  flex: none;
+  padding-top: 2px;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue-300);
+}
+.disclosure p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--on-dark-secondary);
+}
+
+@media (max-width: 767px) {
+  .disclosure { flex-direction: column; gap: var(--space-2); }
+}
