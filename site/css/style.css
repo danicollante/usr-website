@@ -34,9 +34,12 @@
    declarations of both were removed from §01 below, so these values now reach
    the existing §02–§11 rules: the light ground shifts warm cream -> cool
    near-white, and body text shifts near-black -> navy. Every other Filing
-   token (--forest, --gold, --text-body, --text-muted, ...) is still live and
-   still declared in §01 — all 32 are load-bearing, so §01 stays until the
-   page-by-page conversion retires them.
+   token (--forest, --text-body, --text-muted, ...) is still live and still
+   declared in §01, so §01 stays until the page-by-page conversion retires
+   it. --gold/--gold-hover are the one exception: removed outright (not
+   deferred) once every reference was swapped to --blue-300 (dark grounds)
+   or --ink/--grey (light) — the eyebrow-label contrast failure logged in
+   CLAUDE.md's Verification backlog. §01 is down to 30 tokens.
 
    The remaining tokens here are not consumed by anything yet; they land now
    so the conversion can draw on them page by page. */
@@ -95,8 +98,6 @@
   --mount:            #FFFFFF;   /* figure mount only */
   --forest:           #02352F;   /* headings · dark bands · primary button */
   --forest-hover:     #035D53;   /* hover on dark · links */
-  --gold:             #BE993F;   /* accent — labels, rules, one CTA per page */
-  --gold-hover:       #A8862F;
 
   /* text */
   --text-body:        #3E3E38;
@@ -164,10 +165,10 @@ a {
   text-decoration: none;
   transition: color 0.15s ease;
 }
-a:hover { color: var(--gold); }
+a:hover { color: var(--grey); }
 
 :focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--ink);
   outline-offset: 2px;
 }
 
@@ -228,7 +229,7 @@ table { border-collapse: collapse; }
   font-size: var(--label-size);
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--ink);
 }
 .section-indexed__body {
   padding: var(--section-pad) var(--page-inset) var(--section-pad) 0;
@@ -240,12 +241,12 @@ table { border-collapse: collapse; }
   color: var(--paper);
   border-bottom: 0;
 }
-.band-dark .section-indexed__rail { color: var(--gold); }
+.band-dark .section-indexed__rail { color: var(--blue-300); }
 .band-dark .h2,
 .band-dark h2 { color: #FFFFFF; }
 .band-dark .lead,
 .band-dark p { color: var(--text-on-dark); }
-.band-dark a { color: var(--gold); }
+.band-dark a { color: var(--blue-300); }
 .band-dark a:hover { color: #FFFFFF; }
 
 /* Section-internal grids */
@@ -343,7 +344,7 @@ table { border-collapse: collapse; }
   font-size: var(--label-size);
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--grey);
 }
 .label--muted { color: var(--text-muted); }
 
@@ -411,7 +412,7 @@ table { border-collapse: collapse; }
   font-family: var(--mono);
   font-size: 14px;
   line-height: 1.7;
-  color: var(--gold);
+  color: var(--ink);
 }
 .elements--13 { font-size: 13px; color: var(--text-body); }
 
@@ -441,7 +442,7 @@ table { border-collapse: collapse; }
 }
 .element-symbol:hover,
 .element-symbol:focus-visible {
-  color: var(--gold-hover);
+  color: var(--ink);
   text-decoration-color: currentColor;
 }
 
@@ -525,7 +526,7 @@ table { border-collapse: collapse; }
   font-size: 14px;
   font-weight: 600;
   text-decoration: underline;
-  text-decoration-color: var(--gold);
+  text-decoration-color: var(--ink);
   text-underline-offset: 3px;
 }
 .element__link::before {
@@ -588,7 +589,7 @@ table { border-collapse: collapse; }
 .steps__n {
   font-family: var(--mono);
   font-size: 12px;
-  color: var(--gold);
+  color: var(--ink);
   padding-top: 6px;
 }
 .steps__title {
@@ -630,10 +631,10 @@ table { border-collapse: collapse; }
 .btn--primary:hover { background: var(--forest-hover); color: var(--paper); }
 
 .btn--accent {                        /* one per page, after the intro */
-  background: var(--gold);
-  color: var(--paper);
+  background: var(--blue-300);
+  color: var(--ink);
 }
-.btn--accent:hover { background: var(--gold-hover); color: var(--paper); }
+.btn--accent:hover { background: var(--blue-200); color: var(--ink); }
 
 .btn--ghost {                         /* secondary action, inverts on hover */
   background: transparent;
@@ -643,11 +644,11 @@ table { border-collapse: collapse; }
 }
 .btn--ghost:hover { background: var(--ink); color: var(--paper); }
 
-.btn--on-dark {                       /* gold button inside an inverted band */
-  background: var(--gold);
-  color: var(--forest);
+.btn--on-dark {                       /* accent button inside an inverted band */
+  background: var(--blue-300);
+  color: var(--ink);
 }
-.btn--on-dark:hover { background: var(--paper); color: var(--forest); }
+.btn--on-dark:hover { background: var(--paper); color: var(--ink); }
 
 .btn[aria-disabled="true"],
 .btn:disabled {
@@ -665,14 +666,14 @@ table { border-collapse: collapse; }
   font-weight: 600;
   letter-spacing: 0.02em;
   color: var(--forest);
-  border-bottom: 1px solid var(--gold);
+  border-bottom: 1px solid var(--ink);
   padding-bottom: 3px;
 }
-.link:hover { color: var(--gold); }
+.link:hover { color: var(--grey); }
 
 .link--on-dark {
-  color: var(--gold);
-  border-bottom: 1px solid var(--gold);
+  color: var(--blue-300);
+  border-bottom: 1px solid var(--blue-300);
 }
 .link--on-dark:hover { color: #FFFFFF; border-bottom-color: #FFFFFF; }
 
@@ -731,7 +732,7 @@ table { border-collapse: collapse; }
 }
 .table .table__lead--accent {
   font-style: italic;
-  color: var(--gold);
+  color: var(--ink);
 }
 
 /* data cells — mono, gold for element lists */
@@ -739,7 +740,7 @@ table { border-collapse: collapse; }
   font-family: var(--mono);
   font-size: 14px;
   line-height: 1.7;
-  color: var(--gold);
+  color: var(--grey);
 }
 .table .table__data--ink { color: var(--text-body); }
 
@@ -858,7 +859,7 @@ table { border-collapse: collapse; }
   transition: opacity 0.15s ease;
 }
 .zoomable:hover::after { opacity: 1; }
-.lightbox__state:focus-visible + .zoomable { outline: 2px solid var(--gold); outline-offset: 2px; }
+.lightbox__state:focus-visible + .zoomable { outline: 2px solid var(--ink); outline-offset: 2px; }
 .lightbox__state:focus-visible + .zoomable::after { opacity: 1; }
 
 /* no hover on touch — the affordance has to be permanent */
@@ -929,7 +930,7 @@ table { border-collapse: collapse; }
 }
 .lightbox__close::before { transform: rotate(45deg); }
 .lightbox__close::after  { transform: rotate(-45deg); }
-.lightbox__close:hover { background: var(--gold); }
+.lightbox__close:hover { background: var(--ink); }
 
 
 /* --- Placeholders ---------------------------------------------------------
@@ -1022,7 +1023,7 @@ table { border-collapse: collapse; }
 .takeaways__n {
   font-family: var(--mono);
   font-size: 13px;
-  color: var(--gold);
+  color: var(--ink);
 }
 .takeaways__text {
   margin: 0;
@@ -1063,7 +1064,7 @@ table { border-collapse: collapse; }
   font-family: var(--serif);
   font-size: 52px;
   line-height: 1;
-  color: var(--gold);
+  color: var(--blue-300);
 }
 .stats__label {
   font-family: var(--mono);
@@ -1131,7 +1132,7 @@ table { border-collapse: collapse; }
 .faq__index {
   font-family: var(--mono);
   font-size: 12px;
-  color: var(--gold);
+  color: var(--ink);
   padding-top: 6px;
 }
 .faq__question {
@@ -1155,7 +1156,7 @@ table { border-collapse: collapse; }
 .faq__toggle::after {
   content: '';
   position: absolute;
-  background: var(--gold);
+  background: var(--ink);
 }
 .faq__toggle::before { left: 0; top: 0; width: 18px; height: 1px; }
 .faq__toggle::after  { left: 8px; top: -5px; width: 1px; height: 18px; }
@@ -1184,7 +1185,7 @@ table { border-collapse: collapse; }
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: var(--gold);
+  color: var(--ink);
   padding-top: 4px;
 }
 .person__bio {
@@ -1208,7 +1209,7 @@ table { border-collapse: collapse; }
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--ink);
 }
 .news__kicker--muted { color: var(--text-muted); }
 .news__title {
@@ -1217,7 +1218,7 @@ table { border-collapse: collapse; }
   line-height: 1.3;
   color: var(--ink);
 }
-a.news__title:hover { color: var(--gold); }
+a.news__title:hover { color: var(--grey); }
 .news__excerpt--flush { margin-top: 0; }
 .news__excerpt {
   margin: 8px 0 0;
@@ -1250,10 +1251,10 @@ a.news__title:hover { color: var(--gold); }
   margin-bottom: -5px;
   border-bottom: 2px solid transparent;
 }
-a.tabs__tab:hover { color: var(--gold); }
+a.tabs__tab:hover { color: var(--grey); }
 .tabs__tab--current {
   color: var(--forest);
-  border-bottom-color: var(--gold);
+  border-bottom-color: var(--ink);
 }
 .tabs__tab[aria-disabled="true"] {
   color: rgba(32, 32, 32, 0.32);
@@ -1284,7 +1285,7 @@ a.tabs__tab:hover { color: var(--gold); }
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--ink);
 }
 .post__date,
 .post__source {
@@ -1303,7 +1304,7 @@ a.tabs__tab:hover { color: var(--gold); }
   color: var(--forest);
 }
 .post__title a { color: inherit; }
-.post__title a:hover { color: var(--gold); }
+.post__title a:hover { color: var(--grey); }
 .post__excerpt {
   margin: 10px 0 0;
   font-size: 16px;
@@ -1328,10 +1329,10 @@ a.tabs__tab:hover { color: var(--gold); }
   color: var(--text-muted);
   border-bottom: 2px solid transparent;
 }
-a.pagination__page:hover { color: var(--gold); }
+a.pagination__page:hover { color: var(--grey); }
 .pagination__page--current {
   color: var(--forest);
-  border-bottom-color: var(--gold);
+  border-bottom-color: var(--ink);
 }
 .pagination__step { color: var(--forest); }
 .pagination__step[aria-disabled="true"],
@@ -1356,10 +1357,10 @@ a.pagination__page:hover { color: var(--gold); }
   font-size: 14px;
   font-weight: 600;
   color: var(--forest);
-  border-bottom: 1px solid var(--gold);
+  border-bottom: 1px solid var(--ink);
   padding-bottom: 2px;
 }
-.share__link:hover { color: var(--gold); }
+.share__link:hover { color: var(--grey); }
 
 /* --- Article body (single post) ------------------------------------------ */
 .article { display: flex; flex-direction: column; gap: 28px; max-width: 72ch; }
@@ -1449,10 +1450,10 @@ a.pagination__page:hover { color: var(--gold); }
   padding-bottom: 3px;
   border-bottom: 2px solid transparent;
 }
-.nav__link:hover { color: var(--gold); }
+.nav__link:hover { color: var(--blue-300); }
 .nav__link--current {
   color: var(--forest);
-  border-bottom-color: var(--gold);
+  border-bottom-color: var(--blue-300);
 }
 
 .site-header .btn {
@@ -1478,8 +1479,8 @@ a.pagination__page:hover { color: var(--gold); }
   gap: 6px;
 }
 .breadcrumb a { color: var(--text-muted); }
-.breadcrumb a:hover { color: var(--gold); }
-.breadcrumb [aria-current="page"] { color: var(--gold); }
+.breadcrumb a:hover { color: var(--grey); }
+.breadcrumb [aria-current="page"] { color: var(--ink); }
 
 /* --- Hero ----------------------------------------------------------------- */
 .hero {
@@ -1493,7 +1494,7 @@ a.pagination__page:hover { color: var(--gold); }
 
 /* --- Closing CTA band ----------------------------------------------------- */
 .cta-band {
-  background: var(--gold);
+  background: var(--blue-300);
   padding: 72px;
   display: flex;
   align-items: center;
@@ -1534,10 +1535,10 @@ a.pagination__page:hover { color: var(--gold); }
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--blue-300);
 }
 .site-footer a { color: rgba(247, 244, 237, 0.85); }
-.site-footer a:hover { color: var(--gold); }
+.site-footer a:hover { color: var(--blue-300); }
 .site-footer__legal {
   margin: 0;
   font-size: 12px;
@@ -1692,8 +1693,8 @@ a.pagination__page:hover { color: var(--gold); }
   border-bottom: 1px solid var(--hairline);
 }
 .nav-mobile__list a:first-child { border-top: 1px solid var(--forest); }
-.nav-mobile__list a:hover { color: var(--gold); }
-.nav-mobile__list a[aria-current="page"] { color: var(--gold); }
+.nav-mobile__list a:hover { color: var(--grey); }
+.nav-mobile__list a[aria-current="page"] { color: var(--ink); }
 .nav-mobile__cta { width: 100%; text-align: center; align-self: stretch; }
 
 /* Touch devices have no hover: the element tooltip would need a tap that also
@@ -1909,7 +1910,7 @@ a.pagination__page:hover { color: var(--gold); }
   .table .table__lead { font-size: 21px; }
   .table .table__stub { font-size: 13px; letter-spacing: 0.08em; color: var(--forest); }
   .table .table__data { font-size: 13px; }
-  .table--sequence td[data-label^="Phase"]::before { color: var(--gold); }
+  .table--sequence td[data-label^="Phase"]::before { color: var(--ink); }
 
   /* FAQ */
   .faq__summary  { grid-template-columns: 30px 1fr 18px; gap: 12px; padding: 20px 0; }
@@ -1993,7 +1994,7 @@ a.pagination__page:hover { color: var(--gold); }
   bottom: 0;
   left: -20px;
   width: 2px;
-  background: var(--gold);
+  background: var(--grey);
   transform: scaleY(0);
   transform-origin: top;
   transition: transform 0.2s ease;
@@ -2008,14 +2009,14 @@ a.pagination__page:hover { color: var(--gold); }
 
 .chip { transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease; }
 .chip:hover {
-  border-color: var(--gold);
+  border-color: var(--grey);
   color: var(--forest-hover);
   transform: translateY(-2px);
 }
 
 .table tbody tr { transition: background-color 0.15s ease; }
 .table tbody tr:hover td,
-.table tbody tr:hover th { border-bottom-color: var(--gold); }
+.table tbody tr:hover th { border-bottom-color: var(--grey); }
 .table tbody tr:hover .table__lead { color: var(--forest-hover); }
 .table tbody tr:hover .table__stub { color: var(--ink); }
 
@@ -2159,6 +2160,15 @@ a.pagination__page:hover { color: var(--gold); }
 .band--ink .note,
 .band--raised .note { color: var(--on-dark-secondary); }
 
+/* Same problem, one more element: the sitewide :focus-visible ring (line 171)
+   is --ink so it reads on the paper ground most of the page sits on — which
+   makes it invisible against navy, and against §01's own dark band (1.27:1
+   on --forest, same failure mode --gold's removal was already fixing
+   elsewhere). Header and footer are always dark regardless of ground
+   context elsewhere, so they get the same override. */
+.band--ink :focus-visible, .band--raised :focus-visible, .band-dark :focus-visible,
+.site-header :focus-visible, .site-footer :focus-visible { outline-color: var(--blue-300); }
+
 
 /* --- 12.3  Card grid ------------------------------------------------------
    Owns the gap between cards, so no card needs a margin. See contract §4. */
@@ -2298,9 +2308,9 @@ a.pagination__page:hover { color: var(--gold); }
 }
 /* The card itself is the link (one click target, not a link-in-link), so its
    children keep their own tokened colours even on hover/focus — without this,
-   the sitewide `a:hover { color: var(--gold) }` (specificity 0,1,1) would
+   the sitewide `a:hover { color: var(--grey) }` (specificity 0,1,1) would
    beat a lone child class like .card-teaser__title (0,1,0) and paint every
-   line of the card gold on hover. */
+   line of the card grey on hover. */
 .card-teaser:hover { background: var(--navy-700); }
 .card-teaser:hover .card-teaser__title,
 .card-teaser:focus-visible .card-teaser__title { color: var(--on-dark-primary); }

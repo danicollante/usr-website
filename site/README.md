@@ -48,7 +48,7 @@ tokens → reset → page shell & sections → typography → buttons & links �
 tables → figures → components → header/footer → utilities.
 
 All colour, type, and spacing values are CSS custom properties on `:root`.
-Change `--gold` once and every label, rule and accent button follows.
+Change `--blue-300` once and every accent link, rule and button follows.
 
 **Layout primitives**
 
