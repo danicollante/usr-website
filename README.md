@@ -1,58 +1,69 @@
 # usr-website
 
-Static site for U.S. Strategic Resources — nine pages of pure HTML/CSS, no
+Static site for U.S. Strategic Resources — plain HTML/CSS/vanilla JS, no
 framework and no build step, authored for page-by-page translation into
 PHP/WordPress.
 
 ```
 usr-website/
-├── site/               ← THE DELIVERABLE: 8 pages + one shared style.css + assets
-│   ├── news/              example single post page (/news/{slug})
-│   └── README.md          handoff notes: launch tokens, SEO map, pending inventory
-├── design-reference/   design-system spec and the two originally designed pages
-├── content/            the copy and SEO rules (usr-website-content-map.md)
-└── tools/              check-site.py (validator) · build-pages.py (generator)
-                        element-symbols.py (PubChem element links)
+├── site/               ← THE DELIVERABLE
+│   ├── *.html             7 pages + 4 redirect stubs at the retired URLs
+│   ├── news/{slug}.html   single post page
+│   ├── css/style.css      the one stylesheet
+│   ├── js/interactions.js scroll reveals + mobile nav
+│   └── assets/            img/ (responsive sets) · team/ · logo/ · maps/
+├── design-reference/   the retired "Filing" system — archive only, do not reuse
+├── content/            copy and SEO notes
+└── tools/              check-site.py · process-images.py
 ```
 
-`design-reference/` and `content/` are inputs and are not touched by the build.
-`site/` is what gets handed over.
+`design-reference/` and `content/` are inputs. `site/` is what gets handed over.
+
+## The design is the template
+
+`site/css/style.css` is extracted wholesale from
+`resources/feedback 0828/claude design run/USR Rebrand - Four Screens.dc.html`
+— tokens, type scale, spacing rhythm, section grounds, photo treatment, card
+patterns. The earlier "Filing" stylesheet was deleted, not migrated. Anything
+the four screens don't define is extrapolated from the design's own vocabulary.
+
+Content is the investor deck (`US-Strategic-Resources-Website Copy.pptx`),
+verbatim. Where the deck and older site copy conflict, the deck wins.
 
 ## Working on it
 
-Open `site/index.html` in a browser — that's the whole workflow. After edits:
-
 ```
-python3 tools/check-site.py
+cd site && python3 -m http.server 8000
 ```
 
-Validates markup, headings, SEO tags, class coverage, links, ids and JSON-LD
-across all nine pages, plus the four responsive markup requirements (mobile
-menu present, current page marked in both navs, `data-label` on every table
-cell, every checkbox-hack label pointing at a real checkbox). Exits non-zero
-on any problem.
+Then, with the server running:
 
-`tools/build-pages.py` generated the pages that had no design reference,
-lifting the header/footer markup verbatim from the two hand-built pages so the
-shared chrome is identical everywhere. `tools/element-symbols.py` wires every
-chemical symbol to PubChem from a single verified symbol→name map, and
-`build-pages.py` re-runs it automatically. Neither is a build step — the HTML
-files are the source of truth from here on.
+```
+python3 tools/check-site.py      # every page, asset and internal link resolves
+```
 
-## Publishing a preview
+`site/*.html` are hand-maintained — edit them directly. There is deliberately
+no page generator in the tree; see CLAUDE.md for why.
 
-GitHub Pages: **Settings → Pages**, source branch `main`, folder `/site`.
-The site is `noindex` sitewide until USR approves launch, so a public preview
-URL is safe to share.
+## Regenerating the image set
 
-## Read next
+`tools/process-images.py` derives the responsive WebP + JPEG sets in
+`site/assets/img/` from the originals in the Drive photo folder. It touches no
+markup. Re-run it only if the source photos change:
 
-`site/README.md` — the two find-and-replace tokens that have to be resolved
-before launch, the per-page schema map, the 54 `[pending]` markers that are
-blocked on USR, and the design decisions made during the translation.
+```
+python3 tools/process-images.py
+```
 
-**Mobile is built.** The responsive system lives in §11 of `site/css/style.css`
-(fluid ≤1439px, tablet ≤1023px, mobile ≤767px) and is applied across all nine
-pages — audited at 375px and 768px with no horizontal overflow. The design
-rationale and the per-page markup checklist are in
-`design-reference/USR System - Breakpoint Notes.md`.
+Widths are 1920/1280/800/480, never upscaled past the source. It writes a
+`manifest.json` alongside the images recording each slug's available widths and
+native dimensions.
+
+## Known gaps
+
+- The news post is a real page with placeholder body copy. Every unresolved
+  span is marked `<span class="pending">` and is visible on the page — nothing
+  is silently faked.
+- The contact form is markup only. It has no backend; it opens the visitor's
+  mail client addressed to info@usstrategicresources.com. There is no fake
+  success state. Wiring it up is part of the PHP conversion.

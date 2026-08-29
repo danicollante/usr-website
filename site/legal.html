@@ -3,172 +3,130 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- SEO — content map §2. noindex until launch; {{SITE_URL}} = production domain. -->
-<meta name="robots" content="noindex, nofollow">
-
-<title>Legal Notice &amp; Disclaimer | U.S. Strategic Resources</title>
-<meta name="description" content="Legal notice, forward-looking statements and disclaimer for the U.S. Strategic Resources website.">
-<link rel="canonical" href="{{SITE_URL}}/legal">
-
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="U.S. Strategic Resources">
-<meta property="og:title" content="Legal Notice &amp; Disclaimer | U.S. Strategic Resources">
-<meta property="og:description" content="Legal notice, forward-looking statements and disclaimer for the U.S. Strategic Resources website.">
-<meta property="og:url" content="{{SITE_URL}}/legal">
-<meta name="twitter:card" content="summary_large_image">
-
-<link rel="icon" href="assets/favicon.png">
+<title>Legal — U.S. Strategic Resources</title>
+<meta name="description" content="Legal notice, forward-looking statements and exploration-stage disclosure for U.S. Strategic Resources.">
+<link rel="icon" type="image/svg+xml" href="assets/logo/favicon-USR-new.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Libre+Franklin:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&amp;family=Public+Sans:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@300;400;500&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": "{{SITE_URL}}/#organization",
-  "name": "U.S. Strategic Resources",
-  "alternateName": "USR",
-  "url": "{{SITE_URL}}/",
-  "logo": "{{SITE_URL}}/assets/logo/usr-logo-black.png",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Monrovia",
-    "addressCountry": "LR"
-  }
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{SITE_URL}}/" },
-    { "@type": "ListItem", "position": 2, "name": "Legal & Disclaimer" }
-  ]
-}
-</script>
 </head>
-<body class="nav-legal">
+<body>
 <a class="skip-link" href="#main">Skip to content</a>
+<main id="main">
 
-<div class="page">
-
-  <header class="site-header">
-    <a href="index.html" aria-label="U.S. Strategic Resources — home"><img class="site-header__logo" src="assets/logo/usr-logo-white.png" alt="U.S. Strategic Resources"></a>
-    <nav class="nav" aria-label="Primary">
-      <a class="nav__link nav__link--about" href="about.html">About</a>
-      <a class="nav__link nav__link--leadership" href="leadership.html">Leadership</a>
-      <a class="nav__link nav__link--metals" href="metals.html">Metals</a>
-      <a class="nav__link nav__link--news" href="news.html">News</a>
-      <a class="nav__link nav__link--contact" href="contact.html">Contact</a>
-    </nav>
-    <a class="btn btn--primary site-header__cta" href="contact.html">Request the investor presentation</a>
-    <!-- Mobile / tablet menu (<=1023px). No JavaScript: <details> carries the
-         open state, same pattern as the FAQ accordion. -->
-    <details class="nav-mobile">
-      <summary aria-label="Menu"><span class="nav-mobile__bars" aria-hidden="true"></span>Menu</summary>
-      <div class="nav-mobile__panel">
-        <nav class="nav-mobile__list" aria-label="Primary, small screens">
-        <a href="about.html">About</a>
-        <a href="leadership.html">Leadership</a>
-        <a href="metals.html">Metals</a>
-        <a href="news.html">News</a>
-        <a href="contact.html">Contact</a>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-header__logo" href="index.html" aria-label="U.S. Strategic Resources — home">
+          <img src="assets/logo/USR-logo-on-dark-new.svg" alt="U.S. Strategic Resources" width="291" height="83">
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+        <nav class="nav" id="nav" aria-label="Primary">
+          <a href="about.html">About</a>
+          <a href="leadership.html">Leadership</a>
+          <a href="metals.html">Metals &amp; Markets</a>
+          <a href="news.html">News</a>
+          <a class="nav__cta" href="contact.html">Contact</a>
         </nav>
-        <a class="btn btn--primary nav-mobile__cta" href="contact.html">Request the investor presentation</a>
       </div>
-    </details>
-  </header>
+    </header>
 
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-    <ol>
-      <li><a href="index.html">Home</a> /</li>
-      <li><span aria-current="page">Legal &amp; Disclaimer</span></li>
-    </ol>
-  </nav>
-
-  <main id="main">
-
-    <!-- hero -->
-    <section class="hero hero--inner">
-      <div class="grid-hero">
-        <div class="stack-28">
-          <p class="label">Legal</p>
-          <h1>Legal notice &amp; forward-looking statements</h1>
-        </div>
-        <dl class="facts">
-          <div class="facts__row"><dt class="facts__term">Last reviewed</dt><dd class="facts__value pending">[pending]</dd></div>
-          <div class="facts__row"><dt class="facts__term">Counsel review</dt><dd class="facts__value pending">[pending]</dd></div>
-        </dl>
+  <div class="page-head">
+    <div class="wrap page-head__grid">
+      <div>
+        <p class="label page-head__eyebrow">Legal</p>
+        <h1 class="h1">Legal notice</h1>
       </div>
-    </section>
+      <p class="section-head__note">Disclosure governing the information
+         published on this site.</p>
+    </div>
+  </div>
 
-    <!-- 01 notices -->
-    <section class="section-indexed section-indexed--last">
-      <div class="section-indexed__rail">01</div>
-      <div class="section-indexed__body reveal">
-        <div class="grid-2">
-          <div class="stack-24">
-            <h2>Notices</h2>
-            <p class="body body--measure"><span class="pending">[pending: legal review by USR counsel &mdash; the text on this page is the deck disclaimer expanded and must be approved before launch.]</span></p>
-          </div>
-          <div class="stack-32">
-            <div class="stack-12">
-              <h3>No offer of securities</h3>
-              <p class="body body--measure">Nothing on this website constitutes an offer to sell or a solicitation of an offer to buy any securities.</p>
-            </div>
-            <div class="stack-12">
-              <h3>Forward-looking statements</h3>
-              <p class="body body--measure">This website contains forward-looking statements. Forward-looking statements involve risks and uncertainties, and actual results may differ materially from those expressed or implied.</p>
-            </div>
-            <div class="stack-12">
-              <h3>Exploration results</h3>
-              <p class="body body--measure">Exploration results are preliminary and subject to verification. Information on this website is subject to verification and may be updated without notice.</p>
-            </div>
-            <div class="stack-12">
-              <h3>Website terms of use</h3>
-              <p class="body body--measure"><span class="pending">[pending: terms of use &mdash; drafted by USR counsel]</span></p>
-            </div>
-            <div class="stack-12">
-              <h3>Privacy &amp; analytics</h3>
-              <p class="body body--measure"><span class="pending">[pending: privacy note and cookie/analytics disclosure &mdash; required once GA4 is live]</span></p>
-            </div>
-          </div>
-        </div>
+  <section class="section section--ink">
+    <div class="wrap">
+      <div class="prose">
+        <h2>No offer of securities</h2>
+        <p>The information on this site is confidential and for information
+           purposes only; it does not constitute an offer to sell or a
+           solicitation of an offer to buy any securities.</p>
+
+        <h2>Forward-looking statements</h2>
+        <p>Forward-looking statements are subject to risks and may not be
+           realized. Such statements reflect management's current expectations
+           regarding future events and operating performance and speak only as of
+           the date on which they are made.</p>
+
+        <h2>Exploration stage</h2>
+        <p>U.S. Strategic Resources is an exploration-stage company. No mineral
+           resource or reserve has been defined on either license. Prospectivity
+           models referred to on this site are interpretive and conceptual, and
+           are derived from regional survey data rather than from drilling on the
+           license areas.</p>
+
+        <h2>Third-party information</h2>
+        <p>Market and demand projections are attributed to the IEA Global
+           Critical Minerals Outlook (demand projections to 2040, Stated Policies
+           Scenario). References to neighbouring operations and to companies
+           operating in Liberia are included as jurisdictional context and imply
+           no relationship with, or endorsement by, those parties.</p>
+
+        <h2>Contact</h2>
+        <p>Questions regarding this notice may be directed to
+           <a href="mailto:info@usstrategicresources.com">info@usstrategicresources.com</a>.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-  </main>
+</main>
+
+  <div class="disclaimer-bar">
+    <div class="wrap disclaimer-bar__inner">
+      <p class="label">Exploration stage</p>
+      <p>Exploration stage. Prospectivity models are interpretive and conceptual; no mineral resource or reserve has been defined on either license.</p>
+    </div>
+  </div>
 
   <footer class="site-footer">
-    <div class="site-footer__brand">
-      <img class="site-footer__logo" src="assets/logo/usr-logo-white.png" alt="U.S. Strategic Resources">
-      <address class="site-footer__address">
-        Operations: Monrovia, Liberia<br>
-        Headquarters: <span class="pending">[pending]</span><br>
-        Email: <span class="pending">[pending]</span>
-      </address>
+    <div class="wrap">
+      <div class="site-footer__grid">
+        <div>
+          <div class="site-footer__logo">
+            <img src="assets/logo/USR-logo-on-dark-new.svg" alt="U.S. Strategic Resources" width="291" height="83">
+          </div>
+          <p>An American-backed mining investment vehicle exploring for critical
+             minerals and rare earths in Nimba County, Liberia.</p>
+        </div>
+        <div>
+          <p class="footer-nav__title">Company</p>
+          <ul class="footer-nav">
+            <li><a href="about.html">About</a></li>
+            <li><a href="leadership.html">Leadership</a></li>
+            <li><a href="metals.html">Metals &amp; Markets</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-nav__title">More</p>
+          <ul class="footer-nav">
+            <li><a href="news.html">News</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="legal.html">Legal</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-nav__title">Contact</p>
+          <ul class="footer-nav">
+            <li><a href="mailto:info@usstrategicresources.com">info@usstrategicresources.com</a></li>
+            <li>Monrovia, Liberia</li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__legal">
+        <span>&copy; 2026 U.S. Strategic Resources. All rights reserved.</span>
+        <span>Nimba County, Liberia &middot; Exploration stage</span>
+      </div>
     </div>
-    <nav class="site-footer__col" aria-label="Footer — site">
-      <span class="site-footer__heading">Site</span>
-      <a href="about.html">About</a>
-      <a href="leadership.html">Leadership</a>
-      <a href="metals.html">Metals</a>
-    </nav>
-    <nav class="site-footer__col" aria-label="Footer — more">
-      <span class="site-footer__heading">More</span>
-      <a href="news.html">News</a>
-      <a href="contact.html">Contact</a>
-      <a href="legal.html">Legal &amp; Disclaimer</a>
-    </nav>
-    <p class="site-footer__legal">No offer of securities. Forward-looking statements involve risks and uncertainties. Exploration results are preliminary and subject to verification. &copy; 2026 U.S. Strategic Resources.</p>
   </footer>
 
-</div>
-<script src="js/interactions.js" defer></script>
+  <script src="js/interactions.js" defer></script>
 </body>
 </html>

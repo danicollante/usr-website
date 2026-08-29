@@ -11,6 +11,14 @@ Everything below exists to keep that conversion clean — don't optimize away fr
   source files, edited directly, one page at a time. Never write or reintroduce a script that
   regenerates page content — it will silently overwrite hand-added content (this happened once
   already: a prior scaffold run wiped real headshot markup and stripped animation classes).
+- OPEN QUESTION from the 2026-08-29 rebuild: `tools/build.py` + `tools/shell.py` scaffolded all 8
+  pages once from the design file and the deck. They hold the page copy as literals, which the
+  "Script rule, clarified" section below disallows as an ongoing mechanism. They are still in the
+  working tree, uncommitted, pending a decision: either commit-then-delete them (the precedent set
+  by `tools/build-pages.py`), or keep them and relax the rule. Until that is decided, treat
+  `site/*.html` as the source of truth and do NOT re-run `build.py` over hand-edited pages.
+- `tools/process-images.py` is NOT a page generator and stays — it derives the responsive image
+  set from the Drive originals and touches no markup.
 
 ## Structure — 7 pages, matching the investor deck's own hierarchy
 - `index.html` — Home
@@ -35,8 +43,15 @@ thin redirect stubs (meta-refresh + canonical link) pointing at the new page/anc
   don't swap it for a "punchier" mining photo later.
 - Leadership headshots exist at `site/assets/team/` (all 6, including Samantha) — reference them
   directly, no placeholder markup.
-- Skip `premium_photo-1661963968707-cf062e54725b.avif` — replaced by the client, same filename/folder,
-  1920px square. Confirm before use that the replacement, not the watermarked original, is in place.
+- Skip `premium_photo-1661963968707-cf062e54725b.jpg` — replaced by the client, same filename/folder,
+  1920px square. Confirmed 2026-08-29: the licensed replacement is the one in the folder (checked
+  the centre and lower band at full resolution — no Unsplash+ watermark).
+- The three-layer treatment must stay three layers: `<img>` filter, then a colour-blend layer,
+  then the ink gradient, as separate pseudo-elements. Collapsing the blend and the gradient into
+  one pseudo-element breaks it — `mix-blend-mode: color` then blends the gradient, not the photo.
+- `<picture>` must be stretched to its box (`position:absolute; inset:0`). It is an inline wrapper,
+  so without that the inner `object-fit: cover` has no box to fill and the photo collapses to its
+  intrinsic width. This shipped broken once on the about-page band.
 
 ## Contact form
 - Styled to match Global Frontier Advisors' form conventions, translated to the dark palette.
@@ -102,16 +117,19 @@ script: verify afterward that nothing was silently dropped (reveal-hook counts, 
 references, prior content still present) and report the verification. If in doubt, ask before
 running, not after.
 
-## `.section` / `.band` coexistence — resolve in the content-migration run, not before
-`.band` (new, spacing-conflict-proof) and `.section` (old Filing rule, still writes padding
-directly) currently coexist without conflict. Retire `.section` and reclaim the name only when
-cards/sections migrate to the new dark grounds — same pass where `.person`/`.post`/`.facts__row`
-become `.card-leader`/`.card-news`/`.fact-row` and `--on-dark-*` tokens get wired in.
+## Filing CSS — deleted, do not resurrect (2026-08-29 rebuild)
+The incremental migration failed: old structure survived with new colours bolted on. `style.css`
+was deleted and rewritten wholesale from `USR Rebrand - Four Screens.dc.html`. There is no
+`--forest`, `--mono`, `--gold`, `.band-dark`, or Filing-era `.section` rule left. `.section` now
+means the design's own section primitive (ink / alt / panel / paper grounds), not the old one.
+If a page needs something the four screens don't define, extrapolate from the design's vocabulary
+— never reach back into the Filing stylesheet or the `design-reference/` archive for it.
 
-## Body class + aria-current — keep both, deliberately redundant
-`aria-current="page"` is the required accessibility signal, per-page, never proxied through JS.
-The `<body>` nav-state class is a separate hook for CSS/JS logic not specifically tied to the
-ARIA sense of "current." Don't collapse into one mechanism.
+## Nav active state — aria-current only
+`aria-current="page"` on the current page's nav link is the whole mechanism: it is the
+accessibility signal and it drives the visual active state via `.nav a[aria-current="page"]`.
+The earlier `<body>` nav-state class is gone — it was a second source of truth for the same fact.
+Don't reintroduce it.
 
 ## Documented exception — nested news post
 `site/news/{slug}.html` sits one directory below the other 7 pages. Header/footer markup is
@@ -124,14 +142,25 @@ Header/footer are byte-identical except the current page's nav link carries
 `aria-current="page"`. Body class drives visual active state; `aria-current` is the accessibility
 signal and is never dropped or JS-generated. Second sanctioned exception to "byte-identical."
 
-## Verification backlog — for RUN 9 (dedicated verification run)
-- `about.html` at 375px has not been visually confirmed for horizontal overflow. An attempt during
-  the content run hit a headless-Chrome viewport/DPR quirk in that environment — confirmed it was
-  tooling, not a real bug, by reproducing the identical artifact on `index.html` (already shipped,
-  already audited at 375px) under the same invocation. Since it was a tooling failure rather than
-  a suspected CSS issue, it didn't block that run's push, but it must not be treated as verified.
-  RUN 9 should re-test `about.html` at 375px with different tooling (a real browser, a working
-  headless setup, or a device preview) before launch.
+## Verification backlog
+
+- ~~`about.html` at 375px unconfirmed for horizontal overflow~~ — **RESOLVED 2026-08-29.**
+  The headless-Chrome quirk is real and now diagnosed: on this macOS setup `--window-size=375,N`
+  is silently clamped to a 500px viewport, so the screenshot shows content "clipped" that is in
+  fact laid out at 500px and cropped to 375. Measuring `window.innerWidth` inside the page proves
+  it (`VIEWPORT=500` for a requested 375).
+  Working technique: load each page in a same-origin `<iframe>` of the exact target width and read
+  `documentElement.scrollWidth` vs `clientWidth` from the parent. An iframe gets a true viewport
+  regardless of the window clamp. All 8 pages measured clean at 375 / 414 / 768 / 1024 —
+  `scroll == client` everywhere, no overflowing element. Don't re-litigate this with screenshots;
+  use the iframe probe.
+
+## Contrast — one deviation from the design file, on purpose
+The design sets tertiary micro-labels on light grounds (`.unit__rank`, `.element__note`, paper
+`.figcap`) in `#8A94A6`, which measures 3.06:1 on white — below the 4.5:1 floor for 10-12px type.
+`--muted` is therefore pointed at the locked `--grey` `#626E82` (4.71-5.16:1 across paper / tint /
+card) rather than adding a ninth value to the palette. Everything else in the built site measures
+at or above its floor; the ramp was checked pair-by-pair, not by eye.
 
 - ~~`--gold` (the `.label` eyebrow color) measures 2.45:1 on the `--paper` background~~ —
   **RESOLVED**. `--gold`/`--gold-hover` removed entirely (not patched): every reference swapped to

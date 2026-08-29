@@ -1,0 +1,82 @@
+{
+  "terrain-sandstone": {
+    "widths": [
+      1920,
+      1280,
+      800,
+      480
+    ],
+    "native": [
+      10240,
+      5760
+    ],
+    "ratio": 1.7778,
+    "source": "svntx-0nLU_L0Uz94-unsplash.jpg"
+  },
+  "drill-rig": {
+    "widths": [
+      1548,
+      1280,
+      800,
+      480
+    ],
+    "native": [
+      1548,
+      1161
+    ],
+    "ratio": 1.3333,
+    "source": "drill rig.avif"
+  },
+  "core-samples": {
+    "widths": [
+      612,
+      480
+    ],
+    "native": [
+      612,
+      408
+    ],
+    "ratio": 1.5,
+    "source": "core samples.jpg"
+  },
+  "rail-corridor": {
+    "widths": [
+      800,
+      480
+    ],
+    "native": [
+      800,
+      1218
+    ],
+    "ratio": 0.6568,
+    "source": "rail 1.avif"
+  },
+  "us-flag": {
+    "widths": [
+      1920,
+      1280,
+      800,
+      480
+    ],
+    "native": [
+      5616,
+      3744
+    ],
+    "ratio": 1.5,
+    "source": "brandon-day-YkanZqsbkQ0-unsplash.jpg"
+  },
+  "earth-at-night": {
+    "widths": [
+      1920,
+      1280,
+      800,
+      480
+    ],
+    "native": [
+      6646,
+      4430
+    ],
+    "ratio": 1.5002,
+    "source": "nasa-1lfI7wkGWZ4-unsplash.jpg"
+  }
+}
