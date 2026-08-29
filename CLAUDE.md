@@ -86,3 +86,34 @@ thin redirect stubs (meta-refresh + canonical link) pointing at the new page/anc
 - A small number of additional micro-interactions may be proposed per page (e.g. metals-card hover,
   element-card reveal stagger) using the same restrained logic as the map — subtle, purposeful, tied
   to something the user is already doing (hover, scroll into view). Not decoration for its own sake.
+
+## Script rule, clarified
+"Never write a script that regenerates page content" means: never write a script whose output is
+hardcoded/invented markup standing in for real content. Permitted: a script that reads existing
+real markup and moves, merges, or replaces it mechanically — content always comes from what's
+already in the files, never from a literal in the script. Required when using this kind of
+script: verify afterward that nothing was silently dropped (reveal-hook counts, real asset
+references, prior content still present) and report the verification. If in doubt, ask before
+running, not after.
+
+## `.section` / `.band` coexistence — resolve in the content-migration run, not before
+`.band` (new, spacing-conflict-proof) and `.section` (old Filing rule, still writes padding
+directly) currently coexist without conflict. Retire `.section` and reclaim the name only when
+cards/sections migrate to the new dark grounds — same pass where `.person`/`.post`/`.facts__row`
+become `.card-leader`/`.card-news`/`.fact-row` and `--on-dark-*` tokens get wired in.
+
+## Body class + aria-current — keep both, deliberately redundant
+`aria-current="page"` is the required accessibility signal, per-page, never proxied through JS.
+The `<body>` nav-state class is a separate hook for CSS/JS logic not specifically tied to the
+ARIA sense of "current." Don't collapse into one mechanism.
+
+## Documented exception — nested news post
+`site/news/{slug}.html` sits one directory below the other 7 pages. Header/footer markup is
+identical in structure and content; only relative path depth differs (`../css/style.css` instead
+of `css/style.css`). This is a sanctioned exception to "byte-identical." Don't invent a second
+exception shape for future posts — they follow this same pattern.
+
+## Documented exception — aria-current
+Header/footer are byte-identical except the current page's nav link carries
+`aria-current="page"`. Body class drives visual active state; `aria-current` is the accessibility
+signal and is never dropped or JS-generated. Second sanctioned exception to "byte-identical."
