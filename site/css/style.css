@@ -2088,6 +2088,13 @@ a.pagination__page:hover { color: var(--gold); }
 
      1. Every selector here is exactly ONE class (0,1,0). No ids, no
         `div.foo` compounds, no descendant selectors for layout or spacing.
+        Two documented exceptions exist, both for colour, never layout: the
+        nav active-state selectors (§12.12) and the .band--ink/--raised
+        `h2`/`.note` overrides (§12.2) — a §01 element with its own explicit
+        `color` (h2 -> --forest, .note -> --text-muted) doesn't inherit the
+        ground's colour, so a ground context selector is the only way to
+        keep it legible. Both are colour only; neither ever sets a spacing
+        or layout property.
      2. Exactly one selector ever writes a given spacing property. Variants
         set a custom property instead. `.band` is the only rule in this file
         that writes `padding-block`; `.band--tight` and friends set
@@ -2140,6 +2147,18 @@ a.pagination__page:hover { color: var(--gold); }
 .band--raised  { background: var(--navy-800); color: var(--on-dark-primary); }
 .band--paper   { background: var(--paper);    color: var(--ink); }
 
+/* §01 elements set their own explicit `color` (h2/h3 -> --forest, .note ->
+   --text-muted), so `color` on the .band ground above never reaches them —
+   inheritance only wins when nothing more specific targets the element, and
+   these do. Same fix §01's own .band-dark already needed and has (line 244).
+   --on-dark-secondary here, not the --on-dark-caption exception: that tier
+   is approved specifically for existing caption/eyebrow instances, not as a
+   default for any small text a future section happens to introduce. */
+.band--ink h2, .band--ink .h2,
+.band--raised h2, .band--raised .h2 { color: var(--on-dark-primary); }
+.band--ink .note,
+.band--raised .note { color: var(--on-dark-secondary); }
+
 
 /* --- 12.3  Card grid ------------------------------------------------------
    Owns the gap between cards, so no card needs a margin. See contract §4. */
@@ -2152,6 +2171,7 @@ a.pagination__page:hover { color: var(--gold); }
 .card-grid--2 { --card-cols: 1; }
 .card-grid--3 { --card-cols: 1; }
 .card-grid--4 { --card-cols: 1; }
+.card-grid--5 { --card-cols: 1; }
 
 
 /* --- 12.4  card-leader  →  template-parts/card-leader.php ----------------- */
@@ -2409,6 +2429,7 @@ a.pagination__page:hover { color: var(--gold); }
   :root { --wrap-inset: var(--space-4); }
   .card-grid--2 { --card-cols: 2; }
   .card-grid--4 { --card-cols: 2; }
+  .card-grid--5 { --card-cols: 2; }
 }
 
 @media (min-width: 900px) {
@@ -2418,6 +2439,7 @@ a.pagination__page:hover { color: var(--gold); }
   }
   .card-grid--3 { --card-cols: 3; }
   .card-grid--4 { --card-cols: 4; }
+  .card-grid--5 { --card-cols: 5; }
   .card-leader__name { font-size: 1.5rem; }
 }
 
