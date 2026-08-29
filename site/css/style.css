@@ -2149,16 +2149,24 @@ a.pagination__page:hover { color: var(--grey); }
 .band--paper   { background: var(--paper);    color: var(--ink); }
 
 /* §01 elements set their own explicit `color` (h2/h3 -> --forest, .note ->
-   --text-muted), so `color` on the .band ground above never reaches them —
-   inheritance only wins when nothing more specific targets the element, and
-   these do. Same fix §01's own .band-dark already needed and has (line 244).
-   --on-dark-secondary here, not the --on-dark-caption exception: that tier
-   is approved specifically for existing caption/eyebrow instances, not as a
-   default for any small text a future section happens to introduce. */
+   --text-muted, .body -> --text-body, .section-indexed__rail -> --ink), so
+   `color` on the .band ground above never reaches them — inheritance only
+   wins when nothing more specific targets the element, and these do. Same
+   fix §01's own .band-dark already needed and has (line 244). One of these
+   was worse than low-contrast: --ink and --navy-900 are the same hex value,
+   so .section-indexed__rail was fully invisible (1.0:1), not just failing
+   the floor. --on-dark-secondary here, not the --on-dark-caption exception:
+   that tier is approved specifically for existing caption/eyebrow instances,
+   not as a default for any small text a future section happens to
+   introduce. Check any *new* .band--ink/--raised section against this list
+   before assuming it reads — a class not in this override inherits nothing
+   and stays whatever §01 declared, dark-on-dark until proven otherwise. */
 .band--ink h2, .band--ink .h2,
 .band--raised h2, .band--raised .h2 { color: var(--on-dark-primary); }
-.band--ink .note,
-.band--raised .note { color: var(--on-dark-secondary); }
+.band--ink .section-indexed__rail,
+.band--raised .section-indexed__rail { color: var(--blue-300); }
+.band--ink .note, .band--ink .body,
+.band--raised .note, .band--raised .body { color: var(--on-dark-secondary); }
 
 /* Same problem, one more element: the sitewide :focus-visible ring (line 171)
    is --ink so it reads on the paper ground most of the page sits on — which
@@ -2577,3 +2585,32 @@ a.pagination__page:hover { color: var(--grey); }
 @media (max-width: 767px) {
   .disclosure { flex-direction: column; gap: var(--space-2); }
 }
+
+
+/* --- 12.17  Contact form, dark context --------------------------------------
+   Global Frontier Advisors' own form (contact-form-reference.png) uses
+   underline-only fields and small mono caps labels — translated here to the
+   dark palette, not copied verbatim. Scoped to .band--ink rather than
+   redeclaring .field__input etc., because the newsletter subscribe form
+   elsewhere on this page reuses the same base classes and stays on the
+   light ground unchanged. */
+
+.band--ink .field__label { color: var(--blue-300); }
+.band--ink .field__input,
+.band--ink .field__select,
+.band--ink .field__textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--navy-600);
+  border-radius: 0;
+  padding: 13px 2px;
+  color: var(--on-dark-primary);
+}
+.band--ink .field__input::placeholder,
+.band--ink .field__textarea::placeholder { color: var(--on-dark-caption); }
+.band--ink .field__input:focus,
+.band--ink .field__select:focus,
+.band--ink .field__textarea:focus { border-bottom-color: var(--blue-300); }
+/* .field__select has no dropdown-arrow icon in either context (base rule is
+   just appearance:none, cursor:pointer — pre-existing, not introduced here
+   and not this task's scope to add one). */

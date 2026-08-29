@@ -121,7 +121,7 @@
     </section>
 
     <!-- 01 enquiry form -->
-    <section class="section-indexed">
+    <section class="section-indexed band--ink">
       <div class="section-indexed__rail">01</div>
       <div class="section-indexed__body reveal">
         <div class="grid-2">
@@ -130,7 +130,8 @@
             <p class="body">Tell us which kind of enquiry this is and the team will route it. Investor materials are shared on request.</p>
           </div>
           <!-- Wire `action` to the Formspree / Netlify Forms endpoint before
-               launch: {{FORM_ENDPOINT}} is a placeholder token, not a URL. -->
+               launch: {{FORM_ENDPOINT}} is a placeholder token, not a URL.
+               Markup only — no backend wired, no fake success state. -->
           <form class="form" action="{{FORM_ENDPOINT}}" method="post">
             <div class="form__row">
               <div class="field">
@@ -161,7 +162,7 @@
               <label class="field__label" for="message">Message</label>
               <textarea class="field__textarea" id="message" name="message" required></textarea>
             </div>
-            <button class="btn btn--primary form__submit" type="submit">Send enquiry &rarr;</button>
+            <button class="btn btn--on-dark form__submit" type="submit">Send enquiry &rarr;</button>
           </form>
         </div>
       </div>
