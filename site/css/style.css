@@ -2043,6 +2043,37 @@ a.pagination__page:hover { color: var(--gold); }
   height: 100%;
   object-fit: cover;
   display: block;
+  filter: grayscale(1);
+  z-index: 1;
+}
+/* Navy duotone treatment (CLAUDE.md, Photography): grayscale -> colour-blend
+   -> ink gradient overlay, applied in CSS so it stays tunable without a new
+   image export. Two separate layers, deliberately not one:
+     `background-blend-mode` only blends backgrounds WITHIN one element — it
+     cannot reach the sibling <img> — so the colour-blend has to be its own
+     layer with `mix-blend-mode`, which blends against whatever already
+     painted behind it. That means paint ORDER matters, not just z-index
+     value: the tint (::after) must paint before the fade (::before), so it
+     has something to blend with; the fade then composites normally on top
+     of the already-tinted result. Both are `position: absolute` so explicit
+     z-index — not source order, where ::before would paint under the real
+     <img> child — decides that order. */
+.placeholder--band__inner::after {           /* 1. colour-blend tint */
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: var(--navy-600);
+  mix-blend-mode: color;
+  pointer-events: none;
+}
+.placeholder--band__inner::before {          /* 2. ink gradient fade */
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: linear-gradient(to bottom, transparent 40%, var(--navy-900) 100%);
+  pointer-events: none;
 }
 
 
@@ -2058,10 +2089,14 @@ a.pagination__page:hover { color: var(--gold); }
      1. Every selector here is exactly ONE class (0,1,0). No ids, no
         `div.foo` compounds, no descendant selectors for layout or spacing.
      2. Exactly one selector ever writes a given spacing property. Variants
-        set a custom property instead. `.section` is the only rule in this
-        file that writes `padding-block`; `.section--tight` and friends set
+        set a custom property instead. `.band` is the only rule in this file
+        that writes `padding-block`; `.band--tight` and friends set
         `--section-space` and never touch `padding`. Two rules therefore
-        cannot cancel each other out — there is nothing to cancel.
+        cannot cancel each other out — there is nothing to cancel. `.band`
+        also writes `padding-inline`, but as a fixed reuse of the existing
+        `--page-inset` token (for alignment with `.section`'s content edges),
+        not as something any variant needs to override — so it doesn't need
+        a second single-writer guarantee.
      3. Sections own vertical rhythm with PADDING, never margin. No margin
         collapse, no `+ sibling` reset chains, and alternating light/dark
         bands meet edge-to-edge with no slivers between them.
@@ -2088,6 +2123,11 @@ a.pagination__page:hover { color: var(--gold); }
 
 .band {
   padding-block: var(--section-space, var(--space-12));
+  /* Horizontal inset reuses --page-inset (the existing §01 token, already
+     responsive via §11's breakpoint re-declarations) so .band aligns with
+     .section's content edges exactly — same .page shell, same margins,
+     while .page itself is still the fixed 1440px container. */
+  padding-inline: var(--page-inset);
 }
 
 /* variants — these set the variable, never the property */
@@ -2111,6 +2151,7 @@ a.pagination__page:hover { color: var(--gold); }
 }
 .card-grid--2 { --card-cols: 1; }
 .card-grid--3 { --card-cols: 1; }
+.card-grid--4 { --card-cols: 1; }
 
 
 /* --- 12.4  card-leader  →  template-parts/card-leader.php ----------------- */
@@ -2232,7 +2273,19 @@ a.pagination__page:hover { color: var(--gold); }
   gap: var(--space-2);
   padding: var(--space-3);
   background: var(--navy-800);
+  text-decoration: none;
+  transition: background 0.15s ease;
 }
+/* The card itself is the link (one click target, not a link-in-link), so its
+   children keep their own tokened colours even on hover/focus — without this,
+   the sitewide `a:hover { color: var(--gold) }` (specificity 0,1,1) would
+   beat a lone child class like .card-teaser__title (0,1,0) and paint every
+   line of the card gold on hover. */
+.card-teaser:hover { background: var(--navy-700); }
+.card-teaser:hover .card-teaser__title,
+.card-teaser:focus-visible .card-teaser__title { color: var(--on-dark-primary); }
+.card-teaser:hover .card-teaser__link,
+.card-teaser:focus-visible .card-teaser__link { color: var(--blue-200); }
 .card-teaser__label {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
@@ -2315,6 +2368,22 @@ a.pagination__page:hover { color: var(--gold); }
   color: var(--on-dark-caption);
 }
 
+/* Caption row under a .map-slot sitting on a LIGHT section (e.g. the hero) —
+   --grey, not --on-dark-caption, since this text is outside the dark box. */
+.map-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--hairline);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+
 
 /* --- 12.10  Motion --------------------------------------------------------
    `reveal` / `reveal-group` are behaviour hooks only: they carry opacity and
@@ -2339,6 +2408,7 @@ a.pagination__page:hover { color: var(--gold); }
 @media (min-width: 600px) {
   :root { --wrap-inset: var(--space-4); }
   .card-grid--2 { --card-cols: 2; }
+  .card-grid--4 { --card-cols: 2; }
 }
 
 @media (min-width: 900px) {
@@ -2347,6 +2417,7 @@ a.pagination__page:hover { color: var(--gold); }
     --section-space: var(--space-12);
   }
   .card-grid--3 { --card-cols: 3; }
+  .card-grid--4 { --card-cols: 4; }
   .card-leader__name { font-size: 1.5rem; }
 }
 
