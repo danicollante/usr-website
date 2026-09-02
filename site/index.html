@@ -37,7 +37,6 @@
 
       <div class="hero__grid">
         <div class="reveal">
-          <p class="label label--rule hero__eyebrow">Nimba County, Liberia</p>
           <h1 class="display">Securing U.S.-aligned critical minerals supply</h1>
           <p class="lede hero__sub">U.S. Strategic Resources is an American-backed
              mining investment vehicle formed to explore for critical minerals and
@@ -46,47 +45,7 @@
             <a class="btn" href="about.html#assets">The assets</a>
             <a class="btn-quiet" href="leadership.html">Leadership</a>
           </div>
-          <p class="hero__disclaimer">Exploration stage. No mineral resource or
-             reserve has been defined on either license.</p>
         </div>
-      <figure class="map">
-        <svg viewBox="0 0 440 450" role="img"
-             aria-label="Map of Liberia showing the Nimba 1 and Nimba 2 exploration licenses and the 243 km Yekepa to Buchanan rail corridor to deep water">
-          <defs>
-            <radialGradient id="nimbaHalo" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#89B8E1" stop-opacity=".5"></stop>
-              <stop offset="100%" stop-color="#89B8E1" stop-opacity="0"></stop>
-            </radialGradient>
-          </defs>
-          <polygon class="map__outline" points="13,179 40,148 61,128 95,93 132,21 170,35 185,15 210,35 224,75 260,128 300,100 307,112 330,160 340,180 312,220 330,260 365,280 405,340 420,390 405,435 360,410 310,395 260,370 220,355 155,282 125,250 80,239 40,210"
-                   fill="rgba(91,155,213,.07)" stroke="rgba(137,184,225,.5)" stroke-width="1.25" stroke-linejoin="round"></polygon>
-          <g fill="none" stroke="rgba(242,245,248,.12)" stroke-width="1"><path d="M13,179 L40,210"></path></g>
-          <!-- Soft halo on Nimba 1, centred on the licence, reusing the same
-               pulseNode keyframe as the Yekepa node rather than a bespoke
-               animation. -->
-          <circle class="map__pulse" cx="308" cy="113" r="58" fill="url(#nimbaHalo)"></circle>
-          <!-- Nimba 1 sits essentially at Yekepa, right where the rail
-               corridor terminates; Nimba 2 is immediately south, sharing
-               Nimba 1's lower edge so the pair reads as contiguous. -->
-          <polygon points="280,95 330,88 336,130 286,140" fill="rgba(91,155,213,.28)" stroke="#5B9BD5" stroke-width="1.5"></polygon>
-          <polygon points="286,140 336,130 342,172 292,182" fill="rgba(91,155,213,.14)" stroke="#5B9BD5" stroke-width="1.5" stroke-dasharray="4 3"></polygon>
-          <path class="map__rail" d="M307,112 C296,158 258,192 222,224 C198,246 172,268 155,282"
-                fill="none" stroke="#89B8E1" stroke-width="2" stroke-linecap="round"></path>
-          <circle cx="307" cy="112" r="4" fill="#89B8E1"></circle>
-          <circle class="map__pulse" cx="307" cy="112" r="4" fill="none" stroke="#89B8E1" stroke-width="1"></circle>
-          <circle cx="155" cy="282" r="4" fill="#89B8E1"></circle>
-          <circle cx="80" cy="239" r="3" fill="rgba(242,245,248,.55)"></circle>
-          <text x="316" y="106" font-family="JetBrains Mono, monospace" font-size="11" fill="#F2F5F8">Yekepa</text>
-          <text x="120" y="300" font-family="JetBrains Mono, monospace" font-size="11" fill="#F2F5F8" text-anchor="end">Buchanan</text>
-          <text x="70" y="234" font-family="JetBrains Mono, monospace" font-size="10" fill="rgba(242,245,248,.55)" text-anchor="end">Monrovia</text>
-          <text x="308" y="79" font-family="JetBrains Mono, monospace" font-size="10" fill="#5B9BD5" text-anchor="middle">Nimba 1</text>
-          <text x="350" y="164" font-family="JetBrains Mono, monospace" font-size="10" fill="#5B9BD5">Nimba 2</text>
-        </svg>
-        <figcaption class="map__caption">
-          <span>Two contiguous licenses</span>
-          <span class="t-lift">243 km to deep water</span>
-        </figcaption>
-      </figure>
       </div>
     </div>
   </section>
@@ -122,17 +81,15 @@
     </div>
   </section>
 
-  <!-- ═══ Full-bleed duotone band ═══ -->
-  <div class="band duo duo--band">
+  <!-- ═══ Full-bleed duotone band — a bare visual pause between two ink
+       sections, no caption. The "Exploration, not production" eyebrow and
+       its sentence read as a legal/hedging disclaimer bleeding into what
+       should be a confident nav moment (the teaser cards right below); that
+       disclaimer still lives in the footer's exploration-stage bar on every
+       page. A subtle scroll parallax (js/interactions.js) makes it read as
+       a quiet transition rather than a second static content block. ═══ -->
+  <div class="band duo duo--band band--parallax">
     <picture><source type="image/webp" srcset="assets/img/drill-rig-1548.webp 1548w, assets/img/drill-rig-1280.webp 1280w, assets/img/drill-rig-800.webp 800w, assets/img/drill-rig-480.webp 480w" sizes="100vw"><img src="assets/img/drill-rig-1548.jpg" srcset="assets/img/drill-rig-1548.jpg 1548w, assets/img/drill-rig-1280.jpg 1280w, assets/img/drill-rig-800.jpg 800w, assets/img/drill-rig-480.jpg 480w" sizes="100vw" alt="Exploration drill rig on site in Nimba County, Liberia" width="1548" height="1161" loading="lazy" decoding="async"></picture>
-    <div class="duo__content">
-      <div class="wrap">
-        <p class="label">Exploration, not production</p>
-        <p class="body t-soft measure" style="margin-top:12px">Drilling and
-           prospectivity work across two contiguous license areas on the
-           gold-prospective Cestos shear zone.</p>
-      </div>
-    </div>
   </div>
 
   <!-- ═══ Teasers — no section head. The prior copy here ("Three things to

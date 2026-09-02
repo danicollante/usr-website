@@ -341,7 +341,7 @@ ul, ol { margin: 0; padding: 0; }
 .duo::after {
   content: '';
   position: absolute; inset: 0; z-index: 2;
-  background: linear-gradient(180deg, rgba(16,27,51,.12), rgba(16,27,51,.6));
+  background: linear-gradient(180deg, rgba(16,27,51,.12), rgba(16,27,51,.85));
   pointer-events: none;
 }
 
@@ -406,6 +406,16 @@ ul, ol { margin: 0; padding: 0; }
 .band .duo__content { width: 100%; padding-bottom: var(--s-48); }
 .band--short { height: 240px; }
 
+/* Subtle scroll parallax (js/interactions.js writes the transform per
+   frame). The base scale gives translateY overscan room so the shift never
+   uncovers an edge — .duo's own overflow: hidden clips it. Static (no
+   transform) until JS runs; reduced-motion users never get the listener. */
+.band--parallax > picture > img,
+.band--parallax > img {
+  transform: scale(1.2);
+  will-change: transform;
+}
+
 /* Native-colour band — same footprint and legibility gradient as .duo--band,
    without the grayscale filter or the colour-blend layer. Scoped use: the
    flag photo on About/Jurisdiction, where colour is doing real work rather
@@ -463,7 +473,7 @@ ul, ol { margin: 0; padding: 0; }
 }
 
 .site-header__logo { display: block; flex: none; }
-.site-header__logo img { height: 38px; width: auto; display: block; }
+.site-header__logo img { height: 44px; width: auto; display: block; }
 
 .nav {
   display: flex; align-items: center; gap: 36px;
@@ -572,6 +582,9 @@ ul, ol { margin: 0; padding: 0; }
   position: relative;
   background: var(--ink);
   isolation: isolate;
+  min-height: 820px;
+  display: flex;
+  flex-direction: column;
   /* No overflow:hidden here on purpose: it would make this section the
      nearest "scroll container" ancestor for the sticky nav inside it,
      capping the nav's stick range to the hero's own height — it would stop
@@ -603,33 +616,37 @@ ul, ol { margin: 0; padding: 0; }
     rgba(16,27,51,.55) 100%);
   pointer-events: none;
 }
-.hero__inner { position: relative; z-index: 3; }
+/* .hero is a column flex container (min-height above) so the extra room
+   is distributed by centering rather than by padding the content down —
+   .hero__inner stretches to fill it, and .hero__grid (flex: 1 below) fills
+   whatever's left after the header, so align-items: center below centers
+   the text/map columns in the full height rather than leaving the surplus
+   stranded below the CTA. */
+.hero__inner {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 
+/* Single column since the map figure was removed from the hero (it now
+   lives only on About → Jurisdiction) — the text block's own max-widths
+   below keep it from sprawling edge-to-edge at wide viewports. */
 .hero__grid {
   max-width: var(--measure);
   margin-inline: auto;
+  width: 100%;
   padding: 104px var(--gutter) var(--s-96);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 400px;
-  gap: 80px;
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
+  flex: 1;
 }
 
-.hero__eyebrow { margin-bottom: 34px; }
-.hero h1 { max-width: 15ch; color: var(--on-ink); }
+.hero h1 { max-width: 17ch; color: var(--on-ink); }
 .hero__sub { margin-top: 36px; color: var(--on-ink-soft); max-width: 52ch; }
 .hero__actions { margin-top: 44px; }
-
-/* The exploration-stage disclaimer, in the hero, above the fold. */
-.hero__disclaimer {
-  font-family: var(--font-mono);
-  font-size: 11px; line-height: 1.7; letter-spacing: .06em;
-  color: rgba(242, 245, 248, .62);
-  margin: 56px 0 0;
-  max-width: 60ch;
-  padding-top: 22px;
-  border-top: 1px solid rgba(242, 245, 248, .14);
-}
 
 /* Compact hero for interior pages — no photograph, same rhythm. */
 .page-head {
@@ -661,6 +678,10 @@ ul, ol { margin: 0; padding: 0; }
   color: rgba(242, 245, 248, .55);
 }
 
+/* Neighboring countries — labels only, floating context around Liberia's
+   own outline. No shape underneath. */
+.map__neighbor-label { fill: rgba(242, 245, 248, .4); }
+
 @keyframes drawRail { from { stroke-dashoffset: 560; } to { stroke-dashoffset: 0; } }
 @keyframes pulseNode {
   0%, 100% { opacity: .25; transform: scale(1); }
@@ -677,18 +698,29 @@ ul, ol { margin: 0; padding: 0; }
    then the rail draws in slowly as the one deliberate animated beat on the
    page (CLAUDE.md, Motion). .45s duration on the outline is chosen to zero
    out the gap between "outline finishes" and "rail starts" exactly, since the
-   rail's delay is a fixed constraint here, not the outline's duration. */
+   rail's delay is a fixed constraint here, not the outline's duration.
+
+   The map component is mounted twice (Home hero, About → Jurisdiction), so
+   the draw-in is gated behind .map.is-visible rather than firing on paint —
+   each mount gets its own IntersectionObserver entry (js/interactions.js)
+   and plays independently when it actually scrolls into view. */
 .map__outline {
   stroke-dasharray: 1327.62;
+  stroke-dashoffset: 1327.62;
+}
+.map.is-visible .map__outline {
   animation: drawOutline 1.05s cubic-bezier(.4, 0, .2, 1) both;
 }
 
 .map__rail {
   stroke-dasharray: 560;
+  stroke-dashoffset: 560;
+}
+.map.is-visible .map__rail {
   animation: drawRail 3.4s cubic-bezier(.4, 0, .2, 1) .45s both;
 }
-.map__pulse {
-  transform-origin: 307px 112px;
+.map__pulse { transform-origin: 307px 112px; }
+.map.is-visible .map__pulse {
   animation: pulseNode 3.4s ease-in-out infinite;
 }
 
@@ -739,7 +771,11 @@ ul, ol { margin: 0; padding: 0; }
   background: var(--card);
   padding: 18px 14px 16px;
 }
-.element--empty { background: var(--tint); }
+/* A partial trailing row still spans the grid's full track width, so an
+   empty track there would otherwise show the container's own hairline
+   background as a solid, oddly-shaded block. The filler blends into the
+   real cells instead of standing out. */
+.element--empty { background: var(--card); }
 .element__sym {
   font-family: var(--font-mono);
   font-weight: 300; font-size: 30px; line-height: 1;
@@ -804,26 +840,23 @@ ul, ol { margin: 0; padding: 0; }
    11. Cards
    -------------------------------------------------------------------------- */
 
-/* Leadership card — sizes to its own content, aligned to the top rule, so a
-   short bio reads as a shorter column rather than an empty box. */
+/* Leadership card — photo on top, blurb below (GFA team-section pattern:
+   portrait, then role, then name, then a short bio). Four board members,
+   one row: cards stretch to a shared row height (align-items: stretch)
+   rather than sizing to their own bio length, so photo tops and card
+   bottoms line up regardless of bio length. */
 .people {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 2px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .person {
   background: var(--alt);
-  padding: 40px 40px 44px;
   border-top: 2px solid var(--accent);
-}
-.person__head {
-  display: grid;
-  grid-template-columns: 132px minmax(0, 1fr);
-  gap: 28px;
-  align-items: start;
-  margin-bottom: 28px;
+  display: flex;
+  flex-direction: column;
 }
 .person__portrait {
   aspect-ratio: 4 / 5;
@@ -841,12 +874,34 @@ ul, ol { margin: 0; padding: 0; }
   background: var(--duotone); mix-blend-mode: color; opacity: .55;
   pointer-events: none;
 }
+.person__body {
+  padding: 28px 32px 36px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
 .person h3 { margin: 0 0 var(--s-12); }
+.person__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-12);
+  margin-bottom: var(--s-12);
+}
 .person__role {
   font-family: var(--font-mono);
   font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
   color: var(--accent);
+  margin: 0;
 }
+.person__linkedin {
+  flex: none;
+  display: inline-flex;
+  color: var(--accent);
+}
+.person__linkedin svg { width: 16px; height: 16px; display: block; }
+.person__linkedin:hover,
+.person__linkedin:focus-visible { color: var(--accent-lift); }
 .person__bio {
   font-size: 15px; line-height: 1.75;
   color: rgba(242, 245, 248, .74);
@@ -1186,7 +1241,7 @@ ul, ol { margin: 0; padding: 0; }
   }
 
   .metals { grid-template-columns: repeat(3, 1fr); }
-  .cards--4 { grid-template-columns: repeat(2, 1fr); }
+  .cards--4, .people { grid-template-columns: repeat(2, 1fr); }
   .site-footer__grid { grid-template-columns: 1fr 1fr; gap: var(--s-48); }
   .facts { grid-template-columns: 1fr 1fr; }
 }
@@ -1237,8 +1292,8 @@ ul, ol { margin: 0; padding: 0; }
   .fact { padding: var(--s-24) var(--s-24) 28px; }
   .unit__disclaimer { flex-direction: column; gap: var(--s-12); padding: var(--s-24); }
 
-  .person, .card, .teaser, .metal { padding: var(--s-24) var(--s-24) var(--s-32); }
-  .person__head { grid-template-columns: 96px minmax(0, 1fr); gap: var(--s-16); }
+  .card, .teaser, .metal { padding: var(--s-24) var(--s-24) var(--s-32); }
+  .person__body { padding: var(--s-24) var(--s-24) var(--s-32); }
   .row, .news-item { padding: var(--s-24); }
 
   .site-footer__grid { grid-template-columns: minmax(0, 1fr); }
