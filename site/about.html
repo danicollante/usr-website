@@ -51,6 +51,7 @@
           <p class="label section-head__eyebrow">About us &mdash; Assets</p>
           <h2 class="h2">World-Class West African Critical Minerals Opportunity</h2>
         </div>
+        <!-- TODO(Dani): update lede copy to reflect single license — this note still says "Two contiguous license areas" while only Nimba 2 is shown (suppressed per Robin, Sept 2026, Nimba 2 only for now). Client-approved copy, not reworded here. -->
         <p class="section-head__note">Two contiguous license areas in Nimba
            County, Liberia: a mining-friendly, underexplored jurisdiction
            aligned with the U.S. and its allies.</p>
@@ -58,6 +59,7 @@
 
       <div class="unit reveal">
         <div class="unit__split">
+        <!-- SUPPRESSED per Robin, Sept 2026 — Nimba 1 on hold, Nimba 2 only for now. Restore by removing this comment wrapper.
           <div class="unit__col">
             <div class="unit__head">
               <div class="unit__name">Nimba 1</div>
@@ -78,6 +80,7 @@
             <div class="element element--empty" aria-hidden="true"></div>
             </div>
           </div>
+        -->
 
           <div class="unit__col">
             <div class="unit__head">
@@ -176,7 +179,8 @@
         </dl>
         <figure class="map">
           <svg viewBox="-100 -70 640 560" role="img"
-               aria-label="Map of Liberia and its neighbors Sierra Leone, Guinea, and Cote d'Ivoire, showing the Nimba 1 and Nimba 2 exploration licenses and the 243 km Yekepa to Buchanan rail corridor to deep water">
+               aria-label="Map of Liberia and its neighbors Sierra Leone, Guinea, and Cote d'Ivoire, showing the Nimba 2 exploration license and the 243 km Yekepa to Buchanan rail corridor to deep water">
+               <!-- aria-label above: "Nimba 1 and Nimba 2 exploration licenses" → "Nimba 2 exploration license". SUPPRESSED per Robin, Sept 2026 — Nimba 1 on hold, Nimba 2 only for now. An attribute cannot contain an HTML comment, so this one is a live edit; restore the old wording when Nimba 1 returns. -->
             <defs>
               <radialGradient id="nimbaHalo2" cx="50%" cy="50%" r="50%">
                 <stop offset="0%" stop-color="#89B8E1" stop-opacity=".5"></stop>
@@ -194,15 +198,21 @@
                      fill="rgba(91,155,213,.07)" stroke="rgba(137,184,225,.5)" stroke-width="1.25" stroke-linejoin="round"></polygon>
             <text x="270" y="330" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="2" fill="rgba(242,245,248,.5)" text-anchor="middle">LIBERIA</text>
             <g fill="none" stroke="rgba(242,245,248,.12)" stroke-width="1"><path d="M13,179 L40,210"></path></g>
-            <!-- Soft halo on Nimba 1, centred on the licence, reusing the same
-                 pulseNode keyframe as the Yekepa node rather than a bespoke
-                 animation. -->
-            <circle class="map__pulse" cx="308" cy="113" r="58" fill="url(#nimbaHalo2)"></circle>
-            <!-- Nimba 1 sits essentially at Yekepa, right where the rail
-                 corridor terminates; Nimba 2 is immediately south, sharing
-                 Nimba 1's lower edge so the pair reads as contiguous. -->
+            <!-- Soft halo, reusing the same pulseNode keyframe as the Yekepa
+                 node rather than a bespoke animation. Recentred from Nimba 1
+                 (308,113) onto Nimba 2's centroid (314,156) per Robin, Sept 2026
+                 — Nimba 1 on hold, Nimba 2 only for now. This is a positioning
+                 value rather than content, so it is a live edit, not a commented-
+                 out suppression: put it back to 308,113 when Nimba 1 returns. -->
+            <circle class="map__pulse" cx="314" cy="156" r="58" fill="url(#nimbaHalo2)"></circle>
+            <!-- Nimba 2 sits immediately south of Yekepa, where the rail
+                 corridor terminates. Nimba 1 sat directly north of it, sharing
+                 Nimba 2's upper edge — that shape is commented out just below,
+                 SUPPRESSED per Robin, Sept 2026 — Nimba 1 on hold, Nimba 2 only for now. -->
+            <!-- SUPPRESSED per Robin, Sept 2026 — Nimba 1 on hold, Nimba 2 only for now. Restore by removing this comment wrapper.
             <polygon points="280,95 330,88 336,130 286,140" fill="rgba(91,155,213,.28)" stroke="#5B9BD5" stroke-width="1.5"></polygon>
-            <polygon points="286,140 336,130 342,172 292,182" fill="rgba(91,155,213,.14)" stroke="#5B9BD5" stroke-width="1.5" stroke-dasharray="4 3"></polygon>
+            -->
+            <polygon points="286,140 336,130 342,172 292,182" fill="rgba(91,155,213,.14)" stroke="#5B9BD5" stroke-width="1.5"></polygon>
             <path class="map__rail" d="M307,112 C296,158 258,192 222,224 C198,246 172,268 155,282"
                   fill="none" stroke="#89B8E1" stroke-width="2" stroke-linecap="round"></path>
             <circle cx="307" cy="112" r="4" fill="#89B8E1"></circle>
@@ -212,10 +222,13 @@
             <text x="316" y="106" font-family="JetBrains Mono, monospace" font-size="12" fill="#F2F5F8">Yekepa</text>
             <text x="120" y="300" font-family="JetBrains Mono, monospace" font-size="12" fill="#F2F5F8" text-anchor="end">Buchanan</text>
             <text x="70" y="234" font-family="JetBrains Mono, monospace" font-size="12" fill="rgba(242,245,248,.55)" text-anchor="end">Monrovia</text>
+            <!-- SUPPRESSED per Robin, Sept 2026 — Nimba 1 on hold, Nimba 2 only for now. Restore by removing this comment wrapper.
             <text x="308" y="79" font-family="JetBrains Mono, monospace" font-size="12" fill="#5B9BD5" text-anchor="middle">Nimba 1</text>
+            -->
             <text x="350" y="164" font-family="JetBrains Mono, monospace" font-size="12" fill="#5B9BD5">Nimba 2</text>
           </svg>
           <figcaption class="map__caption">
+            <!-- TODO(Dani): update lede copy to reflect single license — this caption still says "Two contiguous licenses" while the map now shows only Nimba 2 (suppressed per Robin, Sept 2026, Nimba 2 only for now). Client-approved copy, not reworded here. -->
             <span>Two contiguous licenses</span>
             <span class="t-lift">243 km to deep water</span>
           </figcaption>
