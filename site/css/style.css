@@ -737,15 +737,6 @@ ul, ol { margin: 0; padding: 0; }
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-
-/* SUPPRESSED per Robin, Sept 2026 — Nimba 1 on hold, Nimba 2 only for now.
-   .unit__split is a hard two-column grid. With the Nimba 1 column commented
-   out in about.html, the remaining Nimba 2 column would render at half width
-   with dead space beside it. This collapses the grid to a single column ONLY
-   while one .unit__col is left, so it reverts itself the moment the Nimba 1
-   column is uncommented — no markup change and no new class to map.
-   Delete this rule when Nimba 1 is restored. */
-.unit__split:has(> .unit__col:only-child) { grid-template-columns: minmax(0, 1fr); }
 .unit__col {
   padding: var(--s-48) var(--s-48) 44px;
 }
