@@ -29,8 +29,11 @@ Everything below exists to keep that conversion clean — don't optimize away fr
 - `news.html` — unchanged, one post is fine
 - `contact.html` — unchanged
 - `legal.html` — unchanged
-Old URLs `cestos-project.html`, `why-liberia.html`, `critical-minerals.html`, `company.html` need
-thin redirect stubs (meta-refresh + canonical link) pointing at the new page/anchor.
+Old URLs `cestos-project.html`, `why-liberia.html`, `critical-minerals.html`, `company.html` are
+RETIRED — deleted outright, with no redirects. Robin confirmed the final 7-page structure and
+decided these four URLs simply go away. Do not recreate them and do not add redirect stubs
+(meta-refresh or otherwise); their absence is intentional, not an oversight. An earlier version
+of this file called for stubs — that instruction was stale and caused repeat audit findings.
 
 ## Do not remove
 - `reveal` / `reveal-group` classes on section blocks — these drive the existing scroll-triggered

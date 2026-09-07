@@ -7,7 +7,7 @@ PHP/WordPress.
 ```
 usr-website/
 ├── site/               ← THE DELIVERABLE
-│   ├── *.html             7 pages + 4 redirect stubs at the retired URLs
+│   ├── *.html             7 pages (+ 404.html; the 4 old URLs are retired, no stubs)
 │   ├── news/{slug}.html   single post page
 │   ├── css/style.css      the one stylesheet
 │   ├── js/interactions.js scroll reveals + mobile nav
