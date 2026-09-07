@@ -619,9 +619,13 @@ ul, ol { margin: 0; padding: 0; }
 /* .hero is a column flex container (min-height above) so the extra room
    is distributed by centering rather than by padding the content down —
    .hero__inner stretches to fill it, and .hero__grid (flex: 1 below) fills
-   whatever's left after the header, so align-items: center below centers
-   the text/map columns in the full height rather than leaving the surplus
-   stranded below the CTA. */
+   the whole height, so align-items: center below centers the text/map
+   columns in the full height rather than leaving the surplus stranded
+   below the CTA. (The header no longer lives inside .hero__inner — see
+   the note in index.html above <section class="hero"> — so this box is
+   no longer sharing height with it; the hero text now centers a bit
+   lower than before moving the header out, since .hero__grid has the
+   full 820px to itself instead of 820px minus the header's height.) */
 .hero__inner {
   position: relative;
   z-index: 3;
@@ -830,7 +834,7 @@ ul, ol { margin: 0; padding: 0; }
   border-top: 1px solid var(--rule);
 }
 .unit__disclaimer .label { flex: none; padding-top: 2px; color: var(--accent); }
-.unit__disclaimer p {
+.unit__disclaimer p:not(.label) {
   font-size: 14px; line-height: 1.65;
   color: var(--on-ink-soft);
   margin: 0;
@@ -943,11 +947,11 @@ ul, ol { margin: 0; padding: 0; }
   margin-bottom: var(--s-24);
 }
 .card h3, .card h4 { margin: 0 0 var(--s-16); }
-.card p { font-size: 15px; line-height: 1.75; color: rgba(242, 245, 248, .74); margin: 0; }
+.card p:not(.label) { font-size: 15px; line-height: 1.75; color: rgba(242, 245, 248, .74); margin: 0; }
 .card__foot { margin-top: var(--s-32); }
 
 .section--paper .card { background: var(--card); border-top-color: var(--facet); }
-.section--paper .card p { color: var(--grey); }
+.section--paper .card p:not(.label) { color: var(--grey); }
 .section--paper .card__index { color: var(--facet); }
 
 /* Teaser card — a link surface. */
@@ -960,7 +964,7 @@ ul, ol { margin: 0; padding: 0; }
 }
 .teaser:hover { background: var(--panel); }
 .teaser h3 { color: var(--on-ink); margin: 0 0 var(--s-16); }
-.teaser p { font-size: 15px; line-height: 1.75; color: rgba(242,245,248,.74); margin: 0 0 var(--s-32); }
+.teaser p:not(.label) { font-size: 15px; line-height: 1.75; color: rgba(242,245,248,.74); margin: 0 0 var(--s-32); }
 .teaser .link-arrow { margin-top: auto; }
 
 /* Metal card — the symbol is the display element. */
@@ -1022,10 +1026,10 @@ ul, ol { margin: 0; padding: 0; }
 }
 .news-item:hover { background: var(--panel); }
 .news-item h3 { margin: 0 0 var(--s-12); color: var(--on-ink); }
-.news-item p { font-size: 15px; line-height: 1.7; color: rgba(242,245,248,.74); margin: 0 0 var(--s-24); }
+.news-item p:not(.label) { font-size: 15px; line-height: 1.7; color: rgba(242,245,248,.74); margin: 0 0 var(--s-24); }
 
 .article { max-width: 68ch; }
-.article p { font-size: 17px; line-height: 1.75; color: var(--on-ink-soft); margin: 0 0 var(--s-24); }
+.article p:not(.label) { font-size: 17px; line-height: 1.75; color: var(--on-ink-soft); margin: 0 0 var(--s-24); }
 .article h2 { font-family: var(--font-display); font-weight: 400; font-size: 30px; line-height: 1.2; margin: var(--s-48) 0 var(--s-16); }
 .article__meta {
   display: flex; gap: var(--s-32); flex-wrap: wrap;
@@ -1183,7 +1187,7 @@ ul, ol { margin: 0; padding: 0; }
   display: flex; align-items: baseline; gap: 28px;
 }
 .disclaimer-bar .label { flex: none; padding-top: 2px; }
-.disclaimer-bar p {
+.disclaimer-bar p:not(.label) {
   font-size: 14px; line-height: 1.65;
   color: var(--on-ink-soft);
   margin: 0;
