@@ -1020,6 +1020,11 @@ ul, ol { margin: 0; padding: 0; }
   transition: background .2s ease;
 }
 .teaser:hover { background: var(--panel); }
+/* The eyebrow (.label) and heading sat flush — 0px between them, both having
+   margin: 0. .section-head__eyebrow and .page-head__eyebrow already use
+   26px for this exact eyebrow-then-heading relationship elsewhere in the
+   design; reusing it here rather than inventing a new value. */
+.teaser .label { margin-bottom: 26px; }
 .teaser h3 { color: var(--on-ink); margin: 0 0 var(--s-16); }
 .teaser p:not(.label) { font-size: 15px; line-height: 1.75; color: rgba(242,245,248,.74); margin: 0 0 var(--s-32); }
 .teaser .link-arrow { margin-top: auto; }
