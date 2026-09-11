@@ -748,26 +748,20 @@ ul, ol { margin: 0; padding: 0; }
   background: var(--card);
 }
 
-/* Four shared rows — head / title / body / meta — so the two columns line up
-   band by band instead of only at their outer edges. The 1fr body row takes
-   the slack, which pins both meta rows to the same line however much the
-   copy above them wraps. Without this the columns were merely equal height:
-   the meta rows' bottoms matched, but between about 960px and 1090px the
-   twelve-symbol row wrapped to two lines while PIPELINE's stayed on one, and
-   the two hairlines sat 27px apart. Subgrid degrades to the old behaviour
-   where it isn't supported, which is the current, acceptable rendering. */
-.unit__split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto 1fr auto;
-}
-.unit__col {
+/* Nimba 1 (.unit__primary) and Pipeline (.unit__secondary) now stack as
+   plain block children of .unit__split — Nimba 1 full-width with its own
+   mineral groups below the copy, Pipeline a visually secondary strip under
+   it (tinted ground, smaller heading). Replaces the former 2-column
+   .unit__split/.unit__col grid; .unit__split itself carries no rules now,
+   it's just the wrapper. */
+.unit__primary {
   padding: var(--s-48) var(--s-48) 44px;
-  display: grid;
-  grid-row: span 4;
-  grid-template-rows: subgrid;
 }
-.unit__col + .unit__col { border-left: 1px solid var(--rule); }
+.unit__secondary {
+  padding: var(--s-32) var(--s-48) 36px;
+  background: var(--tint);
+  border-top: 1px solid var(--rule);
+}
 
 .unit__head {
   display: flex; align-items: baseline; justify-content: space-between;
@@ -783,13 +777,13 @@ ul, ol { margin: 0; padding: 0; }
   font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
   color: var(--muted);
 }
-.unit__col h3 { margin: 0 0 var(--s-16); color: var(--ink); }
-.unit__col > p { margin: 0 0 34px; }
+.unit__primary h3, .unit__secondary h3 { margin: 0 0 var(--s-16); color: var(--ink); }
+.unit__secondary h3 { font-size: 20px; }
+.unit__primary > p, .unit__secondary > p { margin: 0 0 34px; }
 
-/* The deck's single mono meta row, sitting in the subgrid's fourth row (see
-   .unit__split above) so it lands at the foot of the column. Replaced the
-   4-column element tile grid, whose Battery/Base/Defense/Tech category
-   labels the deck dropped. */
+/* Status line on the Pipeline card — the one place .unit__meta still runs
+   as a plain mono term/value row, now that Nimba 1's element list lives in
+   the mineral mini-cards below instead. */
 .unit__meta {
   display: flex; flex-wrap: wrap; align-items: baseline;
   gap: var(--s-8) var(--s-12);
@@ -802,12 +796,57 @@ ul, ol { margin: 0; padding: 0; }
   letter-spacing: .2em; text-transform: uppercase;
   color: var(--facet);
 }
-/* Twelve symbols joined by middle dots give the line no break opportunity
-   of its own, so it needs an explicit one to wrap on a narrow column. */
+/* Status value only now — see .mineral-groups below for Nimba 1's element
+   list, which used to live here as a run of dot-joined symbols. */
 .unit__meta-value {
   letter-spacing: .06em;
   color: var(--ink);
   overflow-wrap: anywhere;
+}
+
+/* Nimba 1's twelve symbols, as two labeled groups of six mini-cards rather
+   than a run of dot-joined text at meta-row size — the numbers need room to
+   read as data, not a caption. Flex-wrap (not an auto-fit grid) so a 6/group
+   count never leaves a ragged hole at any width. */
+.mineral-groups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-24);
+  margin-top: var(--s-8);
+  padding-top: var(--s-24);
+  border-top: 1px solid var(--rule);
+}
+.mineral-group__label {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--facet);
+  margin: 0 0 var(--s-12);
+}
+.mineral-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.mineral {
+  flex: 1 1 140px;
+  background: var(--tint);
+  padding: var(--s-12) var(--s-16) 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.mineral__sym {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--ink);
+  align-self: flex-start;
+}
+.mineral__name {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: .04em;
+  color: var(--muted);
 }
 
 /* Outbound PubChem link on the symbol itself — a dashed underline rather
@@ -1265,6 +1304,10 @@ ul, ol { margin: 0; padding: 0; }
   .cards--4, .people { grid-template-columns: repeat(2, 1fr); }
   .site-footer__grid { grid-template-columns: 1fr 1fr; gap: var(--s-48); }
   .facts { grid-template-columns: 1fr 1fr; }
+
+  /* Tablet: 3-per-row mineral mini-cards, rather than however many the
+     140px flex-basis happens to wrap to at this width. */
+  .mineral { flex: 1 1 calc(33.333% - .67px); }
 }
 
 @media (max-width: 860px) {
@@ -1282,13 +1325,6 @@ ul, ol { margin: 0; padding: 0; }
     border-top: 1px solid var(--edge);
   }
   .nav.is-open { display: flex; }
-
-  .unit__split { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
-  .unit__col {
-    grid-row: auto;
-    grid-template-rows: auto auto 1fr auto;
-  }
-  .unit__col + .unit__col { border-left: 0; border-top: 1px solid var(--rule); }
 
   .people, .cards--2, .cards--3, .cards--4 { grid-template-columns: minmax(0, 1fr); }
   .row, .news-item { grid-template-columns: minmax(0, 1fr); gap: var(--s-16); }
@@ -1311,7 +1347,11 @@ ul, ol { margin: 0; padding: 0; }
   .hero__grid { padding-block: var(--s-48) var(--s-48); }
   .hero h1 { max-width: none; }
 
-  .unit__col { padding: var(--s-32) var(--s-24) var(--s-32); }
+  .unit__primary { padding: var(--s-32) var(--s-24) var(--s-32); }
+  .unit__secondary { padding: var(--s-24) var(--s-24) var(--s-32); }
+  /* Explicit 2-up at mobile width — a stray 3rd column reads as too small
+     for a symbol + full name at this size. */
+  .mineral { flex: 1 1 calc(50% - .5px); }
   .facts { grid-template-columns: minmax(0, 1fr); }
   .fact { padding: var(--s-24) var(--s-24) 28px; }
   .unit__disclaimer { flex-direction: column; gap: var(--s-12); padding: var(--s-24); }
