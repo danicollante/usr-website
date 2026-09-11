@@ -723,7 +723,18 @@ ul, ol { margin: 0; padding: 0; }
 .map.is-visible .map__rail {
   animation: drawRail 3.4s cubic-bezier(.4, 0, .2, 1) .45s both;
 }
-.map__pulse { transform-origin: 307px 112px; }
+/* Both pulsing elements — the Yekepa node ring and the Nimba 1 halo — scale
+   around their own centre. This was a hardcoded `transform-origin: 307px
+   112px`, the Yekepa node's own coordinates: correct for the ring, and
+   invisible while the halo also sat up near Yekepa, but once the licence
+   moved south the halo drifted toward that point as it scaled instead of
+   growing in place. `transform-box: fill-box` makes the origin each
+   element's own fill bounding box, so it holds wherever either one sits.
+   The pulseNode keyframes scale only — no translate to undo. */
+.map__pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+}
 .map.is-visible .map__pulse {
   animation: pulseNode 3.4s ease-in-out infinite;
 }
@@ -737,12 +748,24 @@ ul, ol { margin: 0; padding: 0; }
   background: var(--card);
 }
 
+/* Four shared rows — head / title / body / meta — so the two columns line up
+   band by band instead of only at their outer edges. The 1fr body row takes
+   the slack, which pins both meta rows to the same line however much the
+   copy above them wraps. Without this the columns were merely equal height:
+   the meta rows' bottoms matched, but between about 960px and 1090px the
+   twelve-symbol row wrapped to two lines while PIPELINE's stayed on one, and
+   the two hairlines sat 27px apart. Subgrid degrades to the old behaviour
+   where it isn't supported, which is the current, acceptable rendering. */
 .unit__split {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto 1fr auto;
 }
 .unit__col {
   padding: var(--s-48) var(--s-48) 44px;
+  display: grid;
+  grid-row: span 4;
+  grid-template-rows: subgrid;
 }
 .unit__col + .unit__col { border-left: 1px solid var(--rule); }
 
@@ -763,33 +786,28 @@ ul, ol { margin: 0; padding: 0; }
 .unit__col h3 { margin: 0 0 var(--s-16); color: var(--ink); }
 .unit__col > p { margin: 0 0 34px; }
 
-/* Element grid — chemical symbols as a display element, not a caption. */
-.elements {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--hairline);
-  border: 1px solid var(--hairline);
-}
-.element {
-  background: var(--card);
-  padding: 18px 14px 16px;
-}
-/* A partial trailing row still spans the grid's full track width, so an
-   empty track there would otherwise show the container's own hairline
-   background as a solid, oddly-shaded block. The filler blends into the
-   real cells instead of standing out. */
-.element--empty { background: var(--card); }
-.element__sym {
+/* The deck's single mono meta row, sitting in the subgrid's fourth row (see
+   .unit__split above) so it lands at the foot of the column. Replaced the
+   4-column element tile grid, whose Battery/Base/Defense/Tech category
+   labels the deck dropped. */
+.unit__meta {
+  display: flex; flex-wrap: wrap; align-items: baseline;
+  gap: var(--s-8) var(--s-12);
+  padding-top: var(--s-24);
+  border-top: 1px solid var(--rule);
   font-family: var(--font-mono);
-  font-weight: 300; font-size: 30px; line-height: 1;
+  font-size: 12px; line-height: 1.6;
+}
+.unit__meta-term {
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--facet);
+}
+/* Twelve symbols joined by middle dots give the line no break opportunity
+   of its own, so it needs an explicit one to wrap on a narrow column. */
+.unit__meta-value {
+  letter-spacing: .06em;
   color: var(--ink);
-}
-.element__name { font-size: 12px; color: var(--ink); margin-top: 10px; }
-.element__note {
-  font-family: var(--font-mono);
-  font-size: 10px; letter-spacing: .1em;
-  color: var(--muted); margin-top: 3px;
+  overflow-wrap: anywhere;
 }
 
 /* Outbound PubChem link on the symbol itself — a dashed underline rather
@@ -970,7 +988,7 @@ ul, ol { margin: 0; padding: 0; }
 /* Metal card — the symbol is the display element. */
 .metals {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2px;
 }
 .metal {
@@ -1244,7 +1262,6 @@ ul, ol { margin: 0; padding: 0; }
     gap: var(--s-32);
   }
 
-  .metals { grid-template-columns: repeat(3, 1fr); }
   .cards--4, .people { grid-template-columns: repeat(2, 1fr); }
   .site-footer__grid { grid-template-columns: 1fr 1fr; gap: var(--s-48); }
   .facts { grid-template-columns: 1fr 1fr; }
@@ -1266,7 +1283,11 @@ ul, ol { margin: 0; padding: 0; }
   }
   .nav.is-open { display: flex; }
 
-  .unit__split { grid-template-columns: minmax(0, 1fr); }
+  .unit__split { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+  .unit__col {
+    grid-row: auto;
+    grid-template-rows: auto auto 1fr auto;
+  }
   .unit__col + .unit__col { border-left: 0; border-top: 1px solid var(--rule); }
 
   .people, .cards--2, .cards--3, .cards--4 { grid-template-columns: minmax(0, 1fr); }
@@ -1291,11 +1312,11 @@ ul, ol { margin: 0; padding: 0; }
   .hero h1 { max-width: none; }
 
   .unit__col { padding: var(--s-32) var(--s-24) var(--s-32); }
-  .elements { grid-template-columns: repeat(3, 1fr); }
   .facts { grid-template-columns: minmax(0, 1fr); }
   .fact { padding: var(--s-24) var(--s-24) 28px; }
   .unit__disclaimer { flex-direction: column; gap: var(--s-12); padding: var(--s-24); }
 
+  .metals { grid-template-columns: minmax(0, 1fr); }
   .card, .teaser, .metal { padding: var(--s-24) var(--s-24) var(--s-32); }
   .person__body { padding: var(--s-24) var(--s-24) var(--s-32); }
   .row, .news-item { padding: var(--s-24); }
