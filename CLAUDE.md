@@ -75,7 +75,12 @@ of this file called for stubs — that instruction was stale and caused repeat a
 - Metals pages keep the deck's content as-is (Ni/V/Ta are profiled even though they're not in the
   Assets slide's anomaly list; Mn is in the anomaly list but not profiled). This is intentional
   pending a future client decision. Do not add a disclaimer or reconcile the lists unilaterally.
-- "RARE EARTHS" opens the closing tagline — confirmed correct, keep as-is.
+- ~~"RARE EARTHS" opens the closing tagline — confirmed correct, keep as-is~~ — **SUPERSEDED
+  2026-09.** All "rare earth(s)" references were removed sitewide: first every instance except
+  `contact.html`'s eyebrow tagline (deliberately excluded pending Dani's review of that one
+  specific line, since this note said to keep it), then, once Dani confirmed the removal, that
+  last holdout too. `contact.html`'s eyebrow now reads "Prospective ground · American alignment"
+  (meta descriptions match). Don't reintroduce "rare earth(s)" anywhere without a fresh decision.
 - No `PRIVATE & CONFIDENTIAL` marking anywhere (that's the internal deck's footer, not for the
   public site). The exploration-stage / no-resource-defined disclaimer IS required and must stay
   clearly legible — see contrast rule below.
