@@ -22,8 +22,12 @@ Everything below exists to keep that conversion clean — don't optimize away fr
 
 ## Structure — 7 pages, matching the investor deck's own hierarchy
 - `index.html` — Home
-- `about.html` — sections `#assets`, `#jurisdiction`, `#differentiation` (merged from the old
-  cestos-project.html + why-liberia.html, plus new differentiation content)
+- `about.html` — originally merged from the old cestos-project.html + why-liberia.html, with sections
+  `#assets`, `#jurisdiction`, `#differentiation`. Both `#assets` and `#jurisdiction` were deleted
+  outright in the 2026-09-16 Liberia/Nimba removal (pre-removal markup preserved on the
+  `pre-liberia-removal-2026-09` branch) and replaced with `#approach` (Exploration Approach — a
+  numbered editorial list, not a card grid; see `.approach-steps`/`.approach-step` in style.css).
+  Current sections: intro (Who we are), `#approach`, the tagline band, `#differentiation`.
 - `leadership.html` — was `company.html`
 - `metals.html` — was `critical-minerals.html`; sections `#context`, `#battery`, `#tech`
 - `news.html` — unchanged, one post is fine
@@ -55,6 +59,12 @@ of this file called for stubs — that instruction was stale and caused repeat a
 - `<picture>` must be stretched to its box (`position:absolute; inset:0`). It is an inline wrapper,
   so without that the inner `object-fit: cover` has no box to fill and the photo collapses to its
   intrinsic width. This shipped broken once on the about-page band.
+- `site/assets/img/approach-0{1,2,3}.webp` and the `.card-approach`/`.card-approach__*` CSS are
+  currently unreferenced — built for an image-card version of the Approach section (Steps G/H) that
+  an external redesign superseded with the numbered-list layout described above. Left in place
+  intentionally (2026-09-16) rather than deleted, pending a decision on whether the image-card
+  layout comes back. Don't wire them up without checking first — the numbered list is the
+  client-approved direction.
 
 ## Contact form
 - Styled to match Global Frontier Advisors' form conventions, translated to the dark palette.
@@ -113,11 +123,13 @@ of this file called for stubs — that instruction was stale and caused repeat a
   plus a pulsing node at the Yekepa endpoint) was the site's one orchestrated showcase animation.
   It was deleted outright in the 2026-09-16 Liberia/Nimba removal (about.html's #jurisdiction
   section no longer exists; the pre-removal markup is preserved on the `pre-liberia-removal-2026-09`
-  branch). Nothing has replaced it — this is a pending design decision, not an oversight. The new
-  Approach section's cards (about.html#approach) use the same generic `.reveal-group` staggered
-  fade-in that every other card grid on the site already has (Differentiation, the homepage Mission
-  cards, teasers); that's ordinary micro-interaction, not a bespoke showcase moment, and shouldn't
-  be treated as the map's replacement without an explicit decision to do so.
+  branch). Nothing has replaced it — this is a pending design decision, not an oversight. The
+  Approach section (about.html#approach — a numbered `<ol class="approach-steps">` list, not a card
+  grid; the earlier image-card version from Steps G/H was superseded by an external redesign, see
+  the "External" commit history) uses the same generic `.reveal-group` staggered fade-in that every
+  other repeating group on the site already has (Differentiation cards, the homepage Mission cards,
+  teasers); that's ordinary micro-interaction, not a bespoke showcase moment, and shouldn't be
+  treated as the map's replacement without an explicit decision to do so.
 - A small number of additional micro-interactions may be proposed per page (e.g. metals-card hover,
   element-card reveal stagger) using the same restrained logic the map used — subtle, purposeful,
   tied to something the user is already doing (hover, scroll into view). Not decoration for its

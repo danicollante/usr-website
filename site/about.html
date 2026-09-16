@@ -42,56 +42,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&amp;family=Public+Sans:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@300;400;500&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
-
-<style>
-/* Exploration approach — local editorial layout; shared site styles stay intact. */
-#approach .section-head { display: block; margin-bottom: 44px; }
-#approach .h2 { max-width: 900px; }
-#approach .section-head__eyebrow { margin-bottom: 24px; }
-#approach .approach-steps {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  border-top: 1px solid var(--rule);
-}
-#approach .approach-step { padding: 28px 32px 0 0; min-width: 0; }
-#approach .approach-step + .approach-step { padding-left: 32px; }
-#approach .approach-step:last-child { padding-right: 0; }
-#approach .approach-step__number {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 14px;
-  line-height: 1.4;
-  letter-spacing: .12em;
-  color: var(--facet);
-  margin-bottom: 24px;
-}
-#approach .approach-step h3 {
-  font-family: var(--font-display);
-  font-size: 30px;
-  font-weight: 400;
-  line-height: 1.15;
-  letter-spacing: -.015em;
-  margin: 0 0 16px;
-}
-#approach .approach-step p { color: var(--grey); font-size: 15px; line-height: 1.75; margin: 0; }
-@media (max-width: 900px) {
-  #approach .approach-step { padding-right: 20px; }
-  #approach .approach-step + .approach-step { padding-left: 20px; }
-  #approach .approach-step h3 { font-size: 26px; }
-}
-@media (max-width: 680px) {
-  #approach .section-head { margin-bottom: 32px; }
-  #approach .approach-steps { grid-template-columns: 1fr; }
-  #approach .approach-step,
-  #approach .approach-step + .approach-step { padding: 24px 0; }
-  #approach .approach-step + .approach-step { border-top: 1px solid var(--rule); }
-  #approach .approach-step:last-child { padding-bottom: 0; }
-  #approach .approach-step__number { margin-bottom: 12px; }
-}
-</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
