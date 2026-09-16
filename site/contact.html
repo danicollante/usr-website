@@ -98,8 +98,18 @@
           <p class="label spec__title">Direct</p>
           <div class="spec__list">
             <div class="spec__row"><span>Email</span><span><a href="mailto:info@usstrategicresources.com">info@usstrategicresources.com</a></span></div>
+            <!-- LIBERIA-REMOVAL 2026-09-16: restore if license re-incorporated — no generic placeholder
+                 city. Not explicitly listed in the Step 2 run sheet (which named this row's neighbor,
+                 :102, for the Licenses row) but same "Monrovia, Liberia" boilerplate as the sitewide
+                 footer treatment — treated consistently. Flagged for Dani in the Step 3 report.
             <div class="spec__row"><span>Operations</span><span>Monrovia, Liberia</span></div>
-            <div class="spec__row"><span>Licenses</span><span><!-- RETIRED LICENSE — a second license, the original "Nimba 1", was withdrawn Sept 2026 and its name is NOT the license named here. The live license (formerly "Nimba 2") was renamed Nimba 1. Kept for reference only; do not restore without checking with Dani. -->Nimba 1</span></div>
+            -->
+            <!-- LIBERIA-REMOVAL 2026-09-16: restore if license re-incorporated — no "(West Africa)"
+                 placeholder per the run sheet. This row already contains a pre-existing RETIRED
+                 LICENSE comment, so it can't be wrapped in one more HTML comment without that
+                 comment's own close-delimiter closing things early and leaving "Nimba 1</span></div>" as stray
+                 live text. Using `hidden` instead — same reversibility, valid HTML, content intact. -->
+            <div class="spec__row" hidden><span>Licenses</span><span><!-- RETIRED LICENSE — a second license, the original "Nimba 1", was withdrawn Sept 2026 and its name is NOT the license named here. The live license (formerly "Nimba 2") was renamed Nimba 1. Kept for reference only; do not restore without checking with Dani. -->Nimba 1</span></div>
             <div class="spec__row"><span>Stage</span><span>Exploration</span></div>
           </div>
           <p class="spec__note">This presentation and this site are for
@@ -126,8 +136,12 @@
           <div class="site-footer__logo">
             <img src="assets/logo/USR-logo-on-dark-new.svg" alt="U.S. Strategic Resources" width="291" height="83">
           </div>
+          <!-- LIBERIA-REMOVAL 2026-09-16: restore if license re-incorporated
           <p>An American-backed mining investment vehicle exploring for critical
              minerals in Nimba County, Liberia.</p>
+          -->
+          <p>An American-backed mining investment vehicle exploring for critical
+             minerals across West Africa.</p>
         </div>
         <div>
           <p class="footer-nav__title">Company</p>
@@ -149,13 +163,18 @@
           <p class="footer-nav__title">Contact</p>
           <ul class="footer-nav">
             <li><a href="mailto:info@usstrategicresources.com">info@usstrategicresources.com</a></li>
+            <!-- LIBERIA-REMOVAL 2026-09-16: restore if license re-incorporated — no generic placeholder city
             <li>Monrovia, Liberia</li>
+            -->
           </ul>
         </div>
       </div>
       <div class="site-footer__legal">
         <span>&copy; 2026 U.S. Strategic Resources. All rights reserved.</span>
+<!-- LIBERIA-REMOVAL 2026-09-16: restore if license re-incorporated
         <span>Nimba County, Liberia &middot; Exploration stage</span>
+        -->
+        <span>West Africa &middot; Exploration stage</span>
       </div>
     </div>
   </footer>

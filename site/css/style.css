@@ -406,6 +406,16 @@ ul, ol { margin: 0; padding: 0; }
 .band .duo__content { width: 100%; padding-bottom: var(--s-48); }
 .band--short { height: 240px; }
 
+/* Centered band content — for a single short headline treated as a
+   standalone statement (e.g. the About tagline) rather than the default
+   bottom-aligned caption. Composes with any band background variant
+   (.duo/.duo--band, .photo--band, or plain .band). */
+.band--center {
+  align-items: center;
+  justify-content: center;
+}
+.band--center .duo__content { width: 100%; padding-bottom: 0; text-align: center; }
+
 /* Subtle scroll parallax (js/interactions.js writes the transform per
    frame). The base scale gives translateY overscan room so the shift never
    uncovers an edge — .duo's own overflow: hidden clips it. Static (no
@@ -664,80 +674,6 @@ ul, ol { margin: 0; padding: 0; }
   align-items: end;
 }
 .page-head__eyebrow { margin-bottom: 26px; }
-
-/* --------------------------------------------------------------------------
-   9. The signature map
-   -------------------------------------------------------------------------- */
-
-.map { margin: 0; }
-.map svg { width: 100%; height: auto; display: block; overflow: visible; }
-
-.map__caption {
-  display: flex; justify-content: space-between; gap: var(--s-24);
-  margin-top: 26px;
-  padding-top: 18px;
-  border-top: 1px solid rgba(242, 245, 248, .16);
-  font-family: var(--font-mono);
-  font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
-  color: rgba(242, 245, 248, .55);
-}
-
-/* Neighboring countries — labels only, floating context around Liberia's
-   own outline. No shape underneath. */
-.map__neighbor-label { fill: rgba(242, 245, 248, .4); }
-
-@keyframes drawRail { from { stroke-dashoffset: 560; } to { stroke-dashoffset: 0; } }
-@keyframes pulseNode {
-  0%, 100% { opacity: .25; transform: scale(1); }
-  50%      { opacity: .9;  transform: scale(1.9); }
-}
-/* 1327.62 is the polygon's real perimeter — sum of the Euclidean distance
-   between each of its 28 points, including the closing segment back to the
-   first (how a <polygon> renders and how getTotalLength() measures it).
-   Computed from the literal coordinates, not eyeballed. */
-@keyframes drawOutline { from { stroke-dashoffset: 1327.62; } to { stroke-dashoffset: 0; } }
-
-/* Sequence: outline flashes in first (quick — it's establishing context, not
-   the showcase moment), finishing right as the rail's own .45s delay elapses,
-   then the rail draws in slowly as the one deliberate animated beat on the
-   page (CLAUDE.md, Motion). .45s duration on the outline is chosen to zero
-   out the gap between "outline finishes" and "rail starts" exactly, since the
-   rail's delay is a fixed constraint here, not the outline's duration.
-
-   The map component is mounted twice (Home hero, About → Jurisdiction), so
-   the draw-in is gated behind .map.is-visible rather than firing on paint —
-   each mount gets its own IntersectionObserver entry (js/interactions.js)
-   and plays independently when it actually scrolls into view. */
-.map__outline {
-  stroke-dasharray: 1327.62;
-  stroke-dashoffset: 1327.62;
-}
-.map.is-visible .map__outline {
-  animation: drawOutline 1.05s cubic-bezier(.4, 0, .2, 1) both;
-}
-
-.map__rail {
-  stroke-dasharray: 560;
-  stroke-dashoffset: 560;
-}
-.map.is-visible .map__rail {
-  animation: drawRail 3.4s cubic-bezier(.4, 0, .2, 1) .45s both;
-}
-/* Both pulsing elements — the Yekepa node ring and the Nimba 1 halo — scale
-   around their own centre. This was a hardcoded `transform-origin: 307px
-   112px`, the Yekepa node's own coordinates: correct for the ring, and
-   invisible while the halo also sat up near Yekepa, but once the licence
-   moved south the halo drifted toward that point as it scaled instead of
-   growing in place. `transform-box: fill-box` makes the origin each
-   element's own fill bounding box, so it holds wherever either one sits.
-   The pulseNode keyframes scale only — no translate to undo. */
-.map__pulse {
-  transform-box: fill-box;
-  transform-origin: center;
-}
-.map.is-visible .map__pulse {
-  animation: pulseNode 3.4s ease-in-out infinite;
-}
 
 /* --------------------------------------------------------------------------
    10. The assets unit (screen 03)
@@ -1010,6 +946,65 @@ ul, ol { margin: 0; padding: 0; }
 .section--paper .card { background: var(--card); border-top-color: var(--facet); }
 .section--paper .card p:not(.label) { color: var(--grey); }
 .section--paper .card__index { color: var(--facet); }
+
+/* Approach card — .card with an image slot bled to the card edges above the
+   padded label/copy body, rather than sitting inside .card's own padding. */
+.card-approach { padding: 0; overflow: hidden; }
+.card-approach__image { margin: 0; }
+.card-approach__body { padding: var(--s-32) var(--s-32) 36px; }
+.card-approach__body .label { margin-bottom: var(--s-16); }
+
+/* Approach steps — numbered editorial list, About #approach (superseded the
+   image-card layout above; .card-approach is unused now but left in place,
+   see CLAUDE.md). Folded in from an inline <style> block in about.html's
+   <head> that violated the single-stylesheet rule; #approach-scoped
+   overrides below are unchanged from that block, just relocated. */
+#approach .section-head { display: block; margin-bottom: 44px; }
+#approach .h2 { max-width: 900px; }
+#approach .section-head__eyebrow { margin-bottom: 24px; }
+.approach-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--rule);
+}
+.approach-step { padding: 28px 32px 0 0; min-width: 0; }
+.approach-step + .approach-step { padding-left: 32px; }
+.approach-step:last-child { padding-right: 0; }
+.approach-step__number {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: .12em;
+  color: var(--facet);
+  margin-bottom: 24px;
+}
+.approach-step h3 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -.015em;
+  margin: 0 0 16px;
+}
+.approach-step p { color: var(--grey); font-size: 15px; line-height: 1.75; margin: 0; }
+@media (max-width: 900px) {
+  .approach-step { padding-right: 20px; }
+  .approach-step + .approach-step { padding-left: 20px; }
+  .approach-step h3 { font-size: 26px; }
+}
+@media (max-width: 680px) {
+  #approach .section-head { margin-bottom: 32px; }
+  .approach-steps { grid-template-columns: 1fr; }
+  .approach-step,
+  .approach-step + .approach-step { padding: 24px 0; }
+  .approach-step + .approach-step { border-top: 1px solid var(--rule); }
+  .approach-step:last-child { padding-bottom: 0; }
+  .approach-step__number { margin-bottom: 12px; }
+}
 
 /* Teaser card — a link surface. */
 .teaser {
@@ -1296,7 +1291,6 @@ ul, ol { margin: 0; padding: 0; }
     padding-block: 72px var(--s-64);
   }
   .hero h1 { max-width: 20ch; }
-  .map { max-width: 440px; }
 
   .section-head,
   .section-head--wide,
@@ -1384,8 +1378,6 @@ ul, ol { margin: 0; padding: 0; }
     transition: none !important;
   }
   .reveal, .reveal-group > * { opacity: 1; transform: none; }
-  .map__rail { stroke-dasharray: none; }
-  .map__outline { stroke-dasharray: none; }
 }
 
 @media print {
