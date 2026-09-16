@@ -677,80 +677,6 @@ ul, ol { margin: 0; padding: 0; }
 .page-head__eyebrow { margin-bottom: 26px; }
 
 /* --------------------------------------------------------------------------
-   9. The signature map
-   -------------------------------------------------------------------------- */
-
-.map { margin: 0; }
-.map svg { width: 100%; height: auto; display: block; overflow: visible; }
-
-.map__caption {
-  display: flex; justify-content: space-between; gap: var(--s-24);
-  margin-top: 26px;
-  padding-top: 18px;
-  border-top: 1px solid rgba(242, 245, 248, .16);
-  font-family: var(--font-mono);
-  font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
-  color: rgba(242, 245, 248, .55);
-}
-
-/* Neighboring countries — labels only, floating context around Liberia's
-   own outline. No shape underneath. */
-.map__neighbor-label { fill: rgba(242, 245, 248, .4); }
-
-@keyframes drawRail { from { stroke-dashoffset: 560; } to { stroke-dashoffset: 0; } }
-@keyframes pulseNode {
-  0%, 100% { opacity: .25; transform: scale(1); }
-  50%      { opacity: .9;  transform: scale(1.9); }
-}
-/* 1327.62 is the polygon's real perimeter — sum of the Euclidean distance
-   between each of its 28 points, including the closing segment back to the
-   first (how a <polygon> renders and how getTotalLength() measures it).
-   Computed from the literal coordinates, not eyeballed. */
-@keyframes drawOutline { from { stroke-dashoffset: 1327.62; } to { stroke-dashoffset: 0; } }
-
-/* Sequence: outline flashes in first (quick — it's establishing context, not
-   the showcase moment), finishing right as the rail's own .45s delay elapses,
-   then the rail draws in slowly as the one deliberate animated beat on the
-   page (CLAUDE.md, Motion). .45s duration on the outline is chosen to zero
-   out the gap between "outline finishes" and "rail starts" exactly, since the
-   rail's delay is a fixed constraint here, not the outline's duration.
-
-   The map component is mounted twice (Home hero, About → Jurisdiction), so
-   the draw-in is gated behind .map.is-visible rather than firing on paint —
-   each mount gets its own IntersectionObserver entry (js/interactions.js)
-   and plays independently when it actually scrolls into view. */
-.map__outline {
-  stroke-dasharray: 1327.62;
-  stroke-dashoffset: 1327.62;
-}
-.map.is-visible .map__outline {
-  animation: drawOutline 1.05s cubic-bezier(.4, 0, .2, 1) both;
-}
-
-.map__rail {
-  stroke-dasharray: 560;
-  stroke-dashoffset: 560;
-}
-.map.is-visible .map__rail {
-  animation: drawRail 3.4s cubic-bezier(.4, 0, .2, 1) .45s both;
-}
-/* Both pulsing elements — the Yekepa node ring and the Nimba 1 halo — scale
-   around their own centre. This was a hardcoded `transform-origin: 307px
-   112px`, the Yekepa node's own coordinates: correct for the ring, and
-   invisible while the halo also sat up near Yekepa, but once the licence
-   moved south the halo drifted toward that point as it scaled instead of
-   growing in place. `transform-box: fill-box` makes the origin each
-   element's own fill bounding box, so it holds wherever either one sits.
-   The pulseNode keyframes scale only — no translate to undo. */
-.map__pulse {
-  transform-box: fill-box;
-  transform-origin: center;
-}
-.map.is-visible .map__pulse {
-  animation: pulseNode 3.4s ease-in-out infinite;
-}
-
-/* --------------------------------------------------------------------------
    10. The assets unit (screen 03)
    -------------------------------------------------------------------------- */
 
@@ -1314,7 +1240,6 @@ ul, ol { margin: 0; padding: 0; }
     padding-block: 72px var(--s-64);
   }
   .hero h1 { max-width: 20ch; }
-  .map { max-width: 440px; }
 
   .section-head,
   .section-head--wide,
@@ -1402,8 +1327,6 @@ ul, ol { margin: 0; padding: 0; }
     transition: none !important;
   }
   .reveal, .reveal-group > * { opacity: 1; transform: none; }
-  .map__rail { stroke-dasharray: none; }
-  .map__outline { stroke-dasharray: none; }
 }
 
 @media print {

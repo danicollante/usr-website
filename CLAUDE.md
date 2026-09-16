@@ -109,12 +109,19 @@ of this file called for stubs — that instruction was stale and caused repeat a
   disables all transitions and the map's rail-line draw animation.
 
 ## Motion
-- One orchestrated signature moment on the Home hero: the Liberia map's rail corridor draws in
-  once, plus a pulsing node animation at the Yekepa endpoint. That's the showcase animation — don't
-  add competing scroll effects elsewhere without a specific reason.
+- **No signature moment currently.** The SVG jurisdiction map on about.html (rail corridor draw-in
+  plus a pulsing node at the Yekepa endpoint) was the site's one orchestrated showcase animation.
+  It was deleted outright in the 2026-09-16 Liberia/Nimba removal (about.html's #jurisdiction
+  section no longer exists; the pre-removal markup is preserved on the `pre-liberia-removal-2026-09`
+  branch). Nothing has replaced it — this is a pending design decision, not an oversight. The new
+  Approach section's cards (about.html#approach) use the same generic `.reveal-group` staggered
+  fade-in that every other card grid on the site already has (Differentiation, the homepage Mission
+  cards, teasers); that's ordinary micro-interaction, not a bespoke showcase moment, and shouldn't
+  be treated as the map's replacement without an explicit decision to do so.
 - A small number of additional micro-interactions may be proposed per page (e.g. metals-card hover,
-  element-card reveal stagger) using the same restrained logic as the map — subtle, purposeful, tied
-  to something the user is already doing (hover, scroll into view). Not decoration for its own sake.
+  element-card reveal stagger) using the same restrained logic the map used — subtle, purposeful,
+  tied to something the user is already doing (hover, scroll into view). Not decoration for its
+  own sake.
 
 ## Script rule, clarified
 "Never write a script that regenerates page content" means: never write a script whose output is
