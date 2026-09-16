@@ -406,16 +406,15 @@ ul, ol { margin: 0; padding: 0; }
 .band .duo__content { width: 100%; padding-bottom: var(--s-48); }
 .band--short { height: 240px; }
 
-/* Solid-colour band — no photo. Design-pending: this is a placeholder ground
-   for the About/Approach closing tagline until a background asset is
-   supplied; swap --ink for an image treatment (see .duo/.photo--band above)
-   once one exists. */
-.band--solid {
-  background: var(--ink);
+/* Centered band content — for a single short headline treated as a
+   standalone statement (e.g. the About tagline) rather than the default
+   bottom-aligned caption. Composes with any band background variant
+   (.duo/.duo--band, .photo--band, or plain .band). */
+.band--center {
   align-items: center;
   justify-content: center;
 }
-.band--solid .duo__content { width: 100%; padding-bottom: 0; text-align: center; }
+.band--center .duo__content { width: 100%; padding-bottom: 0; text-align: center; }
 
 /* Subtle scroll parallax (js/interactions.js writes the transform per
    frame). The base scale gives translateY overscan room so the shift never

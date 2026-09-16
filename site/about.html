@@ -181,10 +181,18 @@
     </div>
   </section>
 
-  <!-- ═══ Full-bleed tagline band — deck slide 10, verbatim. Design-pending:
-       solid navy ground (.band--solid, see style.css) stands in for a
-       background asset not yet supplied. ═══ -->
-  <div class="band band--solid">
+  <!-- ═══ Full-bleed tagline band — deck slide 10, verbatim. Step J: real-colour
+       US flag (assets/img/us-flag-*, the same photo previously shown in native
+       colour on the old #jurisdiction band, removed in Step 4). Uses
+       .photo--band — the site's existing "native-colour band" treatment
+       (same legibility gradient as .duo--band, but no grayscale filter or
+       navy colour-blend) rather than the brand duotone from Step I. The
+       gradient darkens from 25% navy (#101B33) at the top to 97% at the
+       bottom; at the vertical centre, where this band's text sits, it's
+       ~60% — reported per the run sheet for review in preview. Flag to Dani
+       if a different image or opacity is preferred. ═══ -->
+  <div class="band photo--band band--center">
+    <picture><source type="image/webp" srcset="assets/img/us-flag-1920.webp 1920w, assets/img/us-flag-1280.webp 1280w, assets/img/us-flag-800.webp 800w, assets/img/us-flag-480.webp 480w" sizes="100vw"><img src="assets/img/us-flag-1920.jpg" srcset="assets/img/us-flag-1920.jpg 1920w, assets/img/us-flag-1280.jpg 1280w, assets/img/us-flag-800.jpg 800w, assets/img/us-flag-480.jpg 480w" sizes="100vw" alt="" width="1920" height="1280" loading="lazy" decoding="async"></picture>
     <div class="duo__content">
       <div class="wrap">
         <p class="h2">CRITICAL MINERALS. PROSPECTIVE GROUND. AMERICAN ALIGNMENT.</p>
