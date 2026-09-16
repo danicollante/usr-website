@@ -406,6 +406,17 @@ ul, ol { margin: 0; padding: 0; }
 .band .duo__content { width: 100%; padding-bottom: var(--s-48); }
 .band--short { height: 240px; }
 
+/* Solid-colour band — no photo. Design-pending: this is a placeholder ground
+   for the About/Approach closing tagline until a background asset is
+   supplied; swap --ink for an image treatment (see .duo/.photo--band above)
+   once one exists. */
+.band--solid {
+  background: var(--ink);
+  align-items: center;
+  justify-content: center;
+}
+.band--solid .duo__content { width: 100%; padding-bottom: 0; text-align: center; }
+
 /* Subtle scroll parallax (js/interactions.js writes the transform per
    frame). The base scale gives translateY overscan room so the shift never
    uncovers an edge — .duo's own overflow: hidden clips it. Static (no
@@ -1010,6 +1021,13 @@ ul, ol { margin: 0; padding: 0; }
 .section--paper .card { background: var(--card); border-top-color: var(--facet); }
 .section--paper .card p:not(.label) { color: var(--grey); }
 .section--paper .card__index { color: var(--facet); }
+
+/* Approach card — .card with an image slot bled to the card edges above the
+   padded label/copy body, rather than sitting inside .card's own padding. */
+.card-approach { padding: 0; overflow: hidden; }
+.card-approach__image { margin: 0; }
+.card-approach__body { padding: var(--s-32) var(--s-32) 36px; }
+.card-approach__body .label { margin-bottom: var(--s-16); }
 
 /* Teaser card — a link surface. */
 .teaser {
