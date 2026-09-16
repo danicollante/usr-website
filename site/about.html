@@ -42,6 +42,56 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&amp;family=Public+Sans:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@300;400;500&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+
+<style>
+/* Exploration approach — local editorial layout; shared site styles stay intact. */
+#approach .section-head { display: block; margin-bottom: 44px; }
+#approach .h2 { max-width: 900px; }
+#approach .section-head__eyebrow { margin-bottom: 24px; }
+#approach .approach-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--rule);
+}
+#approach .approach-step { padding: 28px 32px 0 0; min-width: 0; }
+#approach .approach-step + .approach-step { padding-left: 32px; }
+#approach .approach-step:last-child { padding-right: 0; }
+#approach .approach-step__number {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: .12em;
+  color: var(--facet);
+  margin-bottom: 24px;
+}
+#approach .approach-step h3 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -.015em;
+  margin: 0 0 16px;
+}
+#approach .approach-step p { color: var(--grey); font-size: 15px; line-height: 1.75; margin: 0; }
+@media (max-width: 900px) {
+  #approach .approach-step { padding-right: 20px; }
+  #approach .approach-step + .approach-step { padding-left: 20px; }
+  #approach .approach-step h3 { font-size: 26px; }
+}
+@media (max-width: 680px) {
+  #approach .section-head { margin-bottom: 32px; }
+  #approach .approach-steps { grid-template-columns: 1fr; }
+  #approach .approach-step,
+  #approach .approach-step + .approach-step { padding: 24px 0; }
+  #approach .approach-step + .approach-step { border-top: 1px solid var(--rule); }
+  #approach .approach-step:last-child { padding-bottom: 0; }
+  #approach .approach-step__number { margin-bottom: 12px; }
+}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -98,55 +148,36 @@
     </div>
   </section>
 
-  <!-- ═══ Exploration Approach — new section, deck v2. Copy verbatim; do not
-       paraphrase. Card images (assets/img/approach-0{1,2,3}.png) not yet
-       supplied — src/alt left correct and pointing at the expected filenames
-       per the run sheet; alt text below is a working description written for
-       accessibility in the meantime, not deck copy, and should be revisited
-       once real imagery lands. ═══ -->
-  <section class="section section--paper" id="approach">
+  <!-- Exploration approach — editorial sequence, retaining the deck copy. -->
+  <section class="section section--paper" id="approach" aria-labelledby="approach-title">
     <div class="wrap">
       <div class="section-head reveal">
-        <div>
-          <p class="label section-head__eyebrow">Exploration approach</p>
-          <h2 class="h2">A data-driven exploration platform, deployable anywhere</h2>
-        </div>
+        <p class="label section-head__eyebrow">Exploration approach</p>
+        <h2 class="h2" id="approach-title">A data-driven exploration platform, deployable anywhere</h2>
       </div>
-      <div class="cards cards--3 reveal-group">
-        <article class="card card-approach">
-          <div class="photo ratio-1-1 card-approach__image">
-            <img src="assets/img/approach-01.webp" alt="Geochemical and geophysical survey data layered over a prospective area" loading="lazy" decoding="async">
-          </div>
-          <div class="card-approach__body">
-            <p class="label">Survey data</p>
-            <p>We systematically examine geochemical and geophysical surveys
+      <ol class="approach-steps reveal-group" role="list">
+        <li class="approach-step">
+          <span class="approach-step__number" aria-hidden="true">01</span>
+          <h3>Survey data</h3>
+          <p>We systematically examine geochemical and geophysical surveys
                to identify highly prospective areas that warrant further
                exploration.</p>
-          </div>
-        </article>
-        <article class="card card-approach">
-          <div class="photo ratio-1-1 card-approach__image">
-            <img src="assets/img/approach-02.webp" alt="Interpolated prospectivity surface ranking ground across multiple metals" loading="lazy" decoding="async">
-          </div>
-          <div class="card-approach__body">
-            <p class="label">Anomaly modeling</p>
-            <p>Interpolated prospectivity surfaces rank ground for dozens of
+        </li>
+        <li class="approach-step">
+          <span class="approach-step__number" aria-hidden="true">02</span>
+          <h3>Anomaly modeling</h3>
+          <p>Interpolated prospectivity surfaces rank ground for dozens of
                metals, surfacing coherent multi-commodity anomalies before
                any fieldwork.</p>
-          </div>
-        </article>
-        <article class="card card-approach">
-          <div class="photo ratio-1-1 card-approach__image">
-            <img src="assets/img/approach-03.webp" alt="The same exploration workflow applied across multiple jurisdictions worldwide" loading="lazy" decoding="async">
-          </div>
-          <div class="card-approach__body">
-            <p class="label">Global deployment</p>
-            <p>The same workflow runs in any jurisdiction with national
+        </li>
+        <li class="approach-step">
+          <span class="approach-step__number" aria-hidden="true">03</span>
+          <h3>Global deployment</h3>
+          <p>The same workflow runs in any jurisdiction with national
                survey coverage: a repeatable, capital-light engine to secure
                the best ground worldwide.</p>
-          </div>
-        </article>
-      </div>
+        </li>
+      </ol>
     </div>
   </section>
 
