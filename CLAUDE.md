@@ -27,12 +27,19 @@ Everything below exists to keep that conversion clean — don't optimize away fr
   outright in the 2026-09-16 Liberia/Nimba removal (pre-removal markup preserved on the
   `pre-liberia-removal-2026-09` branch) and replaced with `#approach` (Exploration Approach — a
   numbered editorial list, not a card grid; see `.approach-steps`/`.approach-step` in style.css).
-  Current sections: intro (Who we are), `#approach`, the tagline band, `#differentiation`.
+  Section order was Intro → `#approach` → tagline band → `#differentiation`; reordered 2026-09-16
+  (Step L) to Intro → `#differentiation` → `#approach` → tagline band — the tagline band moved
+  with `#approach` to stay adjacent to it, per the same run sheet.
 - `leadership.html` — was `company.html`
-- `metals.html` — was `critical-minerals.html`; sections `#context`, `#battery`, `#tech`
+- `metals.html` — was `critical-minerals.html`; sections `#context` and `#minerals`. The old
+  `#electrification` ("Electrification & Aerospace Metals") and `#nuclear` ("Nuclear & Electronics
+  Metals") sections were merged into one unified `#minerals` section ("Critical Minerals",
+  2026-09-16, Step L) holding all 12 metal cards in one grid — the category split is gone, card
+  content/copy is unchanged.
 - `news.html` — unchanged, one post is fine
-- `contact.html` — unchanged
-- `legal.html` — unchanged
+- `contact.html` — the "Direct" spec card was reduced to email only (2026-09-16, Step L); the
+  Licenses/Stage rows and the disclaimer paragraph beneath it were removed, not just hidden.
+- `legal.html` — unchanged; explicitly excluded from the Step L sitewide banner removal below
 Old URLs `cestos-project.html`, `why-liberia.html`, `critical-minerals.html`, `company.html` are
 RETIRED — deleted outright, with no redirects. Robin confirmed the final 7-page structure and
 decided these four URLs simply go away. Do not recreate them and do not add redirect stubs
@@ -92,8 +99,12 @@ of this file called for stubs — that instruction was stale and caused repeat a
   last holdout too. `contact.html`'s eyebrow now reads "Prospective ground · American alignment"
   (meta descriptions match). Don't reintroduce "rare earth(s)" anywhere without a fresh decision.
 - No `PRIVATE & CONFIDENTIAL` marking anywhere (that's the internal deck's footer, not for the
-  public site). The exploration-stage / no-resource-defined disclaimer IS required and must stay
-  clearly legible — see contrast rule below.
+  public site).
+- ~~The exploration-stage / no-resource-defined disclaimer IS required and must stay clearly
+  legible on every page~~ — **SUPERSEDED 2026-09-16 (Step L).** The repeated `.disclaimer-bar`
+  banner ("Exploration stage. Prospectivity models are interpretive and conceptual...") was
+  removed from every page except `legal.html`, where it stays untouched pending separate legal
+  review. Don't reintroduce it sitewide without a fresh decision.
 
 ## Non-negotiable build rules
 - No frameworks, no build step, no npm dependencies. Plain HTML/CSS/vanilla JS only.
