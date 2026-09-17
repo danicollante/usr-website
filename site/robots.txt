@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://danicollante.github.io/usr-website/sitemap.xml
+Sitemap: https://usstrategicresources.com/sitemap.xml

@@ -39,7 +39,13 @@ Everything below exists to keep that conversion clean — don't optimize away fr
 - `news.html` — unchanged, one post is fine
 - `contact.html` — the "Direct" spec card was reduced to email only (2026-09-16, Step L); the
   Licenses/Stage rows and the disclaimer paragraph beneath it were removed, not just hidden.
-- `legal.html` — unchanged; explicitly excluded from the Step L sitewide banner removal below
+- `legal.html` — unchanged; explicitly excluded from the Step L sitewide banner removal below.
+  **UNLISTED 2026-09-17:** page kept live for direct-URL review but deliberately delinked —
+  removed from `sitemap.xml` and given `<meta name="robots" content="noindex, nofollow">`. Its
+  footer nav link was removed sitewide (see the new footer exception below). Relink from nav/
+  footer, restore its sitemap entry, and drop the noindex tag together, as one decision, when
+  the page is approved for public launch. Body copy untouched — the "operating in Liberia" line
+  is a separate open decision, out of scope of the unlisting.
 Old URLs `cestos-project.html`, `why-liberia.html`, `critical-minerals.html`, `company.html` are
 RETIRED — deleted outright, with no redirects. Robin confirmed the final 7-page structure and
 decided these four URLs simply go away. Do not recreate them and do not add redirect stubs
@@ -179,6 +185,13 @@ exception shape for future posts — they follow this same pattern.
 Header/footer are byte-identical except the current page's nav link carries
 `aria-current="page"`. Body class drives visual active state; `aria-current` is the accessibility
 signal and is never dropped or JS-generated. Second sanctioned exception to "byte-identical."
+
+## Documented exception — legal.html footer link
+The footer's "More" nav list no longer links to `legal.html` on any page (removed 2026-09-17,
+same run that unlisted the page — see the `legal.html` entry in Structure above). Third
+sanctioned exception to "byte-identical": every page's footer is otherwise still byte-identical,
+including `legal.html`'s own footer, which also omits the self-link. Restore this `<li>` sitewide
+in the same pass that relinks `legal.html` from the sitemap and drops its noindex tag.
 
 ## Verification backlog
 
